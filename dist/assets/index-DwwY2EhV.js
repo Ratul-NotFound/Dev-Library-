@@ -1,4 +1,4 @@
-(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))a(i);new MutationObserver(i=>{for(const o of i)if(o.type==="childList")for(const r of o.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&a(r)}).observe(document,{childList:!0,subtree:!0});function t(i){const o={};return i.integrity&&(o.integrity=i.integrity),i.referrerPolicy&&(o.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?o.credentials="include":i.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function a(i){if(i.ep)return;i.ep=!0;const o=t(i);fetch(i.href,o)}})();const _={id:"navbar-floating-glass",name:"Floating Glass Navbar",category:"navigation",tags:["navbar","glassmorphism","sticky","responsive","header"],description:"Ultra-clean floating navigation bar with scroll-aware backdrop blur, interactive links, and mobile drawer.",complexity:"Intermediate",variants:{vanilla:{html:`<header class="dv-nav-wrapper">
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))a(i);new MutationObserver(i=>{for(const o of i)if(o.type==="childList")for(const r of o.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&a(r)}).observe(document,{childList:!0,subtree:!0});function t(i){const o={};return i.integrity&&(o.integrity=i.integrity),i.referrerPolicy&&(o.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?o.credentials="include":i.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function a(i){if(i.ep)return;i.ep=!0;const o=t(i);fetch(i.href,o)}})();class U{constructor(){this.listeners=new Map}on(e,t){return this.listeners.has(e)||this.listeners.set(e,new Set),this.listeners.get(e).add(t),()=>this.off(e,t)}off(e,t){this.listeners.has(e)&&this.listeners.get(e).delete(t)}emit(e,t){this.listeners.has(e)&&this.listeners.get(e).forEach(a=>{try{a(t)}catch(i){console.error(`[EventBus] Error executing listener for "${e}":`,i)}})}clear(){this.listeners.clear()}}const B=new U;class Y{constructor(e={}){this._state={activeCategory:"all",activeTag:null,searchTerm:"",activeFramework:"vanilla",currentTheme:"dark",viewMode:"feed",...e},this._subscribers=new Set}get state(){return Object.freeze({...this._state})}get(e){return this._state[e]}setState(e){const t={...this._state};this._state={...this._state,...e},this._subscribers.forEach(a=>{try{a(this.state,t)}catch(i){console.error("[StateManager] Subscriber error:",i)}}),B.emit("state:change",{state:this.state,prevState:t})}subscribe(e){return this._subscribers.add(e),()=>this._subscribers.delete(e)}resetFilters(){this.setState({activeCategory:"all",activeTag:null,searchTerm:""})}}const W={id:"navbar-floating-glass",name:"Floating Glass Navbar",category:"navigation",tags:["navbar","glassmorphism","sticky","responsive","header"],description:"Ultra-clean floating navigation bar with scroll-aware backdrop blur, interactive links, and mobile drawer.",complexity:"Intermediate",variants:{vanilla:{html:`<header class="dv-nav-wrapper">
   <div class="dv-nav-bar">
     <a href="#" class="dv-logo">
       <span class="dv-logo-dot"></span>
@@ -155,7 +155,7 @@
       <a href="#" class="rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-500 transition-all">Get Started</a>
     </div>
   </div>
-</header>`}}},G={id:"sidebar-collapsible-rail",name:"Collapsible Icon-Rail Sidebar",category:"navigation",tags:["sidebar","rail","navigation","collapsible","admin"],description:"Enterprise-grade collapsible icon-rail navigation sidebar with badge counters, active indicator, and smooth width transition.",complexity:"Advanced",variants:{vanilla:{html:`<div class="dv-sidebar-showcase">
+</header>`}}},J={id:"sidebar-collapsible-rail",name:"Collapsible Icon-Rail Sidebar",category:"navigation",tags:["sidebar","rail","navigation","collapsible","admin"],description:"Enterprise-grade collapsible icon-rail navigation sidebar with badge counters, active indicator, and smooth width transition.",complexity:"Advanced",variants:{vanilla:{html:`<div class="dv-sidebar-showcase">
   <aside class="dv-rail-sidebar" id="dv-rail-sidebar">
     <div class="dv-sidebar-top">
       <div class="dv-sidebar-brand">
@@ -411,7 +411,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<aside class="
     <a href="#" class="flex items-center gap-2 rounded-lg bg-indigo-600/10 px-3 py-2 font-semibold text-indigo-400">Dashboard</a>
     <a href="#" class="flex items-center gap-2 rounded-lg px-3 py-2 text-zinc-400 hover:bg-zinc-900 hover:text-white">Analytics</a>
   </nav>
-</aside>`}}},V={id:"hero-saas-glow",name:"Modern SaaS Glow Hero",category:"heroes",tags:["hero","saas","landing","call-to-action","glow"],description:"High-impact landing hero with an ambient gradient glow, release badge, dual CTA, and dashboard preview mockup.",complexity:"Intermediate",variants:{vanilla:{html:`<section class="dv-hero">
+</aside>`}}},K={id:"hero-saas-glow",name:"Modern SaaS Glow Hero",category:"heroes",tags:["hero","saas","landing","call-to-action","glow"],description:"High-impact landing hero with an ambient gradient glow, release badge, dual CTA, and dashboard preview mockup.",complexity:"Intermediate",variants:{vanilla:{html:`<section class="dv-hero">
   <div class="dv-hero-badge">
     <span class="dv-badge-pill">v2.4 Released</span>
     <span class="dv-badge-text">Explore real-time data sync &rarr;</span>
@@ -658,7 +658,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<aside class="
     <button class="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg hover:bg-indigo-500 transition-all">Start Building Free</button>
     <button class="rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2.5 text-sm font-medium text-zinc-200 hover:bg-zinc-800">Watch Demo</button>
   </div>
-</section>`}}},U={id:"section-hero-split-agency",name:"Editorial Minimal Typography Hero",category:"heroes",tags:["hero","editorial","agency","typography","clean","portfolio"],description:"Swiss typography-driven hero section with bold headline, dynamic metric badges, and interactive client logo pill cloud.",complexity:"Beginner",variants:{vanilla:{html:`<section class="dv-agency-hero">
+</section>`}}},X={id:"section-hero-split-agency",name:"Editorial Minimal Typography Hero",category:"heroes",tags:["hero","editorial","agency","typography","clean","portfolio"],description:"Swiss typography-driven hero section with bold headline, dynamic metric badges, and interactive client logo pill cloud.",complexity:"Beginner",variants:{vanilla:{html:`<section class="dv-agency-hero">
   <div class="dv-agency-header">
     <div class="dv-agency-badge">
       <span class="dv-pulse-dot"></span> Available for Select Q4 Projects
@@ -808,7 +808,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<aside class="
     <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Available for Q4 Projects
   </div>
   <h1 class="text-3xl font-extrabold text-white sm:text-4xl">We craft high-performance digital products for ambitious brands.</h1>
-</section>`}}},Y={id:"cart-slide-drawer",name:"Slide-Over Cart Drawer",category:"ecommerce",tags:["cart","drawer","ecommerce","offcanvas","checkout"],description:"Fully interactive slide-over cart with live quantity modification, item removal, and real-time subtotal calculator.",complexity:"Advanced",variants:{vanilla:{html:`<div class="dv-cart-demo">
+</section>`}}},Q={id:"cart-slide-drawer",name:"Slide-Over Cart Drawer",category:"ecommerce",tags:["cart","drawer","ecommerce","offcanvas","checkout"],description:"Fully interactive slide-over cart with live quantity modification, item removal, and real-time subtotal calculator.",complexity:"Advanced",variants:{vanilla:{html:`<div class="dv-cart-demo">
   <button id="dv-open-cart-btn" class="dv-cart-trigger-btn">
     <i data-lucide="shopping-bag" style="width:16px;height:16px;"></i>
     <span>View Shopping Cart</span>
@@ -1129,7 +1129,7 @@ renderCart();`},tailwind:{html:`<div class="p-8 text-center">
     <span>View Shopping Cart</span>
     <span class="rounded-full bg-indigo-600 px-2 py-0.5 text-[10px] font-bold">2</span>
   </button>
-</div>`}}},W={id:"pricing-matrix-toggle",name:"SaaS 3-Tier Pricing Matrix",category:"ecommerce",tags:["pricing","tiers","saas","billing","subscription"],description:"Clean modern pricing matrix with monthly/annual billing toggle (20% discount badge), highlighted Pro tier, and feature checklist.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-pricing-container">
+</div>`}}},Z={id:"pricing-matrix-toggle",name:"SaaS 3-Tier Pricing Matrix",category:"ecommerce",tags:["pricing","tiers","saas","billing","subscription"],description:"Clean modern pricing matrix with monthly/annual billing toggle (20% discount badge), highlighted Pro tier, and feature checklist.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-pricing-container">
   <div class="dv-pricing-header">
     <h2>Simple, predictable pricing</h2>
     <p>Scale effortlessly from side projects to enterprise clusters.</p>
@@ -1446,7 +1446,7 @@ if (window.lucide) { window.lucide.createIcons(); }`},tailwind:{html:`<div class
     <div class="mt-4 text-3xl font-extrabold text-white">$0<span class="text-xs text-zinc-500 font-normal">/mo</span></div>
     <button class="mt-6 w-full rounded-lg border border-zinc-800 bg-zinc-900 py-2 text-xs font-semibold text-white hover:bg-zinc-800">Get Started</button>
   </div>
-</div>`}}},J={id:"table-sortable-datagrid",name:"Clean Sortable Data Table",category:"tables",tags:["table","datagrid","sorting","filter","admin"],description:"Minimalist data table with real-time keyword filter, column sorting, color-coded status badges, and action dropdowns.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-table-card">
+</div>`}}},ee={id:"table-sortable-datagrid",name:"Clean Sortable Data Table",category:"tables",tags:["table","datagrid","sorting","filter","admin"],description:"Minimalist data table with real-time keyword filter, column sorting, color-coded status badges, and action dropdowns.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-table-card">
   <div class="dv-table-toolbar">
     <div class="dv-table-search-box">
       <i data-lucide="search" style="width:14px;height:14px;color:var(--text-dim);"></i>
@@ -1630,7 +1630,7 @@ renderTable();`},tailwind:{html:`<div class="overflow-hidden rounded-xl border b
       </tr>
     </tbody>
   </table>
-</div>`}}},K={id:"table-feature-matrix",name:"SaaS Feature Comparison Matrix",category:"tables",tags:["comparison","matrix","features","pricing","saas","table"],description:"Clean side-by-side feature comparison table comparing Starter, Pro, and Enterprise tiers with checkmarks and tooltips.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-matrix-container">
+</div>`}}},te={id:"table-feature-matrix",name:"SaaS Feature Comparison Matrix",category:"tables",tags:["comparison","matrix","features","pricing","saas","table"],description:"Clean side-by-side feature comparison table comparing Starter, Pro, and Enterprise tiers with checkmarks and tooltips.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-matrix-container">
   <div class="dv-matrix-header">
     <h2>Compare platform features</h2>
     <p>Everything included in every tier. No hidden upgrade limits.</p>
@@ -1778,7 +1778,7 @@ renderTable();`},tailwind:{html:`<div class="overflow-hidden rounded-xl border b
       </tr>
     </tbody>
   </table>
-</div>`}}},X={id:"auth-split-login",name:"Split-Screen Minimal Auth",category:"auth",tags:["auth","login","signup","form","password"],description:"Clean editorial split authentication interface with floating label fields, password visibility toggle, and social OAuth pills.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-auth-container">
+</div>`}}},ae={id:"auth-split-login",name:"Split-Screen Minimal Auth",category:"auth",tags:["auth","login","signup","form","password"],description:"Clean editorial split authentication interface with floating label fields, password visibility toggle, and social OAuth pills.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-auth-container">
   <div class="dv-auth-card">
     <div class="dv-auth-header">
       <h2>Welcome back</h2>
@@ -1964,7 +1964,7 @@ renderTable();`},tailwind:{html:`<div class="overflow-hidden rounded-xl border b
     </div>
     <button class="w-full rounded-lg bg-indigo-600 py-2 text-xs font-semibold text-white hover:bg-indigo-500">Sign in</button>
   </form>
-</div>`}}},Q={id:"form-interactive-inputs",name:"Modern Interactive Form Controls",category:"auth",tags:["forms","inputs","floating-label","otp","toggle","segmented"],description:"Suite of modern interactive inputs: Floating label textfield, 6-digit OTP verification pin boxes, and segmented radio tabs.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-inputs-container">
+</div>`}}},ie={id:"form-interactive-inputs",name:"Modern Interactive Form Controls",category:"auth",tags:["forms","inputs","floating-label","otp","toggle","segmented"],description:"Suite of modern interactive inputs: Floating label textfield, 6-digit OTP verification pin boxes, and segmented radio tabs.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-inputs-container">
   <!-- 1. Floating Label Input -->
   <div class="dv-input-card">
     <span class="dv-input-card-title">Floating Label Field</span>
@@ -2142,7 +2142,7 @@ otpBoxes.forEach((box, idx) => {
     <input type="text" placeholder=" " class="peer w-full rounded-lg border border-zinc-800 bg-zinc-900 px-3 pt-4 pb-1 text-xs text-white focus:border-indigo-500 focus:outline-none" />
     <label class="absolute left-3 top-2.5 text-xs text-zinc-500 transition-all peer-focus:top-1 peer-focus:text-[10px] peer-focus:text-indigo-400 peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-[10px]">Email Address</label>
   </div>
-</div>`}}},Z={id:"wizard-multistep-onboarding",name:"Multi-Step Onboarding Form Wizard",category:"auth",tags:["wizard","multistep","onboarding","form","stepper","auth"],description:"Interactive multi-step onboarding wizard with progress tracker bar, step validation, and next/back transitions.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-wizard-container">
+</div>`}}},oe={id:"wizard-multistep-onboarding",name:"Multi-Step Onboarding Form Wizard",category:"auth",tags:["wizard","multistep","onboarding","form","stepper","auth"],description:"Interactive multi-step onboarding wizard with progress tracker bar, step validation, and next/back transitions.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-wizard-container">
   <div class="dv-wizard-card">
     <!-- Stepper Header -->
     <div class="dv-stepper-header">
@@ -2435,7 +2435,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="ro
   </div>
   <h3 class="text-base font-bold text-white">Create your developer profile</h3>
   <button class="mt-6 w-full rounded-lg bg-indigo-600 py-2 font-semibold text-white">Continue</button>
-</div>`}}},ee={id:"dialog-confirm-danger",name:"Destructive Confirmation Dialog",category:"modals",tags:["dialog","modal","confirmation","danger","alert","overlay"],description:"Clean danger confirmation dialog with backdrop blur, keyboard ESC dismissal, and danger action button.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-modal-demo-wrapper">
+</div>`}}},re={id:"dialog-confirm-danger",name:"Destructive Confirmation Dialog",category:"modals",tags:["dialog","modal","confirmation","danger","alert","overlay"],description:"Clean danger confirmation dialog with backdrop blur, keyboard ESC dismissal, and danger action button.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-modal-demo-wrapper">
   <button id="dv-open-dialog-btn" class="dv-btn-danger-outline">
     <i data-lucide="trash-2" style="width:14px;height:14px;"></i>
     Delete Cluster Instance
@@ -2610,7 +2610,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="p-
   <button class="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-semibold text-red-400 hover:bg-red-500 hover:text-white transition-all">
     Delete Cluster Instance
   </button>
-</div>`}}},te={id:"banner-cookie-consent",name:"GDPR / Privacy Cookie Consent Banner",category:"modals",tags:["cookie","privacy","gdpr","banner","consent","compliance","modal"],description:"Clean GDPR/CCPA compliant floating cookie consent banner with accept/customize toggles and backdrop blur.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-cookie-demo-wrapper">
+</div>`}}},se={id:"banner-cookie-consent",name:"GDPR / Privacy Cookie Consent Banner",category:"modals",tags:["cookie","privacy","gdpr","banner","consent","compliance","modal"],description:"Clean GDPR/CCPA compliant floating cookie consent banner with accept/customize toggles and backdrop blur.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-cookie-demo-wrapper">
   <button id="dv-show-cookie-btn" class="dv-btn-cookie-trigger">
     <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
     Show Cookie Banner
@@ -2785,7 +2785,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="ro
     <button class="rounded-lg bg-indigo-600 px-3 py-1.5 font-semibold text-white">Accept All</button>
     <button class="rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-1.5 text-zinc-300">Essential</button>
   </div>
-</div>`}}},ae={id:"card-product-quickview",name:"E-Commerce Product Quickview Card",category:"cards",tags:["product","card","ecommerce","shop","pricing","tags"],description:"Clean modern product card with size pills, color swatches, status badges, and animated Add to Bag interaction.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-product-card">
+</div>`}}},ne={id:"card-product-quickview",name:"E-Commerce Product Quickview Card",category:"cards",tags:["product","card","ecommerce","shop","pricing","tags"],description:"Clean modern product card with size pills, color swatches, status badges, and animated Add to Bag interaction.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-product-card">
   <div class="dv-product-image-box">
     <span class="dv-product-badge">New Arrival</span>
     <div class="dv-product-icon">🎧</div>
@@ -2964,7 +2964,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="w-
   <div class="mt-3 font-semibold text-white">Studio Pro Headphones</div>
   <div class="mt-1 font-bold text-indigo-400 text-sm">$299.00</div>
   <button class="mt-3 w-full rounded-lg bg-indigo-600 py-2 font-semibold text-white">Add to Cart</button>
-</div>`}}},ie={id:"bento-grid-features",name:"Swiss 6-Card Bento Grid",category:"layout",tags:["bento","grid","features","cards","modern"],description:"High-density feature layout showcasing multi-span bento cards with responsive flex and subtle active hover glow.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-bento-grid">
+</div>`}}},de={id:"bento-grid-features",name:"Swiss 6-Card Bento Grid",category:"layout",tags:["bento","grid","features","cards","modern"],description:"High-density feature layout showcasing multi-span bento cards with responsive flex and subtle active hover glow.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-bento-grid">
   <!-- Large Card 1 -->
   <div class="dv-bento-card dv-bento-col-2">
     <div class="dv-bento-icon"><i data-lucide="zap"></i></div>
@@ -3064,7 +3064,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="w-
     <h3 class="font-semibold text-white text-sm">End-to-End Vault</h3>
     <p class="mt-1 text-xs text-zinc-400">Cryptographic key management with role-based policies.</p>
   </div>
-</div>`}}},oe={id:"stats-metrics-grid",name:"4-Column Analytics KPI Metric Cards",category:"layout",tags:["stats","metrics","kpi","analytics","dashboard","cards"],description:"Clean high-density metric stat cards featuring percentage trend deltas, sparkline visual indicators, and micro-badges.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-stats-grid">
+</div>`}}},le={id:"stats-metrics-grid",name:"4-Column Analytics KPI Metric Cards",category:"layout",tags:["stats","metrics","kpi","analytics","dashboard","cards"],description:"Clean high-density metric stat cards featuring percentage trend deltas, sparkline visual indicators, and micro-badges.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-stats-grid">
   <!-- Card 1 -->
   <div class="dv-stat-box">
     <div class="dv-stat-header">
@@ -3181,7 +3181,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="w-
     </div>
     <div class="mt-2 text-xl font-bold text-white">$128,490</div>
   </div>
-</div>`}}},re={id:"testimonials-masonry-grid",name:"Social Proof Customer Testimonial Grid",category:"layout",tags:["testimonials","reviews","social-proof","ratings","feedback"],description:"Clean 3-column customer review wall with star rating indicators, verified badges, and author avatars.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-testimonials-container">
+</div>`}}},ce={id:"testimonials-masonry-grid",name:"Social Proof Customer Testimonial Grid",category:"layout",tags:["testimonials","reviews","social-proof","ratings","feedback"],description:"Clean 3-column customer review wall with star rating indicators, verified badges, and author avatars.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-testimonials-container">
   <div class="dv-testimonials-header">
     <span class="dv-section-badge">Loved by Developers</span>
     <h2>Built for teams that ship daily</h2>
@@ -3336,7 +3336,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="w-
     <p class="mt-2 text-zinc-400">"DevVault shaved off hours from our delivery cycle."</p>
     <div class="mt-4 font-bold text-white">Alex Rivera</div>
   </div>
-</div>`}}},se={id:"timeline-audit-feed",name:"Activity Timeline & Audit Trail Feed",category:"layout",tags:["timeline","audit","feed","activity","changelog","history"],description:"Clean vertical audit log and activity timeline with status icons, commit hashes, user avatars, and timestamp pills.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-timeline-container">
+</div>`}}},pe={id:"timeline-audit-feed",name:"Activity Timeline & Audit Trail Feed",category:"layout",tags:["timeline","audit","feed","activity","changelog","history"],description:"Clean vertical audit log and activity timeline with status icons, commit hashes, user avatars, and timestamp pills.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-timeline-container">
   <div class="dv-timeline-header">
     <h3>Deployment Activity & Audit Trail</h3>
     <span class="dv-timeline-badge">Live Stream</span>
@@ -3548,7 +3548,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="w-
       <p class="mt-1 text-zinc-400">Deployed commit a8f92c1 to global edge.</p>
     </div>
   </div>
-</div>`}}},ne={id:"buttons-magnetic-shimmer",name:"Shimmer & Dynamic Action Buttons",category:"elements",tags:["buttons","shimmer","micro-interactions","hover","animation"],description:"Collection of premium button styles: CSS shimmer border glow, glassmorphic pulse, and magnetic hover response.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-buttons-showcase">
+</div>`}}},ve={id:"buttons-magnetic-shimmer",name:"Shimmer & Dynamic Action Buttons",category:"elements",tags:["buttons","shimmer","micro-interactions","hover","animation"],description:"Collection of premium button styles: CSS shimmer border glow, glassmorphic pulse, and magnetic hover response.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-buttons-showcase">
   <!-- Shimmer Glowing Button -->
   <button class="dv-btn-shimmer">
     <span class="dv-shimmer-spin"></span>
@@ -3667,7 +3667,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="w-
       ✨ Star on GitHub
     </span>
   </button>
-</div>`}}},de={id:"accordion-clean-faq",name:"Smooth FAQ Accordion",category:"elements",tags:["accordion","faq","collapse","accessible","animation"],description:"Clean minimalist FAQ accordion with smooth height expansion, plus/minus rotation, and keyboard accessibility.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-faq-container">
+</div>`}}},be={id:"accordion-clean-faq",name:"Smooth FAQ Accordion",category:"elements",tags:["accordion","faq","collapse","accessible","animation"],description:"Clean minimalist FAQ accordion with smooth height expansion, plus/minus rotation, and keyboard accessibility.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-faq-container">
   <div class="dv-faq-header">
     <h2>Frequently Asked Questions</h2>
     <p>Everything you need to know about integrating our patterns into your workflow.</p>
@@ -3809,7 +3809,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="ma
     </div>
     <p class="mt-2 text-zinc-400">Yes! Standard HTML5 and modern CSS custom properties.</p>
   </div>
-</div>`}}},le={id:"toast-notification-system",name:"Toast Notification Dispatcher",category:"elements",tags:["toast","notification","alert","feedback","popover"],description:"Clean stacked toast notification manager with interactive trigger buttons for Success, Error, Warning, and Info states.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-toast-demo-wrapper">
+</div>`}}},ge={id:"toast-notification-system",name:"Toast Notification Dispatcher",category:"elements",tags:["toast","notification","alert","feedback","popover"],description:"Clean stacked toast notification manager with interactive trigger buttons for Success, Error, Warning, and Info states.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-toast-demo-wrapper">
   <div class="dv-toast-triggers">
     <button class="dv-btn-toast dv-toast-btn-success" onclick="triggerToast('success')">
       <i data-lucide="check-circle" style="width:14px;height:14px;"></i>
@@ -3938,7 +3938,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="fl
   <div class="w-full max-w-sm rounded-xl border border-zinc-800 bg-zinc-950 p-3 text-zinc-200 shadow-xl">
     Deployment completed successfully.
   </div>
-</div>`}}},ce={id:"marquee-logo-cloud",name:"Infinite Seamless Logo Marquee",category:"elements",tags:["marquee","logos","animation","infinite","ticker","social-proof"],description:"Pure CSS infinite scrolling marquee for client logos, partner badges, and tech stack showcases with edge fade gradients.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-marquee-container">
+</div>`}}},xe={id:"marquee-logo-cloud",name:"Infinite Seamless Logo Marquee",category:"elements",tags:["marquee","logos","animation","infinite","ticker","social-proof"],description:"Pure CSS infinite scrolling marquee for client logos, partner badges, and tech stack showcases with edge fade gradients.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-marquee-container">
   <div class="dv-marquee-track">
     <!-- Group 1 -->
     <div class="dv-marquee-group">
@@ -4019,7 +4019,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="fl
     <span class="rounded-full border border-zinc-800 bg-zinc-950 px-4 py-2 text-xs font-semibold text-white">🎨 Tailwind CSS</span>
     <span class="rounded-full border border-zinc-800 bg-zinc-950 px-4 py-2 text-xs font-semibold text-white">🔥 TypeScript</span>
   </div>
-</div>`}}},pe={id:"skeleton-shimmer-card",name:"Dashboard Skeleton Shimmer Loaders",category:"feedback",tags:["skeleton","loader","shimmer","loading","placeholder","feedback"],description:"Pure CSS animated shimmer skeleton placeholders for dashboard metric cards, user profiles, and table rows.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-skeleton-container">
+</div>`}}},ue={id:"skeleton-shimmer-card",name:"Dashboard Skeleton Shimmer Loaders",category:"feedback",tags:["skeleton","loader","shimmer","loading","placeholder","feedback"],description:"Pure CSS animated shimmer skeleton placeholders for dashboard metric cards, user profiles, and table rows.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-skeleton-container">
   <!-- Metric Card Skeleton -->
   <div class="dv-skeleton-card">
     <div class="dv-skeleton-line" style="width: 40%; height: 14px;"></div>
@@ -4100,7 +4100,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="fl
     <div class="h-6 w-2/3 rounded bg-zinc-800"></div>
     <div class="h-3 w-1/2 rounded bg-zinc-800"></div>
   </div>
-</div>`}}},ve={id:"effect-spotlight-card",name:"Interactive Mouse Spotlight Card",category:"animations",tags:["spotlight","glow","mouse","hover","interactive","cards"],description:"Clean modern card with a dynamic radial gradient spotlight that tracks the user cursor position across the card border.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-spotlight-container">
+</div>`}}},me={id:"effect-spotlight-card",name:"Interactive Mouse Spotlight Card",category:"animations",tags:["spotlight","glow","mouse","hover","interactive","cards"],description:"Clean modern card with a dynamic radial gradient spotlight that tracks the user cursor position across the card border.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-spotlight-container">
   <div class="dv-spotlight-card" id="dv-spotlight-1">
     <div class="dv-spotlight-glow"></div>
     <div class="dv-spotlight-content">
@@ -4209,7 +4209,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="fl
 if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="rounded-xl border border-zinc-800 bg-zinc-950 p-6 text-xs max-w-sm">
   <h3 class="font-bold text-white text-base">Edge AI Acceleration</h3>
   <p class="mt-2 text-zinc-400">Sub-millisecond model execution with hardware acceleration.</p>
-</div>`}}},be={id:"style-glassmorphism-card",name:"Ultra-Refined Specular Glass Wallet Card",category:"morphisms",tags:["glassmorphism","glass","blur","wallet","fintech","specular","morphism"],description:"Production-grade frosted glass card featuring dual specular light rims, animated ambient gradient orbs, and metallic chip reflection.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-pro-glass-stage">
+</div>`}}},he={id:"style-glassmorphism-card",name:"Ultra-Refined Specular Glass Wallet Card",category:"morphisms",tags:["glassmorphism","glass","blur","wallet","fintech","specular","morphism"],description:"Production-grade frosted glass card featuring dual specular light rims, animated ambient gradient orbs, and metallic chip reflection.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-pro-glass-stage">
   <!-- Dynamic Ambient Orbs -->
   <div class="dv-pro-orb dv-orb-indigo"></div>
   <div class="dv-pro-orb dv-orb-rose"></div>
@@ -4454,7 +4454,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="ro
     <span>ALEXANDER VANE</span>
     <span>08 / 29</span>
   </div>
-</div>`}}},ge={id:"style-neobrutalism-card",name:"Neo-Brutalist Developer Command Card",category:"morphisms",tags:["neobrutalism","brutalism","retro","bold","contrast","terminal","morphism"],description:"Clean developer-focused Neo-Brutalist card with solid 2.5px borders, hard unblurred drop shadow, copyable CLI pill, and high-contrast tactile action.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-pro-brutal-stage">
+</div>`}}},fe={id:"style-neobrutalism-card",name:"Neo-Brutalist Developer Command Card",category:"morphisms",tags:["neobrutalism","brutalism","retro","bold","contrast","terminal","morphism"],description:"Clean developer-focused Neo-Brutalist card with solid 2.5px borders, hard unblurred drop shadow, copyable CLI pill, and high-contrast tactile action.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-pro-brutal-stage">
   <div class="dv-pro-brutal-card">
     <div class="dv-brutal-top-row">
       <div class="dv-brutal-tag">⚡ V2.4 RELEASE</div>
@@ -4642,7 +4642,7 @@ if (copyBtn) {
   </div>
   <h3 class="mt-3 text-lg font-black">Instant Edge Deployment</h3>
   <button class="mt-4 w-full border-2 border-zinc-900 bg-rose-400 py-2 font-black shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] active:translate-x-0.5 active:translate-y-0.5">Deploy Cluster</button>
-</div>`}}},xe={id:"style-claymorphism-card",name:"Claymorphism 3D Tactile Media Widget",category:"morphisms",tags:["claymorphism","3d","clay","inflatable","soft","music","morphism"],description:"Production-grade 3D clay widget with dual volumetric inset lighting, animated progress bar, and bouncy tactile controls.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-pro-clay-stage">
+</div>`}}},ye={id:"style-claymorphism-card",name:"Claymorphism 3D Tactile Media Widget",category:"morphisms",tags:["claymorphism","3d","clay","inflatable","soft","music","morphism"],description:"Production-grade 3D clay widget with dual volumetric inset lighting, animated progress bar, and bouncy tactile controls.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-pro-clay-stage">
   <div class="dv-pro-clay-card">
     <div class="dv-clay-top-badge">🎧 SPATIAL AUDIO</div>
     
@@ -4808,7 +4808,7 @@ if (copyBtn) {
 }`,js:"// Claymorphism interactions operate on 3D volumetric inset physics"},tailwind:{html:`<div class="rounded-[32px] bg-slate-100 p-6 text-slate-800 shadow-[20px_20px_40px_rgba(148,163,184,0.45),inset_-8px_-8px_16px_rgba(148,163,184,0.3),inset_8px_8px_16px_rgba(255,255,255,0.95)] max-w-xs text-center">
   <div class="h-24 w-24 mx-auto rounded-2xl bg-gradient-to-br from-indigo-500 to-pink-500 shadow-lg flex items-center justify-center text-3xl">🎵</div>
   <h3 class="mt-4 font-bold text-sm">Midnight Resonance</h3>
-</div>`}}},me={id:"style-neumorphism-dial",name:"Minimalist Hardware Neumorphism Controller",category:"morphisms",tags:["neumorphism","soft-ui","minimal","hardware","dial","morphism"],description:"Precision-engineered soft tactile controller with dual-stage opposing shadows, concave preset selectors, and interactive knurled volume knob.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-pro-neuro-stage">
+</div>`}}},we={id:"style-neumorphism-dial",name:"Minimalist Hardware Neumorphism Controller",category:"morphisms",tags:["neumorphism","soft-ui","minimal","hardware","dial","morphism"],description:"Precision-engineered soft tactile controller with dual-stage opposing shadows, concave preset selectors, and interactive knurled volume knob.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-pro-neuro-stage">
   <div class="dv-pro-neuro-panel">
     <div class="dv-neuro-top">
       <span class="dv-neuro-brand">BRAUN // AUD-01</span>
@@ -4993,7 +4993,7 @@ if (dial) {
   <div class="my-6 h-24 w-24 mx-auto rounded-full bg-[#e6ecf2] shadow-[8px_8px_18px_#c3c8cf,-8px_-8px_18px_#ffffff] flex items-center justify-center">
     <div class="h-2 w-2 rounded-full bg-indigo-600"></div>
   </div>
-</div>`}}},ue={id:"style-spatial-ui",name:"Spatial UI 3D Floating Glass Deck",category:"morphisms",tags:["spatialui","visionos","3d","glass","depth","morphism"],description:"visionOS-inspired floating glass deck with luminous rim lighting, layered 3D perspective tilt, and specular edge highlight.",complexity:"Advanced",variants:{vanilla:{html:`<div class="dv-spatial-stage">
+</div>`}}},ke={id:"style-spatial-ui",name:"Spatial UI 3D Floating Glass Deck",category:"morphisms",tags:["spatialui","visionos","3d","glass","depth","morphism"],description:"visionOS-inspired floating glass deck with luminous rim lighting, layered 3D perspective tilt, and specular edge highlight.",complexity:"Advanced",variants:{vanilla:{html:`<div class="dv-spatial-stage">
   <div class="dv-spatial-deck" id="dv-spatial-card">
     <div class="dv-spatial-rim"></div>
     <div class="dv-spatial-content">
@@ -5140,7 +5140,7 @@ if (card) {
   <div class="text-xs font-bold text-sky-400">visionOS Spatial</div>
   <h3 class="mt-2 text-lg font-bold">Dynamic 3D Ambient Depth</h3>
   <p class="mt-2 text-xs text-slate-400">Layered z-plane elevation with multi-specular border reflections.</p>
-</div>`}}},he={id:"style-cyberpunk-hud",name:"Cybermorphism Y2K HUD Terminal",category:"morphisms",tags:["cybermorphism","cyberpunk","hud","neon","glitch","maximalism","morphism"],description:"High-energy cyberpunk HUD terminal with neon cyan borders, scanline overlays, corner brackets, and monospace telemetry.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-cyber-wrapper">
+</div>`}}},ze={id:"style-cyberpunk-hud",name:"Cybermorphism Y2K HUD Terminal",category:"morphisms",tags:["cybermorphism","cyberpunk","hud","neon","glitch","maximalism","morphism"],description:"High-energy cyberpunk HUD terminal with neon cyan borders, scanline overlays, corner brackets, and monospace telemetry.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-cyber-wrapper">
   <div class="dv-cyber-hud">
     <!-- Corner brackets -->
     <div class="dv-cyber-corner dv-corner-tl"></div>
@@ -5319,7 +5319,7 @@ if (card) {
   <div class="text-[10px] font-bold">SYS_OVERRIDE // V2.9</div>
   <h3 class="mt-2 text-sm font-black text-white">NEURAL PROTOCOL</h3>
   <button class="mt-4 w-full border border-cyan-400 bg-cyan-400/20 py-2 text-xs font-bold text-cyan-300">EXECUTE >></button>
-</div>`}}},fe={id:"style-liquid-glass",name:"Liquid Glass Aurora Chromatic Card",category:"morphisms",tags:["liquidglass","aurora","chromatic","mesh","iridescent","morphism"],description:"Fluid iridescent glass card with shifting chromatic aurora mesh gradients and frosted glass refraction.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-liquid-stage">
+</div>`}}},Se={id:"style-liquid-glass",name:"Liquid Glass Aurora Chromatic Card",category:"morphisms",tags:["liquidglass","aurora","chromatic","mesh","iridescent","morphism"],description:"Fluid iridescent glass card with shifting chromatic aurora mesh gradients and frosted glass refraction.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-liquid-stage">
   <div class="dv-liquid-card">
     <div class="dv-liquid-mesh-bg"></div>
     <div class="dv-liquid-glass-pane">
@@ -5440,7 +5440,7 @@ if (card) {
   <div class="text-xs font-bold text-pink-400">Liquid Glass ✦</div>
   <h3 class="mt-2 text-lg font-bold">Chromatic Refraction</h3>
   <p class="mt-2 text-xs text-white/80">Fluid multi-spectral gradients shifting behind ultra-high blur glass.</p>
-</div>`}}},ye={id:"style-skeuomorphism-deck",name:"Skeuomorphic Brushed Aluminum Audio Deck",category:"morphisms",tags:["skeuomorphism","realistic","aluminum","analog","hardware","vintage","morphism"],description:"Realistic skeuomorphic interface with brushed aluminum textures, physical metallic toggle switches, analog VU needle meter, and knurled knobs.",complexity:"Advanced",variants:{vanilla:{html:`<div class="dv-skeuo-stage">
+</div>`}}},Ce={id:"style-skeuomorphism-deck",name:"Skeuomorphic Brushed Aluminum Audio Deck",category:"morphisms",tags:["skeuomorphism","realistic","aluminum","analog","hardware","vintage","morphism"],description:"Realistic skeuomorphic interface with brushed aluminum textures, physical metallic toggle switches, analog VU needle meter, and knurled knobs.",complexity:"Advanced",variants:{vanilla:{html:`<div class="dv-skeuo-stage">
   <div class="dv-skeuo-chassis">
     <!-- Top Screws & Branding -->
     <div class="dv-skeuo-header">
@@ -5689,7 +5689,7 @@ if (needle) {
       <span>-20</span><span>-10</span><span>0</span><span class="text-red-600">+3</span>
     </div>
   </div>
-</div>`}}},we={id:"style-auroramorphism-glow",name:"Auroramorphism Atmospheric Glow Card",category:"morphisms",tags:["auroramorphism","aurora","glow","luminous","atmospheric","morphism"],description:"Atmospheric design pattern with organic radiant light blobs diffusing behind high-contrast frosted surfaces for an ethereal Northern Lights aura.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-aurora-stage">
+</div>`}}},Ee={id:"style-auroramorphism-glow",name:"Auroramorphism Atmospheric Glow Card",category:"morphisms",tags:["auroramorphism","aurora","glow","luminous","atmospheric","morphism"],description:"Atmospheric design pattern with organic radiant light blobs diffusing behind high-contrast frosted surfaces for an ethereal Northern Lights aura.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-aurora-stage">
   <div class="dv-aurora-card-wrapper">
     <!-- Breathing Aurora Blobs -->
     <div class="dv-aurora-glow dv-glow-emerald"></div>
@@ -5849,7 +5849,7 @@ if (needle) {
   <span class="text-[10px] font-extrabold tracking-wider text-emerald-400">✦ AURORAMORPHISM</span>
   <h3 class="mt-2 text-lg font-bold">Atmospheric Luminescence</h3>
   <p class="mt-2 text-xs text-slate-400">Deep organic gradients diffused at 80px Gaussian radius beneath semi-translucent dark glass.</p>
-</div>`}}},ke={id:"style-holographism-foil",name:"Holographism Iridescent Foil Card",category:"morphisms",tags:["holographism","holographic","foil","iridescent","rainbow","morphism"],description:"Collectible holographic foil card with interactive rainbow light refraction, metallic sheen, and mouse-reactive shimmer gradients.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-holo-stage">
+</div>`}}},Le={id:"style-holographism-foil",name:"Holographism Iridescent Foil Card",category:"morphisms",tags:["holographism","holographic","foil","iridescent","rainbow","morphism"],description:"Collectible holographic foil card with interactive rainbow light refraction, metallic sheen, and mouse-reactive shimmer gradients.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-holo-stage">
   <div class="dv-holo-card" id="dv-holo-card">
     <div class="dv-holo-foil-layer"></div>
     <div class="dv-holo-glare-layer"></div>
@@ -6035,7 +6035,7 @@ if (holoCard) {
     <span>#001 / 250</span>
   </div>
   <h3 class="mt-8 text-center text-lg font-black tracking-tight text-white">Aetherial Genesis</h3>
-</div>`}}},ze={id:"style-memphis-pop",name:"Memphis Geometric Pop Art Card",category:"morphisms",tags:["memphis","popart","80s","geometric","retro","playful","morphism"],description:"80s/90s Memphis Design movement style with bold geometric squiggles, vibrant color blocking (teal, yellow, coral), and dotted matrix patterns.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-memphis-stage">
+</div>`}}},Be={id:"style-memphis-pop",name:"Memphis Geometric Pop Art Card",category:"morphisms",tags:["memphis","popart","80s","geometric","retro","playful","morphism"],description:"80s/90s Memphis Design movement style with bold geometric squiggles, vibrant color blocking (teal, yellow, coral), and dotted matrix patterns.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-memphis-stage">
   <div class="dv-memphis-card">
     <!-- Geometric shapes & confetti decoration -->
     <div class="dv-memphis-shape dv-shape-circle"></div>
@@ -6188,7 +6188,7 @@ if (holoCard) {
     <h3 class="mt-2 text-base font-black">Geometric Pop Art</h3>
     <button class="mt-4 border-2 border-black bg-rose-500 px-3 py-1.5 text-xs font-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Explore</button>
   </div>
-</div>`}}},Se={id:"style-biomorphism-fluid",name:"Biomorphism Organic Fluid Blob Card",category:"morphisms",tags:["biomorphism","organic","fluid","blob","nature","curves","morphism"],description:"Organic biomorphic design with naturally shifting fluid blob geometry, soft botanical earthy gradients, and harmonic continuous curvature.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-bio-stage">
+</div>`}}},Ie={id:"style-biomorphism-fluid",name:"Biomorphism Organic Fluid Blob Card",category:"morphisms",tags:["biomorphism","organic","fluid","blob","nature","curves","morphism"],description:"Organic biomorphic design with naturally shifting fluid blob geometry, soft botanical earthy gradients, and harmonic continuous curvature.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-bio-stage">
   <div class="dv-bio-card">
     <div class="dv-bio-badge">🌿 BIOMORPHISM</div>
     <h3 class="dv-bio-title">Harmonic Organic Curvature</h3>
@@ -6298,7 +6298,7 @@ if (holoCard) {
   <span class="text-xs font-bold text-emerald-400">🌿 BIOMORPHISM</span>
   <h3 class="mt-2 text-lg font-bold">Organic Curvature</h3>
   <p class="mt-2 text-xs text-slate-400">Continuous organic non-uniform geometry inspired by natural cell structures.</p>
-</div>`}}},Ce={id:"section-cta-gradient",name:"High-Conversion Glowing CTA Section",category:"pages",tags:["cta","banner","landing","conversion","newsletter","gradient"],description:"Full-width high-converting call to action section with glowing ambient mesh background and instant email capture form.",complexity:"Beginner",variants:{vanilla:{html:`<section class="dv-cta-banner">
+</div>`}}},Te={id:"section-cta-gradient",name:"High-Conversion Glowing CTA Section",category:"pages",tags:["cta","banner","landing","conversion","newsletter","gradient"],description:"Full-width high-converting call to action section with glowing ambient mesh background and instant email capture form.",complexity:"Beginner",variants:{vanilla:{html:`<section class="dv-cta-banner">
   <div class="dv-cta-glow-mesh"></div>
   <div class="dv-cta-inner">
     <h2>Ready to accelerate your next web project?</h2>
@@ -6423,7 +6423,7 @@ if (holoCard) {
     <input type="email" placeholder="Enter email..." class="flex-1 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-white" />
     <button class="rounded-lg bg-indigo-600 px-4 py-2 text-xs font-semibold text-white">Start Free</button>
   </div>
-</section>`}}},Ee={id:"page-error-404",name:"Minimalist Swiss 404 Error State",category:"pages",tags:["404","error","not-found","empty-state","pages","swiss"],description:"Clean Swiss-style 404 Not Found error page with live search bar, quick recovery navigation links, and support action.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-404-container">
+</section>`}}},Ae={id:"page-error-404",name:"Minimalist Swiss 404 Error State",category:"pages",tags:["404","error","not-found","empty-state","pages","swiss"],description:"Clean Swiss-style 404 Not Found error page with live search bar, quick recovery navigation links, and support action.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-404-container">
   <div class="dv-404-content">
     <div class="dv-404-code">404</div>
     <h1 class="dv-404-title">Page not found</h1>
@@ -6598,7 +6598,7 @@ if (holoCard) {
   <h1 class="mt-4 text-3xl font-extrabold text-white">Page not found</h1>
   <p class="mt-2 text-xs text-zinc-400">The page you are looking for has been moved or deleted.</p>
   <a href="#" class="mt-6 inline-block rounded-lg bg-indigo-600 px-4 py-2 text-xs font-semibold text-white">Return Home</a>
-</div>`}}},Le={id:"section-contact-split",name:"Modern Split Contact & Inquiry Section",category:"pages",tags:["contact","inquiry","support","form","split","pages"],description:"Clean split-screen contact section featuring technical inquiry form, office location badges, and direct developer channel links.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-contact-container">
+</div>`}}},Me={id:"section-contact-split",name:"Modern Split Contact & Inquiry Section",category:"pages",tags:["contact","inquiry","support","form","split","pages"],description:"Clean split-screen contact section featuring technical inquiry form, office location badges, and direct developer channel links.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-contact-container">
   <div class="dv-contact-grid">
     <!-- Left Column: Info & Channels -->
     <div class="dv-contact-info-col">
@@ -6799,7 +6799,7 @@ if (holoCard) {
     <input type="text" placeholder="Your Name" class="w-full rounded border border-zinc-800 bg-zinc-900 p-2 text-white mb-2" />
     <button class="w-full rounded bg-indigo-600 py-2 font-bold text-white">Send Message</button>
   </div>
-</div>`}}},Ie={id:"footer-saas-multicolumn",name:"Multi-Column Minimal Footer",category:"footers",tags:["footer","links","newsletter","copyright"],description:"Clean Swiss-style multi-column site footer with integrated newsletter form and social status indicator.",complexity:"Beginner",variants:{vanilla:{html:`<footer class="dv-footer">
+</div>`}}},De={id:"footer-saas-multicolumn",name:"Multi-Column Minimal Footer",category:"footers",tags:["footer","links","newsletter","copyright"],description:"Clean Swiss-style multi-column site footer with integrated newsletter form and social status indicator.",complexity:"Beginner",variants:{vanilla:{html:`<footer class="dv-footer">
   <div class="dv-footer-top">
     <div class="dv-footer-brand">
       <div class="dv-footer-logo">
@@ -6985,80 +6985,90 @@ if (holoCard) {
       </div>
     </div>
   </div>
-</footer>`}}},Be=[_,G,V,U,Y,W,J,K,X,Q,Z,ee,te,ae,ie,oe,re,se,ne,de,le,ce,pe,ve,be,ge,xe,me,ue,he,fe,ye,we,ke,ze,Se,Ce,Ee,Le,Ie],I="devvault_custom_snippets_v1",P="devvault_user_preferences_v1";function C(){try{const n=localStorage.getItem(I);return n?JSON.parse(n):[]}catch(n){return console.error("Failed to load custom snippets from storage:",n),[]}}function Te(n){const e=C(),t=e.findIndex(a=>a.id===n.id);return t>=0?e[t]={...n,updatedAt:new Date().toISOString()}:e.unshift({...n,id:n.id||`custom-${Date.now()}`,isCustom:!0,createdAt:new Date().toISOString()}),localStorage.setItem(I,JSON.stringify(e)),e}function Ae(n){const e=C().filter(t=>t.id!==n);return localStorage.setItem(I,JSON.stringify(e)),e}function De(){const n=C(),e={app:"DevVault",version:"1.0.0",exportedAt:new Date().toISOString(),snippetsCount:n.length,snippets:n},t=new Blob([JSON.stringify(e,null,2)],{type:"application/json"}),a=URL.createObjectURL(t),i=document.createElement("a");i.href=a,i.download=`devvault-backup-${new Date().toISOString().slice(0,10)}.json`,document.body.appendChild(i),i.click(),document.body.removeChild(i),URL.revokeObjectURL(a)}function je(n){try{const e=JSON.parse(n),t=Array.isArray(e)?e:e.snippets||[];if(!Array.isArray(t))throw new Error("Invalid JSON format: snippets array not found");const a=C(),i=new Map;a.forEach(r=>i.set(r.id,r)),t.forEach(r=>{r.name&&r.category&&i.set(r.id||`custom-${Date.now()}-${Math.random()}`,{...r,isCustom:!0})});const o=Array.from(i.values());return localStorage.setItem(I,JSON.stringify(o)),{success:!0,count:t.length}}catch(e){return{success:!1,error:e.message}}}function R(){try{const n=localStorage.getItem(P);return n?JSON.parse(n):{theme:"dark",defaultFramework:"vanilla"}}catch{return{theme:"dark",defaultFramework:"vanilla"}}}function Me(n){try{const e=R();localStorage.setItem(P,JSON.stringify({...e,...n}))}catch(e){console.error("Failed to save preferences:",e)}}function $e({onSearchClick:n,onNewSnippetClick:e,onBackupClick:t,onToolsClick:a,onThemeToggle:i,currentTheme:o}){var c,m,l,g,p,v;const r=document.getElementById("app-header");if(!r)return;const d=navigator.platform.toUpperCase().indexOf("MAC")>=0?"⌘K":"Ctrl+K";r.innerHTML=`
-    <div class="header-left">
-      <a href="#" class="brand-logo" id="brand-home-link">
-        <div class="brand-icon">D</div>
-        <span>DevVault</span>
-        <span class="brand-tag">v1.0</span>
-      </a>
+</footer>`}}},je=[W,J,K,X,Q,Z,ee,te,ae,ie,oe,re,se,ne,de,le,ce,pe,ve,be,ge,xe,ue,me,he,fe,ye,we,ke,ze,Se,Ce,Ee,Le,Be,Ie,Te,Ae,Me,De],I="devvault_custom_snippets_v1",F="devvault_user_preferences_v1";function C(){try{const n=localStorage.getItem(I);return n?JSON.parse(n):[]}catch(n){return console.error("Failed to load custom snippets from storage:",n),[]}}function O(n){const e=C(),t=e.findIndex(a=>a.id===n.id);return t>=0?e[t]={...n,updatedAt:new Date().toISOString()}:e.unshift({...n,id:n.id||`custom-${Date.now()}`,isCustom:!0,createdAt:new Date().toISOString()}),localStorage.setItem(I,JSON.stringify(e)),e}function $e(n){const e=C().filter(t=>t.id!==n);return localStorage.setItem(I,JSON.stringify(e)),e}function qe(){const n=C(),e={app:"DevVault",version:"1.0.0",exportedAt:new Date().toISOString(),snippetsCount:n.length,snippets:n},t=new Blob([JSON.stringify(e,null,2)],{type:"application/json"}),a=URL.createObjectURL(t),i=document.createElement("a");i.href=a,i.download=`devvault-backup-${new Date().toISOString().slice(0,10)}.json`,document.body.appendChild(i),i.click(),document.body.removeChild(i),URL.revokeObjectURL(a)}function Pe(n){try{const e=JSON.parse(n),t=Array.isArray(e)?e:e.snippets||[];if(!Array.isArray(t))throw new Error("Invalid JSON format: snippets array not found");const a=C(),i=new Map;a.forEach(r=>i.set(r.id,r)),t.forEach(r=>{r.name&&r.category&&i.set(r.id||`custom-${Date.now()}-${Math.random()}`,{...r,isCustom:!0})});const o=Array.from(i.values());return localStorage.setItem(I,JSON.stringify(o)),{success:!0,count:t.length}}catch(e){return{success:!1,error:e.message}}}function H(){try{const n=localStorage.getItem(F);return n?JSON.parse(n):{theme:"dark",defaultFramework:"vanilla"}}catch{return{theme:"dark",defaultFramework:"vanilla"}}}function Re(n){try{const e=H();localStorage.setItem(F,JSON.stringify({...e,...n}))}catch(e){console.error("Failed to save preferences:",e)}}class Fe{constructor(){this._builtin=je,this._custom=C()}reloadCustomSnippets(){this._custom=C(),B.emit("registry:updated",this.getAll())}getAll(){return[...this._custom,...this._builtin]}getById(e){return this.getAll().find(t=>t.id===e)||null}filter({category:e="all",tag:t=null,query:a=""}={}){let i=this.getAll();if(e==="custom"?i=i.filter(o=>o.isCustom):e&&e!=="all"&&(i=i.filter(o=>o.category===e)),t&&(i=i.filter(o=>o.tags&&o.tags.includes(t))),a&&a.trim()){const o=a.toLowerCase().trim();i=i.filter(r=>r.name.toLowerCase().includes(o)||r.category.toLowerCase().includes(o)||r.tags&&r.tags.some(s=>s.toLowerCase().includes(o))||r.description&&r.description.toLowerCase().includes(o))}return i}getPopularTags(e=16){const t={};return this.getAll().forEach(a=>{(a.tags||[]).forEach(i=>{t[i]=(t[i]||0)+1})}),Object.entries(t).sort((a,i)=>i[1]-a[1]).slice(0,e).map(a=>a[0])}getCategoryCounts(){const e=this.getAll(),t={all:e.length,custom:this._custom.length};return e.forEach(a=>{a.category&&(t[a.category]=(t[a.category]||0)+1)}),t}saveCustomSnippet(e){const t=O(e);return this.reloadCustomSnippets(),t}deleteCustomSnippet(e){$e(e),this.reloadCustomSnippets()}}class A{constructor(e,t={}){this.container=typeof e=="string"?document.getElementById(e):e,this.context=t,this.stateManager=t.stateManager,this.registry=t.registry,this.events=B,this._unsubscribers=[],this._domListeners=[]}init(){return this.render(),this.bindEvents(),this}render(){}bindEvents(){}subscribe(e,t){const a=this.events.on(e,t);this._unsubscribers.push(a)}listen(e,t,a,i){e&&(e.addEventListener(t,a,i),this._domListeners.push(()=>e.removeEventListener(t,a,i)))}destroy(){this._unsubscribers.forEach(e=>e()),this._unsubscribers=[],this._domListeners.forEach(e=>e()),this._domListeners=[],this.container&&(this.container.innerHTML="")}}class Oe extends A{constructor(e,t){super(e,t)}render(){if(!this.container)return;const e=this.stateManager.get("currentTheme"),a=navigator.platform.toUpperCase().indexOf("MAC")>=0?"⌘K":"Ctrl+K";this.container.innerHTML=`
+      <div class="header-left">
+        <!-- Mobile Sidebar Hamburger -->
+        <button id="mobile-sidebar-toggle" class="btn-icon mobile-only" aria-label="Toggle Navigation Sidebar">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
 
-      <button id="header-search-trigger" class="header-search-btn">
-        <span class="flex items-center gap-2">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          Search patterns...
-        </span>
-        <span class="kbd-badge">${d}</span>
-      </button>
-    </div>
+        <a href="#" class="brand-logo" id="brand-home-link">
+          <div class="brand-icon">D</div>
+          <span>DevVault</span>
+          <span class="brand-tag hide-xs">v1.0</span>
+        </a>
 
-    <div class="header-right">
-      <button id="dev-tools-btn" class="btn btn-secondary" title="Developer CSS Generators & Tools">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--accent-primary)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        <span>Dev Tools</span>
-      </button>
+        <!-- Global Search Trigger -->
+        <button id="header-search-trigger" class="header-search-btn">
+          <span class="flex items-center gap-2">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span class="search-placeholder-text">Search patterns...</span>
+          </span>
+          <span class="kbd-badge hide-sm">${a}</span>
+        </button>
+      </div>
 
-      <button id="backup-btn" class="btn btn-secondary" title="Export / Import JSON Library">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-        <span>Backup</span>
-      </button>
+      <div class="header-right">
+        <!-- Dev Tools Launcher -->
+        <button id="dev-tools-btn" class="btn btn-secondary" title="Developer CSS Generators & Tools">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="var(--accent-primary)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span class="hide-xs">Dev Tools</span>
+        </button>
 
-      <button id="theme-toggle-btn" class="btn-icon" title="Toggle Dark/Light Mode">
-        ${o==="dark"?'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'}
-      </button>
+        <!-- Backup Launcher -->
+        <button id="backup-btn" class="btn btn-secondary" title="Export / Import JSON Library">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span class="hide-xs">Backup</span>
+        </button>
 
-      <button id="new-snippet-btn" class="btn btn-primary" title="Quick Add Custom Component (Ctrl+N)">
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        <span>New Component</span>
-      </button>
-    </div>
-  `,(c=document.getElementById("dev-tools-btn"))==null||c.addEventListener("click",a),(m=document.getElementById("header-search-trigger"))==null||m.addEventListener("click",n),(l=document.getElementById("new-snippet-btn"))==null||l.addEventListener("click",e),(g=document.getElementById("backup-btn"))==null||g.addEventListener("click",t),(p=document.getElementById("theme-toggle-btn"))==null||p.addEventListener("click",i),(v=document.getElementById("brand-home-link"))==null||v.addEventListener("click",x=>{x.preventDefault(),window.location.hash="",window.dispatchEvent(new CustomEvent("reset-filters"))})}const $=[{title:"Overview",items:[{id:"all",label:"All Patterns",icon:"layers"},{id:"custom",label:"My Custom Vault",icon:"folder-heart"}]},{title:"Layout & Navigation",items:[{id:"navigation",label:"Navbars & Sidebars",icon:"compass"},{id:"heroes",label:"Hero Sections",icon:"zap"},{id:"pages",label:"Landing & Sections",icon:"file-text"},{id:"footers",label:"Footers",icon:"layout"}]},{title:"Commerce & Data",items:[{id:"ecommerce",label:"E-Commerce & Carts",icon:"shopping-bag"},{id:"tables",label:"Tables & Data Grids",icon:"table"}]},{title:"Forms & Security",items:[{id:"auth",label:"Authentication & Forms",icon:"lock"},{id:"modals",label:"Modals & Dialogs",icon:"copy"}]},{title:"Components & Micro-UI",items:[{id:"cards",label:"Cards & Content",icon:"credit-card"},{id:"layout",label:"Bento & Grids",icon:"grid"},{id:"elements",label:"Buttons & Elements",icon:"mouse-pointer"},{id:"feedback",label:"Feedback & Loaders",icon:"activity"},{id:"animations",label:"Animations & Effects",icon:"sparkles"}]},{title:"Aesthetics & Morphisms",items:[{id:"morphisms",label:"UI Morphisms & Styles",icon:"palette"}]}];function qe({allComponents:n,activeCategory:e,activeTag:t,onSelectCategory:a,onSelectTag:i}){const o=document.getElementById("app-sidebar");if(!o)return;const r={all:n.length,custom:n.filter(d=>d.isCustom).length};$.forEach(d=>{d.items.forEach(c=>{c.id!=="all"&&c.id!=="custom"&&(r[c.id]=n.filter(m=>m.category===c.id).length)})});const s=Array.from(new Set(n.flatMap(d=>d.tags||[]))).slice(0,16);o.innerHTML=`
-    <!-- Domain Group Navigation -->
-    <div class="sidebar-groups-container">
-      ${$.map(d=>`
-        <div class="sidebar-group">
-          <div class="sidebar-section-title">${d.title}</div>
-          <ul class="sidebar-nav-list">
-            ${d.items.map(c=>`
-              <li class="sidebar-nav-item ${e===c.id&&!t?"active":""}" data-cat="${c.id}">
-                <div class="sidebar-nav-label">
-                  <span>${c.label}</span>
-                </div>
-                <span class="sidebar-count">${r[c.id]||0}</span>
-              </li>
-            `).join("")}
-          </ul>
-        </div>
-      `).join("")}
-    </div>
+        <!-- Dark/Light Theme Switcher -->
+        <button id="theme-toggle-btn" class="btn-icon" title="Toggle Dark/Light Mode">
+          ${e==="dark"?'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>':'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'}
+        </button>
 
-    <!-- Popular Tags Cloud -->
-    <div style="margin-top: 12px;">
-      <div class="sidebar-section-title">Quick Tag Filters</div>
-      <div class="sidebar-tags-wrapper">
-        ${s.map(d=>`
-          <span class="tag-pill ${t===d?"active":""}" data-tag="${d}">#${d}</span>
+        <!-- New Component Creator -->
+        <button id="new-snippet-btn" class="btn btn-primary" title="Quick Add Custom Component (Ctrl+N)">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="hide-xs">New</span>
+        </button>
+      </div>
+    `}bindEvents(){this.listen(document.getElementById("mobile-sidebar-toggle"),"click",()=>{this.events.emit("sidebar:toggle-mobile")}),this.listen(document.getElementById("header-search-trigger"),"click",()=>{this.events.emit("modal:open-search")}),this.listen(document.getElementById("dev-tools-btn"),"click",()=>{this.events.emit("modal:open-tools")}),this.listen(document.getElementById("backup-btn"),"click",()=>{this.events.emit("modal:open-backup")}),this.listen(document.getElementById("new-snippet-btn"),"click",()=>{this.events.emit("modal:open-snippet")}),this.listen(document.getElementById("theme-toggle-btn"),"click",()=>{this.events.emit("theme:toggle")}),this.listen(document.getElementById("brand-home-link"),"click",e=>{e.preventDefault(),this.stateManager.resetFilters()}),this.subscribe("theme:changed",()=>{this.render(),this.bindEvents()})}}const He=[{title:"Overview",items:[{id:"all",label:"All Patterns",icon:"layers"},{id:"custom",label:"My Custom Vault",icon:"folder-heart"}]},{title:"Layout & Navigation",items:[{id:"navigation",label:"Navbars & Sidebars",icon:"compass"},{id:"heroes",label:"Hero Sections",icon:"zap"},{id:"pages",label:"Landing & Sections",icon:"file-text"},{id:"footers",label:"Footers",icon:"layout"}]},{title:"Commerce & Data",items:[{id:"ecommerce",label:"E-Commerce & Carts",icon:"shopping-bag"},{id:"tables",label:"Tables & Data Grids",icon:"table"}]},{title:"Forms & Security",items:[{id:"auth",label:"Authentication & Forms",icon:"lock"},{id:"modals",label:"Modals & Dialogs",icon:"copy"}]},{title:"Components & Micro-UI",items:[{id:"cards",label:"Cards & Content",icon:"credit-card"},{id:"layout",label:"Bento & Grids",icon:"grid"},{id:"elements",label:"Buttons & Elements",icon:"mouse-pointer"},{id:"feedback",label:"Feedback & Loaders",icon:"activity"},{id:"animations",label:"Animations & Effects",icon:"sparkles"}]},{title:"Aesthetics & Morphisms",items:[{id:"morphisms",label:"UI Morphisms & Styles",icon:"palette"}]}];class _e extends A{constructor(e,t){super(e,t)}render(){if(!this.container)return;const e=this.registry.getCategoryCounts(),t=this.registry.getPopularTags(16),a=this.stateManager.get("activeCategory"),i=this.stateManager.get("activeTag");this.container.innerHTML=`
+      <!-- Domain Group Navigation -->
+      <div class="sidebar-groups-container">
+        ${He.map(o=>`
+          <div class="sidebar-group">
+            <div class="sidebar-section-title">${o.title}</div>
+            <ul class="sidebar-nav-list">
+              ${o.items.map(r=>`
+                <li class="sidebar-nav-item ${a===r.id&&!i?"active":""}" data-cat="${r.id}">
+                  <div class="sidebar-nav-label">
+                    <span>${r.label}</span>
+                  </div>
+                  <span class="sidebar-count">${e[r.id]||0}</span>
+                </li>
+              `).join("")}
+            </ul>
+          </div>
         `).join("")}
       </div>
-    </div>
 
-    <!-- Footer Tip -->
-    <div style="margin-top: auto; padding: 12px 10px; border-top: 1px solid var(--border-hairline);">
-      <div style="font-size: 11px; color: var(--text-muted); line-height: 1.4;">
-        <span style="font-weight: 600; color: var(--text-primary);">DevVault</span> — Press <kbd class="kbd-badge">Ctrl+N</kbd> to add custom components or <kbd class="kbd-badge">Ctrl+K</kbd> to search.
+      <!-- Popular Tags Cloud -->
+      <div style="margin-top: 12px;">
+        <div class="sidebar-section-title">Quick Tag Filters</div>
+        <div class="sidebar-tags-wrapper">
+          ${t.map(o=>`
+            <span class="tag-pill ${i===o?"active":""}" data-tag="${o}">#${o}</span>
+          `).join("")}
+        </div>
       </div>
-    </div>
-  `,o.querySelectorAll(".sidebar-nav-item").forEach(d=>{d.addEventListener("click",()=>{const c=d.dataset.cat;a(c)})}),o.querySelectorAll(".tag-pill").forEach(d=>{d.addEventListener("click",()=>{const c=d.dataset.tag;i(c===t?null:c)})})}function F({html:n="",css:e="",js:t="",theme:a="dark",tokens:i={},cdnLinks:o=[],isTailwind:r=!1}){const{radius:s="6px",primaryColor:d="#6366f1",fontFamily:c="'Inter', sans-serif",density:m="normal",borderWidth:l="1px",animationSpeed:g="1"}=i,p=r?'<script src="https://cdn.tailwindcss.com"><\/script>':"",v=o.map(h=>h.endsWith(".css")?`<link rel="stylesheet" href="${h}">`:`<script src="${h}"><\/script>`).join(`
+
+      <!-- Footer Tip -->
+      <div style="margin-top: auto; padding: 12px 10px; border-top: 1px solid var(--border-hairline);">
+        <div style="font-size: 11px; color: var(--text-muted); line-height: 1.4;">
+          <span style="font-weight: 600; color: var(--text-primary);">DevVault</span> — Press <kbd class="kbd-badge">Ctrl+N</kbd> to add custom components or <kbd class="kbd-badge">Ctrl+K</kbd> to search.
+        </div>
+      </div>
+    `}bindEvents(){this.container.querySelectorAll(".sidebar-nav-item").forEach(e=>{this.listen(e,"click",()=>{const t=e.dataset.cat;this.closeMobileDrawer(),this.stateManager.setState({activeCategory:t,activeTag:null})})}),this.container.querySelectorAll(".tag-pill").forEach(e=>{this.listen(e,"click",()=>{const t=e.dataset.tag,a=this.stateManager.get("activeTag");this.closeMobileDrawer(),this.stateManager.setState({activeTag:t===a?null:t})})}),this.subscribe("sidebar:toggle-mobile",()=>{this.container.classList.toggle("mobile-open")}),this.subscribe("state:change",()=>{this.render(),this.bindEvents()}),this.subscribe("registry:updated",()=>{this.render(),this.bindEvents()})}closeMobileDrawer(){var e;(e=this.container)==null||e.classList.remove("mobile-open")}}function _({html:n="",css:e="",js:t="",theme:a="dark",tokens:i={},cdnLinks:o=[],isTailwind:r=!1}){const{radius:s="6px",primaryColor:v="#6366f1",fontFamily:u="'Inter', sans-serif",density:b="normal",borderWidth:d="1px",animationSpeed:g="1"}=i,l=r?'<script src="https://cdn.tailwindcss.com"><\/script>':"",p=o.map(h=>h.endsWith(".css")?`<link rel="stylesheet" href="${h}">`:`<script src="${h}"><\/script>`).join(`
 `);return`<!DOCTYPE html>
 <html lang="en" class="${a}">
 <head>
@@ -7073,19 +7083,19 @@ if (holoCard) {
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"><\/script>
   
+  ${l}
   ${p}
-  ${v}
 
   <style>
     /* Precision CSS Reset & Dynamic Design Tokens */
     :root {
-      --primary: ${d};
-      --primary-hover: ${d}dd;
+      --primary: ${v};
+      --primary-hover: ${v}dd;
       --radius: ${s};
-      --font-sans: ${c};
+      --font-sans: ${u};
       --font-mono: 'JetBrains Mono', monospace;
-      --border-width: ${l};
-      --space-scale: ${m==="compact"?"0.8":m==="spacious"?"1.25":"1"};
+      --border-width: ${d};
+      --space-scale: ${b==="compact"?"0.8":b==="spacious"?"1.25":"1"};
       --anim-speed: ${g};
       
       /* Dark Theme (Default) */
@@ -7214,7 +7224,7 @@ if (holoCard) {
 </html>`}function S(n,e="success",t=2500){const a=document.getElementById("toast-container");if(!a)return;const i=document.createElement("div");i.className="toast";const o=e==="success"?"✓":"ℹ";i.innerHTML=`
     <span class="toast-icon-success">${o}</span>
     <span>${n}</span>
-  `,a.appendChild(i),setTimeout(()=>{i.style.opacity="0",i.style.transform="translateY(10px)",i.style.transition="all 150ms ease-out",setTimeout(()=>{i.parentElement&&i.parentElement.removeChild(i)},150)},t)}const Pe=[{name:"Indigo",hex:"#6366f1"},{name:"Emerald",hex:"#10b981"},{name:"Amber",hex:"#f59e0b"},{name:"Rose",hex:"#f43f5e"},{name:"Cyan",hex:"#06b6d4"},{name:"Violet",hex:"#8b5cf6"},{name:"Orange",hex:"#f97316"},{name:"Zinc",hex:"#71717a"}];class Re{constructor(e,t={}){this.component=e,this.options=t,this.currentTheme=t.currentTheme||"dark",this.state={viewport:"desktop",activeTab:"html",activeColor:"#6366f1",activeRadius:"6px",activeFont:"'Inter', sans-serif",activeDensity:"normal",activeStageBg:this.currentTheme==="light"?"dot-light":"dot-dark",sandboxTheme:this.currentTheme,isInspectorOpen:!1,isCustomizerOpen:!1},this.element=null,this.iframe=null,this.boundResizeHandler=this.handleIframeResize.bind(this)}render(){var i,o,r;const{component:e}=this,t=!!((i=e.variants)!=null&&i.tailwind),a=document.createElement("article");return a.className="component-card",a.id=`card-${e.id}`,a.innerHTML=`
+  `,a.appendChild(i),setTimeout(()=>{i.style.opacity="0",i.style.transform="translateY(10px)",i.style.transition="all 150ms ease-out",setTimeout(()=>{i.parentElement&&i.parentElement.removeChild(i)},150)},t)}const Ne=[{name:"Indigo",hex:"#6366f1"},{name:"Emerald",hex:"#10b981"},{name:"Amber",hex:"#f59e0b"},{name:"Rose",hex:"#f43f5e"},{name:"Cyan",hex:"#06b6d4"},{name:"Violet",hex:"#8b5cf6"},{name:"Orange",hex:"#f97316"},{name:"Zinc",hex:"#71717a"}];class Ge{constructor(e,t={}){this.component=e,this.options=t,this.currentTheme=t.currentTheme||"dark",this.state={viewport:"desktop",activeTab:"html",activeColor:"#6366f1",activeRadius:"6px",activeFont:"'Inter', sans-serif",activeDensity:"normal",activeStageBg:this.currentTheme==="light"?"dot-light":"dot-dark",sandboxTheme:this.currentTheme,isInspectorOpen:!1,isCustomizerOpen:!1},this.element=null,this.iframe=null,this.boundResizeHandler=this.handleIframeResize.bind(this)}render(){var i,o,r;const{component:e}=this,t=!!((i=e.variants)!=null&&i.tailwind),a=document.createElement("article");return a.className="component-card",a.id=`card-${e.id}`,a.innerHTML=`
       <!-- Card Header -->
       <div class="card-header">
         <div class="card-title-group">
@@ -7269,7 +7279,7 @@ if (holoCard) {
           <div class="customizer-item">
             <span style="font-weight: 500;">Accent:</span>
             <div class="color-swatch-list">
-              ${Pe.map(s=>`
+              ${Ne.map(s=>`
                 <button class="color-swatch ${s.hex===this.state.activeColor?"active":""}" data-color="${s.hex}" style="background:${s.hex}" title="${s.name}"></button>
               `).join("")}
               <input type="color" id="native-color-picker-${e.id}" value="${this.state.activeColor}" class="color-picker-input" title="Custom Hex Color" />
@@ -7359,7 +7369,7 @@ if (holoCard) {
           <pre><code class="code-content" id="code-content-${e.id}"></code></pre>
         </div>
       </div>
-    `,this.element=a,this.iframe=a.querySelector(`#iframe-${e.id}`),this.bindEvents(),this.updateSandbox(),window.addEventListener("message",this.boundResizeHandler),a}updateSandbox(){var i;if(!this.iframe)return;const{component:e,state:t}=this,a=((i=e.variants)==null?void 0:i.vanilla)||{html:"",css:"",js:""};this.iframe.srcdoc=F({html:a.html,css:a.css,js:a.js,theme:t.sandboxTheme,tokens:{radius:t.activeRadius,primaryColor:t.activeColor,fontFamily:t.activeFont,density:t.activeDensity},cdnLinks:e.cdnLinks||[]}),t.isInspectorOpen&&this.updateCodeView()}updateCodeView(){var s,d;const e=this.element.querySelector(`#code-content-${this.component.id}`);if(!e)return;const t=((s=this.component.variants)==null?void 0:s.vanilla)||{html:"",css:"",js:""},a=((d=this.component.variants)==null?void 0:d.tailwind)||{html:""},{state:i}=this,o=`/* Customized DevVault Design Tokens */
+    `,this.element=a,this.iframe=a.querySelector(`#iframe-${e.id}`),this.bindEvents(),this.updateSandbox(),window.addEventListener("message",this.boundResizeHandler),a}updateSandbox(){var i;if(!this.iframe)return;const{component:e,state:t}=this,a=((i=e.variants)==null?void 0:i.vanilla)||{html:"",css:"",js:""};this.iframe.srcdoc=_({html:a.html,css:a.css,js:a.js,theme:t.sandboxTheme,tokens:{radius:t.activeRadius,primaryColor:t.activeColor,fontFamily:t.activeFont,density:t.activeDensity},cdnLinks:e.cdnLinks||[]}),t.isInspectorOpen&&this.updateCodeView()}updateCodeView(){var s,v;const e=this.element.querySelector(`#code-content-${this.component.id}`);if(!e)return;const t=((s=this.component.variants)==null?void 0:s.vanilla)||{html:"",css:"",js:""},a=((v=this.component.variants)==null?void 0:v.tailwind)||{html:""},{state:i}=this,o=`/* Customized DevVault Design Tokens */
 :root {
   --primary: ${i.activeColor};
   --radius: ${i.activeRadius};
@@ -7377,22 +7387,47 @@ ${o}
 // === JS ===
 <script>
 ${t.js||"// Zero JS"}
-<\/script>`;break}e.textContent=r.trim()}bindEvents(){var l,g,p,v,x,h,f,z;const{element:e,component:t,state:a}=this;e.querySelectorAll(".viewport-btn").forEach(b=>{b.addEventListener("click",()=>{e.querySelectorAll(".viewport-btn").forEach(E=>E.classList.remove("active")),b.classList.add("active");const u=b.dataset.vp,w=e.querySelector(`#frame-wrapper-${t.id}`);u==="desktop"&&(w.style.maxWidth="100%"),u==="laptop"&&(w.style.maxWidth="1024px"),u==="tablet"&&(w.style.maxWidth="768px"),u==="mobile"&&(w.style.maxWidth="375px")})});const i=e.querySelector(".btn-toggle-customize"),o=e.querySelector(`#customizer-${t.id}`);i==null||i.addEventListener("click",()=>{a.isCustomizerOpen=!a.isCustomizerOpen,o==null||o.classList.toggle("hidden",!a.isCustomizerOpen),i.classList.toggle("btn-primary",a.isCustomizerOpen),i.classList.toggle("btn-secondary",!a.isCustomizerOpen)}),e.querySelectorAll(".color-swatch").forEach(b=>{b.addEventListener("click",()=>{e.querySelectorAll(".color-swatch").forEach(w=>w.classList.remove("active")),b.classList.add("active"),a.activeColor=b.dataset.color;const u=e.querySelector(`#native-color-picker-${t.id}`);u&&(u.value=a.activeColor),this.updateSandbox()})});const r=e.querySelector(`#native-color-picker-${t.id}`);r&&r.addEventListener("input",b=>{a.activeColor=b.target.value,e.querySelectorAll(".color-swatch").forEach(u=>u.classList.remove("active")),this.updateSandbox()}),(l=e.querySelector(".radius-selector"))==null||l.addEventListener("change",b=>{a.activeRadius=b.target.value,this.updateSandbox()}),(g=e.querySelector(".font-selector"))==null||g.addEventListener("change",b=>{a.activeFont=b.target.value,this.updateSandbox()}),(p=e.querySelector(".density-selector"))==null||p.addEventListener("change",b=>{a.activeDensity=b.target.value,this.updateSandbox()}),(v=e.querySelector(".bg-stage-selector"))==null||v.addEventListener("change",b=>{const u=e.querySelector(`#stage-${t.id}`);a.activeStageBg=b.target.value,u&&(u.className=`sandbox-stage stage-bg-${a.activeStageBg}`)});const s=e.querySelector(".btn-sandbox-theme"),d=e.querySelector(`#theme-label-${t.id}`);s==null||s.addEventListener("click",()=>{a.sandboxTheme=a.sandboxTheme==="dark"?"light":"dark",d&&(d.textContent=a.sandboxTheme==="dark"?"🌙 Dark":"☀️ Light"),this.updateSandbox()});const c=e.querySelector(".btn-toggle-code"),m=e.querySelector(`#inspector-${t.id}`);c==null||c.addEventListener("click",()=>{a.isInspectorOpen=!a.isInspectorOpen,m.classList.toggle("hidden",!a.isInspectorOpen),c.classList.toggle("btn-primary",a.isInspectorOpen),c.classList.toggle("btn-secondary",!a.isInspectorOpen),a.isInspectorOpen&&this.updateCodeView()}),e.querySelectorAll(".code-tab-btn").forEach(b=>{b.addEventListener("click",()=>{e.querySelectorAll(".code-tab-btn").forEach(u=>u.classList.remove("active")),b.classList.add("active"),a.activeTab=b.dataset.tab,this.updateCodeView()})}),(x=e.querySelector(".btn-copy-primary"))==null||x.addEventListener("click",()=>{var u,w;const b=((w=(u=t.variants)==null?void 0:u.vanilla)==null?void 0:w.html)||"";navigator.clipboard.writeText(b).then(()=>{S(`Copied ${t.name} HTML!`)})}),(h=e.querySelector(".btn-copy-tab"))==null||h.addEventListener("click",()=>{const b=e.querySelector(`#code-content-${t.id}`);b&&navigator.clipboard.writeText(b.textContent).then(()=>{S(`Copied customized ${a.activeTab.toUpperCase()} code!`)})}),t.isCustom&&((f=e.querySelector(".btn-edit-custom"))==null||f.addEventListener("click",()=>{this.options.onEditCustom&&this.options.onEditCustom(t)}),(z=e.querySelector(".btn-delete-custom"))==null||z.addEventListener("click",()=>{confirm(`Delete custom snippet "${t.name}"?`)&&this.options.onDeleteCustom&&this.options.onDeleteCustom(t.id)}))}handleIframeResize(e){e.data&&e.data.type==="DEVVAULT_SANDBOX_RESIZE"&&this.iframe&&e.source===this.iframe.contentWindow&&(this.iframe.style.height=`${e.data.height}px`)}destroy(){window.removeEventListener("message",this.boundResizeHandler)}}function Fe(n,e={}){return new Re(n,e).render()}function Oe({getAllComponents:n,onSelectComponent:e}){const t=document.getElementById("command-palette-backdrop"),a=document.getElementById("command-input"),i=document.getElementById("command-results");if(!t||!a||!i)return;let o=0,r=[];function s(){t.classList.remove("hidden"),a.value="",o=0,c(""),setTimeout(()=>a.focus(),50)}function d(){t.classList.add("hidden")}function c(l){const g=n(),p=l.trim().toLowerCase();if(r=g.filter(v=>p?v.name.toLowerCase().includes(p)||v.category.toLowerCase().includes(p)||v.tags&&v.tags.some(x=>x.toLowerCase().includes(p))||v.description&&v.description.toLowerCase().includes(p):!0).slice(0,8),r.length===0){i.innerHTML=`
+<\/script>`;break}e.textContent=r.trim()}bindEvents(){var d,g,l,p,x,h,f,z;const{element:e,component:t,state:a}=this;e.querySelectorAll(".viewport-btn").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".viewport-btn").forEach(E=>E.classList.remove("active")),c.classList.add("active");const m=c.dataset.vp,w=e.querySelector(`#frame-wrapper-${t.id}`);m==="desktop"&&(w.style.maxWidth="100%"),m==="laptop"&&(w.style.maxWidth="1024px"),m==="tablet"&&(w.style.maxWidth="768px"),m==="mobile"&&(w.style.maxWidth="375px")})});const i=e.querySelector(".btn-toggle-customize"),o=e.querySelector(`#customizer-${t.id}`);i==null||i.addEventListener("click",()=>{a.isCustomizerOpen=!a.isCustomizerOpen,o==null||o.classList.toggle("hidden",!a.isCustomizerOpen),i.classList.toggle("btn-primary",a.isCustomizerOpen),i.classList.toggle("btn-secondary",!a.isCustomizerOpen)}),e.querySelectorAll(".color-swatch").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".color-swatch").forEach(w=>w.classList.remove("active")),c.classList.add("active"),a.activeColor=c.dataset.color;const m=e.querySelector(`#native-color-picker-${t.id}`);m&&(m.value=a.activeColor),this.updateSandbox()})});const r=e.querySelector(`#native-color-picker-${t.id}`);r&&r.addEventListener("input",c=>{a.activeColor=c.target.value,e.querySelectorAll(".color-swatch").forEach(m=>m.classList.remove("active")),this.updateSandbox()}),(d=e.querySelector(".radius-selector"))==null||d.addEventListener("change",c=>{a.activeRadius=c.target.value,this.updateSandbox()}),(g=e.querySelector(".font-selector"))==null||g.addEventListener("change",c=>{a.activeFont=c.target.value,this.updateSandbox()}),(l=e.querySelector(".density-selector"))==null||l.addEventListener("change",c=>{a.activeDensity=c.target.value,this.updateSandbox()}),(p=e.querySelector(".bg-stage-selector"))==null||p.addEventListener("change",c=>{const m=e.querySelector(`#stage-${t.id}`);a.activeStageBg=c.target.value,m&&(m.className=`sandbox-stage stage-bg-${a.activeStageBg}`)});const s=e.querySelector(".btn-sandbox-theme"),v=e.querySelector(`#theme-label-${t.id}`);s==null||s.addEventListener("click",()=>{a.sandboxTheme=a.sandboxTheme==="dark"?"light":"dark",v&&(v.textContent=a.sandboxTheme==="dark"?"🌙 Dark":"☀️ Light"),this.updateSandbox()});const u=e.querySelector(".btn-toggle-code"),b=e.querySelector(`#inspector-${t.id}`);u==null||u.addEventListener("click",()=>{a.isInspectorOpen=!a.isInspectorOpen,b.classList.toggle("hidden",!a.isInspectorOpen),u.classList.toggle("btn-primary",a.isInspectorOpen),u.classList.toggle("btn-secondary",!a.isInspectorOpen),a.isInspectorOpen&&this.updateCodeView()}),e.querySelectorAll(".code-tab-btn").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".code-tab-btn").forEach(m=>m.classList.remove("active")),c.classList.add("active"),a.activeTab=c.dataset.tab,this.updateCodeView()})}),(x=e.querySelector(".btn-copy-primary"))==null||x.addEventListener("click",()=>{var m,w;const c=((w=(m=t.variants)==null?void 0:m.vanilla)==null?void 0:w.html)||"";navigator.clipboard.writeText(c).then(()=>{S(`Copied ${t.name} HTML!`)})}),(h=e.querySelector(".btn-copy-tab"))==null||h.addEventListener("click",()=>{const c=e.querySelector(`#code-content-${t.id}`);c&&navigator.clipboard.writeText(c.textContent).then(()=>{S(`Copied customized ${a.activeTab.toUpperCase()} code!`)})}),t.isCustom&&((f=e.querySelector(".btn-edit-custom"))==null||f.addEventListener("click",()=>{this.options.onEditCustom&&this.options.onEditCustom(t)}),(z=e.querySelector(".btn-delete-custom"))==null||z.addEventListener("click",()=>{confirm(`Delete custom snippet "${t.name}"?`)&&this.options.onDeleteCustom&&this.options.onDeleteCustom(t.id)}))}handleIframeResize(e){e.data&&e.data.type==="DEVVAULT_SANDBOX_RESIZE"&&this.iframe&&e.source===this.iframe.contentWindow&&(this.iframe.style.height=`${e.data.height}px`)}destroy(){window.removeEventListener("message",this.boundResizeHandler)}}function Ve(n,e={}){return new Ge(n,e).render()}const T={all:{title:"All UI Patterns",desc:"Browse the entire collection of production-tested web patterns and micro-interactions."},custom:{title:"My Custom Vault",desc:"Your saved custom snippets and modified components stored locally in your browser."},navigation:{title:"Navbars & Navigation",desc:"Header bars, floating glass navigation, responsive drawers, and collapsible sidebars."},heroes:{title:"Hero Sections & Headings",desc:"High-impact conversion hero banners, ambient radial glows, and split agency layouts."},pages:{title:"Landing & Full Page Sections",desc:"Call to action sections, Swiss 404 error recovery pages, and split inquiry forms."},footers:{title:"Footers & Utility Layouts",desc:"Multi-column corporate SaaS footers with newsletter signups and status beacons."},ecommerce:{title:"E-Commerce & Transactions",desc:"Slide-out cart drawers, annual/monthly pricing matrices, and product cards."},tables:{title:"Tables & Data Grids",desc:"Sortable datagrids with live search, status badges, and SaaS feature comparison matrices."},auth:{title:"Authentication & Security Forms",desc:"Split-pane login forms, floating input fields, and multi-step onboarding wizards."},modals:{title:"Modals & Overlays",desc:"Destructive confirmation dialogs, GDPR cookie consent banners, and command palettes."},cards:{title:"Cards & Content Modules",desc:"Interactive e-commerce quickviews, pricing cards, and holographic foils."},layout:{title:"Bento & Grid Layouts",desc:"Asymmetric feature bento grids, KPI metric counters, and vertical activity feeds."},elements:{title:"Buttons & Micro-Elements",desc:"Magnetic buttons, rotating shimmer borders, infinite logo tickers, and FAQ accordions."},feedback:{title:"Feedback & Skeleton Loaders",desc:"Dynamic shimmer skeletons and interactive toast notification stacks."},animations:{title:"Animations & Micro-Effects",desc:"Mouse-following radial spotlight effects and GPU spring physics."},morphisms:{title:"UI Morphisms & Visual Styles",desc:"Master showcase of modern visual aesthetics: Glassmorphism, Neobrutalism, Claymorphism, Neumorphism, Spatial UI, Cyberpunk, and Liquid Glass."}};class Ue extends A{constructor(e,t){super(e,t),this.filterBarEl=document.getElementById("filter-bar"),this.emptyStateEl=document.getElementById("empty-state"),this._cardControllers=[]}render(){if(!this.container)return;const e=this.stateManager.state,t=this.registry.filter({category:e.activeCategory,tag:e.activeTag,query:e.searchTerm});this.renderFilterBar(t.length),this.renderCards(t)}renderFilterBar(e){var u;if(!this.filterBarEl)return;const{activeCategory:t,activeTag:a,searchTerm:i,activeFramework:o}=this.stateManager.state;let r="UI Patterns",s="Explore components and micro-interactions.";a?(r=`#${a}`,s=`Showing patterns matching tag #${a}`):T[t]&&(r=T[t].title,s=T[t].desc),this.filterBarEl.innerHTML=`
+      <div class="filter-title-row">
+        <div class="filter-header-text">
+          <div class="flex items-center gap-2">
+            <h2>${r}</h2>
+            <span class="count-badge">${e} component${e===1?"":"s"}</span>
+          </div>
+          <p>${s}</p>
+        </div>
+
+        <div class="filter-controls">
+          <!-- Inline 0ms Filter Box -->
+          <div class="inline-search-box">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="inline-search-input" placeholder="Quick filter..." value="${i||""}" />
+            ${i?'<button id="clear-search-btn" class="clear-btn">&times;</button>':""}
+          </div>
+
+          <!-- Framework Toggle -->
+          <div class="framework-toggle">
+            <button class="framework-btn ${o==="vanilla"?"active":""}" data-fw="vanilla">Vanilla (HTML/CSS)</button>
+            <button class="framework-btn ${o==="tailwind"?"active":""}" data-fw="tailwind">Tailwind</button>
+          </div>
+        </div>
+      </div>
+    `;const v=this.filterBarEl.querySelector("#inline-search-input");v==null||v.addEventListener("input",b=>{this.stateManager.setState({searchTerm:b.target.value})}),(u=this.filterBarEl.querySelector("#clear-search-btn"))==null||u.addEventListener("click",()=>{this.stateManager.setState({searchTerm:""})}),this.filterBarEl.querySelectorAll(".framework-btn").forEach(b=>{b.addEventListener("click",()=>{this.stateManager.setState({activeFramework:b.dataset.fw})})})}renderCards(e){var a,i;if(this.container.innerHTML="",e.length===0){(a=this.emptyStateEl)==null||a.classList.remove("hidden");return}else(i=this.emptyStateEl)==null||i.classList.add("hidden");const t=this.stateManager.get("currentTheme");e.forEach(o=>{const r=Ve(o,{currentTheme:t,onEditCustom:s=>this.events.emit("modal:edit-snippet",s),onDeleteCustom:s=>{this.registry.deleteCustomSnippet(s),this.events.emit("toast:show","Snippet deleted from library.")}});this.container.appendChild(r)})}bindEvents(){this.subscribe("state:change",()=>{this.render()}),this.subscribe("registry:updated",()=>{this.render()}),this.subscribe("theme:changed",()=>{this.render()}),this.subscribe("component:scroll-to",e=>{this.stateManager.setState({activeCategory:"all",activeTag:null}),setTimeout(()=>{const t=document.getElementById(`card-${e.id}`);t&&(t.scrollIntoView({behavior:"smooth",block:"center"}),t.style.borderColor="var(--accent-primary)",setTimeout(()=>{t.style.borderColor=""},1200))},100)})}}function Ye({getAllComponents:n,onSelectComponent:e}){const t=document.getElementById("command-palette-backdrop"),a=document.getElementById("command-input"),i=document.getElementById("command-results");if(!t||!a||!i)return;let o=0,r=[];function s(){t.classList.remove("hidden"),a.value="",o=0,u(""),setTimeout(()=>a.focus(),50)}function v(){t.classList.add("hidden")}function u(d){const g=n(),l=d.trim().toLowerCase();if(r=g.filter(p=>l?p.name.toLowerCase().includes(l)||p.category.toLowerCase().includes(l)||p.tags&&p.tags.some(x=>x.toLowerCase().includes(l))||p.description&&p.description.toLowerCase().includes(l):!0).slice(0,8),r.length===0){i.innerHTML=`
         <div style="padding: 24px; text-align: center; color: var(--text-dim); font-size: 13px;">
           No matching components found.
         </div>
-      `;return}o>=r.length&&(o=0),i.innerHTML=r.map((v,x)=>`
+      `;return}o>=r.length&&(o=0),i.innerHTML=r.map((p,x)=>`
       <div class="command-item ${x===o?"selected":""}" data-idx="${x}">
         <div class="flex items-center gap-2">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          <span style="font-weight: 500;">${v.name}</span>
+          <span style="font-weight: 500;">${p.name}</span>
         </div>
         <div class="flex items-center gap-2">
-          <span class="badge ${v.isCustom?"badge-amber":"badge-indigo"}">${v.isCustom?"Custom":v.category}</span>
-          <span style="font-size: 11px; color: var(--text-dim);">${v.complexity||""}</span>
+          <span class="badge ${p.isCustom?"badge-amber":"badge-indigo"}">${p.isCustom?"Custom":p.category}</span>
+          <span style="font-size: 11px; color: var(--text-dim);">${p.complexity||""}</span>
         </div>
       </div>
-    `).join(""),i.querySelectorAll(".command-item").forEach(v=>{v.addEventListener("click",()=>{const x=parseInt(v.dataset.idx,10);m(x)})})}function m(l){const g=r[l];g&&(d(),e&&e(g))}return a.addEventListener("input",l=>{o=0,c(l.target.value)}),a.addEventListener("keydown",l=>{l.key==="ArrowDown"?(l.preventDefault(),r.length>0&&(o=(o+1)%r.length,c(a.value))):l.key==="ArrowUp"?(l.preventDefault(),r.length>0&&(o=(o-1+r.length)%r.length,c(a.value))):l.key==="Enter"?(l.preventDefault(),m(o)):l.key==="Escape"&&d()}),t.addEventListener("click",l=>{l.target===t&&d()}),window.addEventListener("keydown",l=>{(l.metaKey||l.ctrlKey)&&l.key.toLowerCase()==="k"?(l.preventDefault(),t.classList.contains("hidden")?s():d()):l.key==="Escape"&&!t.classList.contains("hidden")&&d()}),{openPalette:s,closePalette:d}}const q={blank:{name:"New Custom Component",category:"elements",html:`<div class="custom-card">
+    `).join(""),i.querySelectorAll(".command-item").forEach(p=>{p.addEventListener("click",()=>{const x=parseInt(p.dataset.idx,10);b(x)})})}function b(d){const g=r[d];g&&(v(),e&&e(g))}return a.addEventListener("input",d=>{o=0,u(d.target.value)}),a.addEventListener("keydown",d=>{d.key==="ArrowDown"?(d.preventDefault(),r.length>0&&(o=(o+1)%r.length,u(a.value))):d.key==="ArrowUp"?(d.preventDefault(),r.length>0&&(o=(o-1+r.length)%r.length,u(a.value))):d.key==="Enter"?(d.preventDefault(),b(o)):d.key==="Escape"&&v()}),t.addEventListener("click",d=>{d.target===t&&v()}),window.addEventListener("keydown",d=>{(d.metaKey||d.ctrlKey)&&d.key.toLowerCase()==="k"?(d.preventDefault(),t.classList.contains("hidden")?s():v()):d.key==="Escape"&&!t.classList.contains("hidden")&&v()}),{openPalette:s,closePalette:v}}const R={blank:{name:"New Custom Component",category:"elements",html:`<div class="custom-card">
   <h3>Hello DevVault</h3>
   <p>Start styling your custom component here...</p>
   <button class="custom-btn">Click Me</button>
@@ -7463,7 +7498,7 @@ ${t.js||"// Zero JS"}
 .metric-label {
   font-size: 12px;
   color: var(--text-dim);
-}`,js:""}};function He({onSaved:n}){const e=document.getElementById("snippet-modal-backdrop"),t=document.getElementById("snippet-modal");if(!e||!t)return;let a=null;function i(s=null){var u,w,E,B,T,A,D,j,M;a=s||{id:null,name:"",category:"elements",tags:[],variants:{vanilla:{html:"",css:"",js:""},tailwind:{html:""}}};const d=q.blank,c=s?((w=(u=s.variants)==null?void 0:u.vanilla)==null?void 0:w.html)||"":d.html,m=s?((B=(E=s.variants)==null?void 0:E.vanilla)==null?void 0:B.css)||"":d.css,l=s?((A=(T=s.variants)==null?void 0:T.vanilla)==null?void 0:A.js)||"":d.js,g=s?s.name:d.name,p=s?s.category:d.category,v=s?(s.tags||[]).join(", "):"custom, ui, snippet";t.innerHTML=`
+}`,js:""}};function We({onSaved:n}){const e=document.getElementById("snippet-modal-backdrop"),t=document.getElementById("snippet-modal");if(!e||!t)return;let a=null;function i(s=null){var m,w,E,M,D,j,$,q,P;a=s||{id:null,name:"",category:"elements",tags:[],variants:{vanilla:{html:"",css:"",js:""},tailwind:{html:""}}};const v=R.blank,u=s?((w=(m=s.variants)==null?void 0:m.vanilla)==null?void 0:w.html)||"":v.html,b=s?((M=(E=s.variants)==null?void 0:E.vanilla)==null?void 0:M.css)||"":v.css,d=s?((j=(D=s.variants)==null?void 0:D.vanilla)==null?void 0:j.js)||"":v.js,g=s?s.name:v.name,l=s?s.category:v.category,p=s?(s.tags||[]).join(", "):"custom, ui, snippet";t.innerHTML=`
       <div class="modal-header">
         <div class="flex items-center gap-2">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
@@ -7492,27 +7527,27 @@ ${t.js||"// Zero JS"}
           <div class="form-group">
             <label class="form-label">Category</label>
             <select id="snippet-category-select" class="form-select">
-              <option value="navigation" ${p==="navigation"?"selected":""}>Navbars & Headers</option>
-              <option value="heroes" ${p==="heroes"?"selected":""}>Hero Sections</option>
-              <option value="ecommerce" ${p==="ecommerce"?"selected":""}>E-Commerce & Carts</option>
-              <option value="tables" ${p==="tables"?"selected":""}>Tables & Grids</option>
-              <option value="auth" ${p==="auth"?"selected":""}>Authentication & Forms</option>
-              <option value="modals" ${p==="modals"?"selected":""}>Modals & Dialogs</option>
-              <option value="cards" ${p==="cards"?"selected":""}>Cards & Content</option>
-              <option value="layout" ${p==="layout"?"selected":""}>Bento & Layouts</option>
-              <option value="elements" ${p==="elements"?"selected":""}>Buttons & Elements</option>
-              <option value="feedback" ${p==="feedback"?"selected":""}>Feedback & Loaders</option>
-              <option value="animations" ${p==="animations"?"selected":""}>Animations & Effects</option>
-              <option value="morphisms" ${p==="morphisms"?"selected":""}>UI Morphisms & Styles</option>
-              <option value="pages" ${p==="pages"?"selected":""}>Landing & Sections</option>
-              <option value="footers" ${p==="footers"?"selected":""}>Footers</option>
+              <option value="navigation" ${l==="navigation"?"selected":""}>Navbars & Headers</option>
+              <option value="heroes" ${l==="heroes"?"selected":""}>Hero Sections</option>
+              <option value="ecommerce" ${l==="ecommerce"?"selected":""}>E-Commerce & Carts</option>
+              <option value="tables" ${l==="tables"?"selected":""}>Tables & Grids</option>
+              <option value="auth" ${l==="auth"?"selected":""}>Authentication & Forms</option>
+              <option value="modals" ${l==="modals"?"selected":""}>Modals & Dialogs</option>
+              <option value="cards" ${l==="cards"?"selected":""}>Cards & Content</option>
+              <option value="layout" ${l==="layout"?"selected":""}>Bento & Layouts</option>
+              <option value="elements" ${l==="elements"?"selected":""}>Buttons & Elements</option>
+              <option value="feedback" ${l==="feedback"?"selected":""}>Feedback & Loaders</option>
+              <option value="animations" ${l==="animations"?"selected":""}>Animations & Effects</option>
+              <option value="morphisms" ${l==="morphisms"?"selected":""}>UI Morphisms & Styles</option>
+              <option value="pages" ${l==="pages"?"selected":""}>Landing & Sections</option>
+              <option value="footers" ${l==="footers"?"selected":""}>Footers</option>
             </select>
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label">Tags (comma-separated)</label>
-          <input type="text" id="snippet-tags-input" class="form-input" placeholder="e.g. button, glow, animated, responsive" value="${v}" />
+          <input type="text" id="snippet-tags-input" class="form-input" placeholder="e.g. button, glow, animated, responsive" value="${p}" />
         </div>
 
         <!-- Split View: Code Editor (Left) & Real-time Live Sandbox (Right) -->
@@ -7525,9 +7560,9 @@ ${t.js||"// Zero JS"}
               <button type="button" class="editor-tab-btn" data-tab="js">JavaScript</button>
             </div>
 
-            <textarea id="modal-editor-html" class="code-editor-textarea" placeholder="Paste or type HTML here...">${c}</textarea>
-            <textarea id="modal-editor-css" class="code-editor-textarea hidden" placeholder="Paste or type CSS here...">${m}</textarea>
-            <textarea id="modal-editor-js" class="code-editor-textarea hidden" placeholder="Paste or type JavaScript here...">${l}</textarea>
+            <textarea id="modal-editor-html" class="code-editor-textarea" placeholder="Paste or type HTML here...">${u}</textarea>
+            <textarea id="modal-editor-css" class="code-editor-textarea hidden" placeholder="Paste or type CSS here...">${b}</textarea>
+            <textarea id="modal-editor-js" class="code-editor-textarea hidden" placeholder="Paste or type JavaScript here...">${d}</textarea>
           </div>
 
           <!-- Real-time Live Preview Sandbox -->
@@ -7547,7 +7582,7 @@ ${t.js||"// Zero JS"}
           <span>Save to Library</span>
         </button>
       </div>
-    `;const x=t.querySelector("#modal-editor-html"),h=t.querySelector("#modal-editor-css"),f=t.querySelector("#modal-editor-js"),z=t.querySelector("#modal-preview-iframe");function b(){if(!z)return;const k=x.value,y=h.value,L=f.value;z.srcdoc=F({html:k,css:y,js:L,theme:"dark"})}t.querySelectorAll(".editor-tab-btn").forEach(k=>{k.addEventListener("click",()=>{t.querySelectorAll(".editor-tab-btn").forEach(L=>L.classList.remove("active")),k.classList.add("active");const y=k.dataset.tab;x.classList.toggle("hidden",y!=="html"),h.classList.toggle("hidden",y!=="css"),f.classList.toggle("hidden",y!=="js")})}),x.addEventListener("input",b),h.addEventListener("input",b),f.addEventListener("input",b),t.querySelectorAll(".template-picker-btn").forEach(k=>{k.addEventListener("click",()=>{const y=q[k.dataset.tmpl];y&&(t.querySelector("#snippet-name-input").value=y.name,t.querySelector("#snippet-category-select").value=y.category,x.value=y.html,h.value=y.css,f.value=y.js,b())})}),(D=t.querySelector("#close-snippet-modal-btn"))==null||D.addEventListener("click",r),(j=t.querySelector("#cancel-snippet-btn"))==null||j.addEventListener("click",r),(M=t.querySelector("#save-snippet-btn"))==null||M.addEventListener("click",()=>{const k=t.querySelector("#snippet-name-input").value.trim();if(!k){alert("Please enter a component name.");return}const y=t.querySelector("#snippet-category-select").value,O=t.querySelector("#snippet-tags-input").value.split(",").map(N=>N.trim().toLowerCase()).filter(Boolean),H={id:a.id||`custom-${Date.now()}`,name:k,category:y,tags:O,complexity:"Custom",isCustom:!0,variants:{vanilla:{html:x.value,css:h.value,js:f.value}}};Te(H),S(`Saved "${k}" to your library!`),r(),n&&n()}),b()}function o(s=null){i(s),e.classList.remove("hidden")}function r(){e.classList.add("hidden")}return e.addEventListener("click",s=>{s.target===e&&r()}),{openModal:o,closeModal:r}}function Ne({onImportCompleted:n}){const e=document.getElementById("backup-modal-backdrop"),t=document.getElementById("backup-modal");if(!e||!t)return;function a(){var d,c,m;const r=C().length;t.innerHTML=`
+    `;const x=t.querySelector("#modal-editor-html"),h=t.querySelector("#modal-editor-css"),f=t.querySelector("#modal-editor-js"),z=t.querySelector("#modal-preview-iframe");function c(){if(!z)return;const k=x.value,y=h.value,L=f.value;z.srcdoc=_({html:k,css:y,js:L,theme:"dark"})}t.querySelectorAll(".editor-tab-btn").forEach(k=>{k.addEventListener("click",()=>{t.querySelectorAll(".editor-tab-btn").forEach(L=>L.classList.remove("active")),k.classList.add("active");const y=k.dataset.tab;x.classList.toggle("hidden",y!=="html"),h.classList.toggle("hidden",y!=="css"),f.classList.toggle("hidden",y!=="js")})}),x.addEventListener("input",c),h.addEventListener("input",c),f.addEventListener("input",c),t.querySelectorAll(".template-picker-btn").forEach(k=>{k.addEventListener("click",()=>{const y=R[k.dataset.tmpl];y&&(t.querySelector("#snippet-name-input").value=y.name,t.querySelector("#snippet-category-select").value=y.category,x.value=y.html,h.value=y.css,f.value=y.js,c())})}),($=t.querySelector("#close-snippet-modal-btn"))==null||$.addEventListener("click",r),(q=t.querySelector("#cancel-snippet-btn"))==null||q.addEventListener("click",r),(P=t.querySelector("#save-snippet-btn"))==null||P.addEventListener("click",()=>{const k=t.querySelector("#snippet-name-input").value.trim();if(!k){alert("Please enter a component name.");return}const y=t.querySelector("#snippet-category-select").value,N=t.querySelector("#snippet-tags-input").value.split(",").map(V=>V.trim().toLowerCase()).filter(Boolean),G={id:a.id||`custom-${Date.now()}`,name:k,category:y,tags:N,complexity:"Custom",isCustom:!0,variants:{vanilla:{html:x.value,css:h.value,js:f.value}}};O(G),S(`Saved "${k}" to your library!`),r(),n&&n()}),c()}function o(s=null){i(s),e.classList.remove("hidden")}function r(){e.classList.add("hidden")}return e.addEventListener("click",s=>{s.target===e&&r()}),{openModal:o,closeModal:r}}function Je({onImportCompleted:n}){const e=document.getElementById("backup-modal-backdrop"),t=document.getElementById("backup-modal");if(!e||!t)return;function a(){var v,u,b;const r=C().length;t.innerHTML=`
       <div class="modal-header">
         <div class="flex items-center gap-2">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -7583,7 +7618,7 @@ ${t.js||"// Zero JS"}
           </button>
         </div>
       </div>
-    `,(d=t.querySelector("#close-backup-modal-btn"))==null||d.addEventListener("click",o),(c=t.querySelector("#export-json-btn"))==null||c.addEventListener("click",()=>{De(),S("Exported library backup successfully!"),o()});const s=t.querySelector("#import-file-input");(m=t.querySelector("#trigger-import-file-btn"))==null||m.addEventListener("click",()=>{s==null||s.click()}),s==null||s.addEventListener("change",l=>{var p;const g=(p=l.target.files)==null?void 0:p[0];if(g){const v=new FileReader;v.onload=x=>{var f;const h=(f=x.target)==null?void 0:f.result;if(typeof h=="string"){const z=je(h);z.success?(S(`Imported ${z.count} component snippets!`),o(),n&&n()):alert("Failed to import JSON: "+z.error)}},v.readAsText(g)}})}function i(){a(),e.classList.remove("hidden")}function o(){e.classList.add("hidden")}return e.addEventListener("click",r=>{r.target===e&&o()}),{openModal:i,closeModal:o}}function _e(){let n=document.getElementById("modal-container");n||(n=document.createElement("div"),n.id="modal-container",document.body.appendChild(n));let e="glass";function t(){var d,c;const o=document.getElementById("tools-modal-body");if(o){if(e==="glass"){let v=function(){const x=m.value,h=(l.value/100).toFixed(2),f=(g.value/100).toFixed(2);document.getElementById("glass-blur-val").textContent=`${x}px`,document.getElementById("glass-op-val").textContent=h,document.getElementById("glass-border-val").textContent=f,p.style.backdropFilter=`blur(${x}px)`,p.style.webkitBackdropFilter=`blur(${x}px)`,p.style.background=`rgba(255, 255, 255, ${h})`,p.style.border=`1px solid rgba(255, 255, 255, ${f})`};var r=v;o.innerHTML=`
+    `,(v=t.querySelector("#close-backup-modal-btn"))==null||v.addEventListener("click",o),(u=t.querySelector("#export-json-btn"))==null||u.addEventListener("click",()=>{qe(),S("Exported library backup successfully!"),o()});const s=t.querySelector("#import-file-input");(b=t.querySelector("#trigger-import-file-btn"))==null||b.addEventListener("click",()=>{s==null||s.click()}),s==null||s.addEventListener("change",d=>{var l;const g=(l=d.target.files)==null?void 0:l[0];if(g){const p=new FileReader;p.onload=x=>{var f;const h=(f=x.target)==null?void 0:f.result;if(typeof h=="string"){const z=Pe(h);z.success?(S(`Imported ${z.count} component snippets!`),o(),n&&n()):alert("Failed to import JSON: "+z.error)}},p.readAsText(g)}})}function i(){a(),e.classList.remove("hidden")}function o(){e.classList.add("hidden")}return e.addEventListener("click",r=>{r.target===e&&o()}),{openModal:i,closeModal:o}}function Ke(){let n=document.getElementById("modal-container");n||(n=document.createElement("div"),n.id="modal-container",document.body.appendChild(n));let e="glass";function t(){var v,u;const o=document.getElementById("tools-modal-body");if(o){if(e==="glass"){let p=function(){const x=b.value,h=(d.value/100).toFixed(2),f=(g.value/100).toFixed(2);document.getElementById("glass-blur-val").textContent=`${x}px`,document.getElementById("glass-op-val").textContent=h,document.getElementById("glass-border-val").textContent=f,l.style.backdropFilter=`blur(${x}px)`,l.style.webkitBackdropFilter=`blur(${x}px)`,l.style.background=`rgba(255, 255, 255, ${h})`,l.style.border=`1px solid rgba(255, 255, 255, ${f})`};var r=p;o.innerHTML=`
         <div class="tool-split-grid">
           <div class="tool-controls">
             <h4 style="font-size:13px; font-weight:700; color:var(--text-primary); margin-bottom:12px;">Glassmorphism Generator</h4>
@@ -7609,11 +7644,11 @@ ${t.js||"// Zero JS"}
             </div>
           </div>
         </div>
-      `;const m=document.getElementById("glass-blur-slider"),l=document.getElementById("glass-op-slider"),g=document.getElementById("glass-border-slider"),p=document.getElementById("glass-live-preview");m==null||m.addEventListener("input",v),l==null||l.addEventListener("input",v),g==null||g.addEventListener("input",v),(d=document.getElementById("copy-glass-css-btn"))==null||d.addEventListener("click",()=>{const x=`background: rgba(255, 255, 255, ${(l.value/100).toFixed(2)});
-backdrop-filter: blur(${m.value}px);
--webkit-backdrop-filter: blur(${m.value}px);
+      `;const b=document.getElementById("glass-blur-slider"),d=document.getElementById("glass-op-slider"),g=document.getElementById("glass-border-slider"),l=document.getElementById("glass-live-preview");b==null||b.addEventListener("input",p),d==null||d.addEventListener("input",p),g==null||g.addEventListener("input",p),(v=document.getElementById("copy-glass-css-btn"))==null||v.addEventListener("click",()=>{const x=`background: rgba(255, 255, 255, ${(d.value/100).toFixed(2)});
+backdrop-filter: blur(${b.value}px);
+-webkit-backdrop-filter: blur(${b.value}px);
 border: 1px solid rgba(255, 255, 255, ${(g.value/100).toFixed(2)});
-border-radius: 12px;`;navigator.clipboard.writeText(x).then(()=>S("Copied Glassmorphism CSS!"))})}else if(e==="clamp"){let m=function(){const l=parseFloat(document.getElementById("clamp-min-font").value)||16,g=parseFloat(document.getElementById("clamp-max-font").value)||36,p=parseFloat(document.getElementById("clamp-min-vp").value)||375,v=parseFloat(document.getElementById("clamp-max-vp").value)||1280,x=(l/16).toFixed(3),h=(g/16).toFixed(3),f=(g-l)/(v-p),z=(-p*f+l)/16,b=(f*100).toFixed(2),u=`clamp(${x}rem, ${z.toFixed(2)}rem + ${b}vw, ${h}rem)`;document.getElementById("clamp-output-code").textContent=`font-size: ${u};`,document.getElementById("clamp-preview-text").style.fontSize=`${l}px`};var s=m;o.innerHTML=`
+border-radius: 12px;`;navigator.clipboard.writeText(x).then(()=>S("Copied Glassmorphism CSS!"))})}else if(e==="clamp"){let b=function(){const d=parseFloat(document.getElementById("clamp-min-font").value)||16,g=parseFloat(document.getElementById("clamp-max-font").value)||36,l=parseFloat(document.getElementById("clamp-min-vp").value)||375,p=parseFloat(document.getElementById("clamp-max-vp").value)||1280,x=(d/16).toFixed(3),h=(g/16).toFixed(3),f=(g-d)/(p-l),z=(-l*f+d)/16,c=(f*100).toFixed(2),m=`clamp(${x}rem, ${z.toFixed(2)}rem + ${c}vw, ${h}rem)`;document.getElementById("clamp-output-code").textContent=`font-size: ${m};`,document.getElementById("clamp-preview-text").style.fontSize=`${d}px`};var s=b;o.innerHTML=`
         <div class="tool-split-grid">
           <div class="tool-controls">
             <h4 style="font-size:13px; font-weight:700; color:var(--text-primary); margin-bottom:12px;">Fluid clamp() Typography Calculator</h4>
@@ -7649,7 +7684,7 @@ border-radius: 12px;`;navigator.clipboard.writeText(x).then(()=>S("Copied Glassm
             </div>
           </div>
         </div>
-      `,["clamp-min-font","clamp-max-font","clamp-min-vp","clamp-max-vp"].forEach(l=>{var g;(g=document.getElementById(l))==null||g.addEventListener("input",m)}),(c=document.getElementById("copy-clamp-css-btn"))==null||c.addEventListener("click",()=>{const l=document.getElementById("clamp-output-code").textContent;navigator.clipboard.writeText(l).then(()=>S("Copied clamp() CSS!"))})}}}function a(){var r;n.innerHTML=`
+      `,["clamp-min-font","clamp-max-font","clamp-min-vp","clamp-max-vp"].forEach(d=>{var g;(g=document.getElementById(d))==null||g.addEventListener("input",b)}),(u=document.getElementById("copy-clamp-css-btn"))==null||u.addEventListener("click",()=>{const d=document.getElementById("clamp-output-code").textContent;navigator.clipboard.writeText(d).then(()=>S("Copied clamp() CSS!"))})}}}function a(){var r;n.innerHTML=`
       <div class="modal-backdrop" id="tools-modal-backdrop">
         <div class="modal-dialog" style="width: 720px;">
           <div class="modal-header">
@@ -7670,34 +7705,4 @@ border-radius: 12px;`;navigator.clipboard.writeText(x).then(()=>S("Copied Glassm
           </div>
         </div>
       </div>
-    `,t(),n.querySelectorAll(".tool-tab-btn").forEach(s=>{s.addEventListener("click",()=>{e=s.dataset.tool,a()})});const o=document.getElementById("tools-modal-backdrop");(r=document.getElementById("tools-modal-close"))==null||r.addEventListener("click",i),o==null||o.addEventListener("click",s=>{s.target===o&&i()})}function i(){n.innerHTML=""}return{openModal:a,closeModal:i}}class Ge{constructor(){this.state={activeCategory:"all",activeTag:null,searchTerm:"",activeFramework:"vanilla",currentTheme:R().theme||"dark"},this.commandPalette=null,this.snippetModal=null,this.backupModal=null,this.toolsModal=null}init(){document.documentElement.className=this.state.currentTheme,this.initModals(),this.bindGlobalShortcuts(),this.renderHeader(),this.render(),console.log("⚡ DevVault Modular Engine Initialized")}initModals(){var e;this.commandPalette=Oe({getAllComponents:()=>this.getAllComponents(),onSelectComponent:t=>this.handleSelectComponent(t)}),this.snippetModal=He({onSaved:()=>this.render()}),this.backupModal=Ne({onImportCompleted:()=>this.render()}),this.toolsModal=_e(),(e=document.getElementById("empty-add-btn"))==null||e.addEventListener("click",()=>{this.snippetModal.openModal()})}bindGlobalShortcuts(){window.addEventListener("keydown",e=>{(e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="n"&&(e.preventDefault(),this.snippetModal.openModal())}),window.addEventListener("reset-filters",()=>{this.state.activeCategory="all",this.state.activeTag=null,this.state.searchTerm="",this.render()})}getAllComponents(){return[...C(),...Be]}getFilteredComponents(){let e=this.getAllComponents();if(this.state.activeCategory==="custom"?e=e.filter(t=>t.isCustom):this.state.activeCategory!=="all"&&(e=e.filter(t=>t.category===this.state.activeCategory)),this.state.activeTag&&(e=e.filter(t=>t.tags&&t.tags.includes(this.state.activeTag))),this.state.searchTerm){const t=this.state.searchTerm.toLowerCase();e=e.filter(a=>a.name.toLowerCase().includes(t)||a.category.toLowerCase().includes(t)||a.tags&&a.tags.some(i=>i.toLowerCase().includes(t))||a.description&&a.description.toLowerCase().includes(t))}return e}toggleTheme(){this.state.currentTheme=this.state.currentTheme==="dark"?"light":"dark",document.documentElement.className=this.state.currentTheme,Me({theme:this.state.currentTheme}),this.renderHeader(),this.render(),S(`Switched to ${this.state.currentTheme} mode`)}renderHeader(){$e({currentTheme:this.state.currentTheme,onSearchClick:()=>this.commandPalette.openPalette(),onNewSnippetClick:()=>this.snippetModal.openModal(),onBackupClick:()=>this.backupModal.openModal(),onToolsClick:()=>{var e;return(e=this.toolsModal)==null?void 0:e.openModal()},onThemeToggle:()=>this.toggleTheme()})}renderFilterBar(e){var s,d;const t=document.getElementById("filter-bar");if(!t)return;const i={all:{title:"All UI Patterns",desc:"Browse the entire collection of production-tested web patterns and micro-interactions."},navigation:{title:"Navbars & Sidebars",desc:"Floating glass headers, responsive drawers, and icon-rail navigation."},heroes:{title:"Hero Sections",desc:"High-impact SaaS landing heroes with CTAs, metrics frames, and bold typography."},ecommerce:{title:"E-Commerce & Carts",desc:"Slide-over cart drawers, pricing tables with annual toggles, and product quickviews."},tables:{title:"Tables & Data Grids",desc:"Clean sortable tables with live keyword filtering and status indicators."},auth:{title:"Authentication & Forms",desc:"Split-screen login, floating label fields, OTP pin boxes, and segmented toggles."},modals:{title:"Modals & Dialog Overlays",desc:"Destructive confirmation dialogs and lead capture popovers with backdrop blur."},cards:{title:"Cards & Content Patterns",desc:"E-commerce product cards, developer profile cards, and metric summary boxes."},layout:{title:"Bento Grids & Layouts",desc:"Swiss 6-card bento grids, 4-column KPI cards, and social proof testimonial walls."},elements:{title:"Buttons & Elements",desc:"Shimmer glowing buttons, magnetic action triggers, and accessible FAQ accordions."},feedback:{title:"Feedback & Loaders",desc:"Pure CSS wave shimmer skeleton placeholders and toast notification stacks."},animations:{title:"Animations & Micro-Effects",desc:"Cursor-following spotlight glows, infinite logo marquees, and smooth hover spring physics."},morphisms:{title:"Design Morphisms & Visual Styles",desc:"Master visual recipes: Glassmorphism, Neumorphism, Claymorphism, Neo-Brutalism, Liquid Glass, Spatial UI, and Cybermorphism."},pages:{title:"Landing Sections & Full Pages",desc:"Glowing CTA banners and full conversion-oriented landing page blocks."},footers:{title:"Footers & Bottom Bars",desc:"Swiss-style multi-column site footers with system status indicators."},custom:{title:"My Custom Vault",desc:"Your personal proprietary components saved locally in this browser."}}[this.state.activeCategory]||{title:"Components",desc:""},o=this.state.activeTag?`Tag: #${this.state.activeTag}`:i.title;t.innerHTML=`
-      <div class="filter-header-content">
-        <div class="filter-title-row">
-          <div class="filter-title-area">
-            <h2 class="filter-title">${o}</h2>
-            <span class="filter-count">${e} component${e===1?"":"s"}</span>
-            ${this.state.activeTag?`
-              <button id="clear-tag-btn" class="badge" style="cursor:pointer; background:var(--bg-elevated);">
-                Clear tag &times;
-              </button>
-            `:""}
-          </div>
-
-          <!-- Controls: Search & Framework Toggle -->
-          <div class="filter-controls">
-            <div class="inline-search-box">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-              <input type="text" id="inline-search-input" placeholder="Quick filter..." value="${this.state.searchTerm}" />
-              ${this.state.searchTerm?'<button id="clear-search-btn" class="clear-search-icon">&times;</button>':""}
-            </div>
-
-            <div class="framework-toggle">
-              <button class="framework-btn ${this.state.activeFramework==="vanilla"?"active":""}" data-fw="vanilla">Vanilla (HTML/CSS)</button>
-              <button class="framework-btn ${this.state.activeFramework==="tailwind"?"active":""}" data-fw="tailwind">Tailwind</button>
-            </div>
-          </div>
-        </div>
-
-        <p class="filter-desc">${i.desc}</p>
-      </div>
-    `,(s=t.querySelector("#clear-tag-btn"))==null||s.addEventListener("click",()=>{this.state.activeTag=null,this.render()});const r=t.querySelector("#inline-search-input");r==null||r.addEventListener("input",c=>{this.state.searchTerm=c.target.value,this.renderComponentList()}),(d=t.querySelector("#clear-search-btn"))==null||d.addEventListener("click",()=>{this.state.searchTerm="",this.render()}),t.querySelectorAll(".framework-btn").forEach(c=>{c.addEventListener("click",()=>{this.state.activeFramework=c.dataset.fw,this.render()})})}renderComponentList(){const e=document.getElementById("component-container"),t=document.getElementById("empty-state");if(!e||!t)return;const a=this.getFilteredComponents();if(this.renderFilterBar(a.length),e.innerHTML="",a.length===0){t.classList.remove("hidden");return}else t.classList.add("hidden");a.forEach(i=>{const o=Fe(i,{currentTheme:this.state.currentTheme,onEditCustom:r=>this.snippetModal.openModal(r),onDeleteCustom:r=>{Ae(r),S("Snippet deleted from library."),this.render()}});e.appendChild(o)})}handleSelectComponent(e){this.state.activeCategory="all",this.state.activeTag=null,this.render(),setTimeout(()=>{const t=document.getElementById(`card-${e.id}`);t&&(t.scrollIntoView({behavior:"smooth",block:"center"}),t.style.borderColor="var(--accent-primary)",setTimeout(()=>{t.style.borderColor=""},1200))},100)}render(){const e=this.getAllComponents();qe({allComponents:e,activeCategory:this.state.activeCategory,activeTag:this.state.activeTag,onSelectCategory:t=>{this.state.activeCategory=t,this.state.activeTag=null,this.render()},onSelectTag:t=>{this.state.activeTag=t,this.render()}}),this.renderComponentList()}}const Ve=new Ge;Ve.init();
+    `,t(),n.querySelectorAll(".tool-tab-btn").forEach(s=>{s.addEventListener("click",()=>{e=s.dataset.tool,a()})});const o=document.getElementById("tools-modal-backdrop");(r=document.getElementById("tools-modal-close"))==null||r.addEventListener("click",i),o==null||o.addEventListener("click",s=>{s.target===o&&i()})}function i(){n.innerHTML=""}return{openModal:a,closeModal:i}}class Xe{constructor(){const e=H();this.stateManager=new Y({currentTheme:e.theme||"dark"}),this.registry=new Fe,this.events=B,this.context={stateManager:this.stateManager,registry:this.registry,app:this},this.headerController=null,this.sidebarController=null,this.streamController=null,this.commandPalette=null,this.snippetModal=null,this.backupModal=null,this.toolsModal=null}bootstrap(){const e=this.stateManager.get("currentTheme");document.documentElement.className=e,this.initModals(),this.headerController=new Oe("app-header",this.context).init(),this.sidebarController=new _e("app-sidebar",this.context).init(),this.streamController=new Ue("component-container",this.context).init(),this.bindGlobalListeners(),console.log("✨ [DevVault] Enterprise OOP Architecture Initialized")}initModals(){this.commandPalette=Ye({getAllComponents:()=>this.registry.getAll(),onSelectComponent:e=>this.events.emit("component:scroll-to",e)}),this.snippetModal=We({onSaved:()=>this.registry.reloadCustomSnippets()}),this.backupModal=Je({onImportCompleted:()=>this.registry.reloadCustomSnippets()}),this.toolsModal=Ke()}bindGlobalListeners(){var e;window.addEventListener("keydown",t=>{(t.metaKey||t.ctrlKey)&&t.key.toLowerCase()==="n"&&(t.preventDefault(),this.snippetModal.openModal())}),this.events.on("modal:open-search",()=>this.commandPalette.openPalette()),this.events.on("modal:open-tools",()=>this.toolsModal.openModal()),this.events.on("modal:open-backup",()=>this.backupModal.openModal()),this.events.on("modal:open-snippet",()=>this.snippetModal.openModal()),this.events.on("modal:edit-snippet",t=>this.snippetModal.openModal(t)),this.events.on("toast:show",t=>S(t)),this.events.on("theme:toggle",()=>{const t=this.stateManager.get("currentTheme")==="dark"?"light":"dark";this.stateManager.setState({currentTheme:t}),document.documentElement.className=t,Re({theme:t}),this.events.emit("theme:changed",t),S(`Switched to ${t} mode`)}),(e=document.getElementById("empty-add-btn"))==null||e.addEventListener("click",()=>{this.snippetModal.openModal()})}}const Qe=new Xe;Qe.bootstrap();
