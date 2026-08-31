@@ -1,10 +1,19 @@
 /**
  * DevVault Master Component Registry Index
- * Complete All-In-One Developer Pattern & Component Suite (35+ Modular Patterns).
+ * Complete All-In-One Developer Pattern & Component Suite (40+ Modular Patterns).
  */
 
-// Navigation & Menus
+// Navigation & Menus (Top 10 Distinct World-Class Navbars + Rail Sidebar)
 import { navbarFloatingGlass } from './navigation/navbar-floating-glass.js';
+import { navbarDynamicIsland } from './navigation/navbar-dynamic-island.js';
+import { navbarCommandLinear } from './navigation/navbar-command-linear.js';
+import { navbarStripeMegamenu } from './navigation/navbar-stripe-megamenu.js';
+import { navbarVercelSlidingTabs } from './navigation/navbar-vercel-sliding-tabs.js';
+import { navbarFloatingDockMacos } from './navigation/navbar-floating-dock-macos.js';
+import { navbarSwissEditorial } from './navigation/navbar-swiss-editorial.js';
+import { navbarNeobrutalistGrid } from './navigation/navbar-neobrutalist-grid.js';
+import { navbarCyberpunkHud } from './navigation/navbar-cyberpunk-hud.js';
+import { navbarLuxurySplitDrawer } from './navigation/navbar-luxury-split-drawer.js';
 import { sidebarCollapsibleRail } from './navigation/sidebar-collapsible-rail.js';
 
 // Heroes & Headings
@@ -72,8 +81,17 @@ import { sectionContactSplit } from './pages/section-contact-split.js';
 import { footerSaasMulticolumn } from './footers/footer-saas-multicolumn.js';
 
 export const BUILTIN_COMPONENTS = [
-  // Navigation
+  // Top 10 Distinct World-Class Navbars + Rail Sidebar
   navbarFloatingGlass,
+  navbarDynamicIsland,
+  navbarCommandLinear,
+  navbarStripeMegamenu,
+  navbarVercelSlidingTabs,
+  navbarFloatingDockMacos,
+  navbarSwissEditorial,
+  navbarNeobrutalistGrid,
+  navbarCyberpunkHud,
+  navbarLuxurySplitDrawer,
   sidebarCollapsibleRail,
 
   // Heroes
