@@ -115,6 +115,7 @@ export function renderSidebar({ allComponents, activeCategory, activeTag, onSele
   sidebarEl.querySelectorAll('.sidebar-nav-item').forEach(item => {
     item.addEventListener('click', () => {
       const catId = item.dataset.cat;
+      sidebarEl.classList.remove('mobile-open');
       onSelectCategory(catId);
     });
   });
@@ -122,6 +123,7 @@ export function renderSidebar({ allComponents, activeCategory, activeTag, onSele
   sidebarEl.querySelectorAll('.tag-pill').forEach(pill => {
     pill.addEventListener('click', () => {
       const tag = pill.dataset.tag;
+      sidebarEl.classList.remove('mobile-open');
       onSelectTag(tag === activeTag ? null : tag);
     });
   });
