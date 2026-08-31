@@ -30,6 +30,7 @@ export class ComponentCardController {
       activeRadius: '6px',
       activeFont: "'Inter', sans-serif",
       activeDensity: 'normal',
+      activeMorphism: 'none',
       activeStageBg: this.currentTheme === 'light' ? 'dot-light' : 'dot-dark',
       sandboxTheme: this.currentTheme,
       isInspectorOpen: false,
@@ -155,6 +156,20 @@ export class ComponentCardController {
             </select>
           </div>
 
+          <!-- Morphism Aesthetic FX Engine -->
+          <div class="customizer-item">
+            <span style="font-weight: 600; color: var(--accent-primary);">✨ Morphism FX:</span>
+            <select class="form-select morphism-selector" style="padding:2px 8px; font-size:11px; font-weight:600; background:var(--bg-surface-elevated); border:1px solid var(--accent-primary); color:var(--text-primary); border-radius:var(--radius-sm);">
+              <option value="none" selected>Default (Clean)</option>
+              <option value="glass">🪟 Glassmorphism</option>
+              <option value="neobrutalism">⬛ Neobrutalism</option>
+              <option value="clay">🎨 Claymorphism (3D)</option>
+              <option value="neumorphism">🔘 Neumorphism</option>
+              <option value="cyberpunk">⚡ Cyberpunk Glow</option>
+              <option value="liquid">🌊 Liquid Aurora</option>
+            </select>
+          </div>
+
           <!-- Sandbox Theme (Dark/Light) -->
           <div class="customizer-item">
             <button class="btn btn-secondary btn-sandbox-theme" style="padding: 2px 7px; font-size: 11px;" title="Toggle Inner Preview Dark/Light Mode">
@@ -220,7 +235,8 @@ export class ComponentCardController {
         radius: state.activeRadius,
         primaryColor: state.activeColor,
         fontFamily: state.activeFont,
-        density: state.activeDensity
+        density: state.activeDensity,
+        morphism: state.activeMorphism
       },
       cdnLinks: component.cdnLinks || []
     });
@@ -238,6 +254,21 @@ export class ComponentCardController {
     const tailwind = this.component.variants?.tailwind || { html: '' };
     const { state } = this;
 
+    let morphismSnippet = '';
+    if (state.activeMorphism === 'glass') {
+      morphismSnippet = `\n/* Glassmorphism FX Overlay */\n.dv-glass-card {\n  background: rgba(255, 255, 255, 0.08);\n  backdrop-filter: blur(24px);\n  -webkit-backdrop-filter: blur(24px);\n  border: 1px solid rgba(255, 255, 255, 0.22);\n  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);\n}`;
+    } else if (state.activeMorphism === 'neobrutalism') {
+      morphismSnippet = `\n/* Neobrutalism FX Overlay */\n.dv-brutal-card {\n  border: 2.5px solid #000000;\n  box-shadow: 5px 5px 0px #000000;\n  border-radius: 0px;\n  font-weight: 600;\n}`;
+    } else if (state.activeMorphism === 'clay') {
+      morphismSnippet = `\n/* Claymorphism 3D FX Overlay */\n.dv-clay-card {\n  border-radius: 24px;\n  box-shadow: 14px 14px 28px rgba(0, 0, 0, 0.2), inset -6px -6px 14px rgba(0, 0, 0, 0.16), inset 6px 6px 14px rgba(255, 255, 255, 0.45);\n  border: 1px solid rgba(255, 255, 255, 0.28);\n}`;
+    } else if (state.activeMorphism === 'neumorphism') {
+      morphismSnippet = `\n/* Neumorphism Soft UI FX Overlay */\n.dv-neumorph-card {\n  border-radius: 20px;\n  box-shadow: 10px 10px 20px rgba(0,0,0,0.35), -10px -10px 20px rgba(255,255,255,0.05);\n  border: none;\n}`;
+    } else if (state.activeMorphism === 'cyberpunk') {
+      morphismSnippet = `\n/* Cyberpunk HUD FX Overlay */\n.dv-cyber-card {\n  border: 1.5px solid #00f3ff;\n  box-shadow: 0 0 24px rgba(0, 243, 255, 0.4), inset 0 0 12px rgba(0, 243, 255, 0.15);\n  font-family: 'JetBrains Mono', monospace;\n}`;
+    } else if (state.activeMorphism === 'liquid') {
+      morphismSnippet = `\n/* Liquid Aurora FX Overlay */\n.dv-liquid-card {\n  background: linear-gradient(135deg, rgba(99, 102, 241, 0.28), rgba(244, 63, 94, 0.28));\n  backdrop-filter: blur(28px);\n  border: 1px solid rgba(255, 255, 255, 0.3);\n  box-shadow: 0 16px 48px rgba(99, 102, 241, 0.25);\n}`;
+    }
+
     const customizedCss = `/* Customized DevVault Design Tokens */
 :root {
   --primary: ${state.activeColor};
@@ -245,7 +276,7 @@ export class ComponentCardController {
   --font-sans: ${state.activeFont};
 }
 
-${vanilla.css}`;
+${vanilla.css}${morphismSnippet}`;
 
     let codeText = '';
     switch (this.state.activeTab) {
@@ -335,6 +366,13 @@ ${vanilla.css}`;
       if (stage) {
         stage.className = `sandbox-stage stage-bg-${state.activeStageBg}`;
       }
+    });
+
+    // Morphism FX Selector
+    element.querySelector('.morphism-selector')?.addEventListener('change', (e) => {
+      state.activeMorphism = e.target.value;
+      this.updateSandbox();
+      showToast(`Applied ${e.target.options[e.target.selectedIndex].text} effect!`);
     });
 
     // Inner Sandbox Theme Switcher

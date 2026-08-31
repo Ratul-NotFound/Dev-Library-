@@ -1,4 +1,4 @@
-(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))a(i);new MutationObserver(i=>{for(const o of i)if(o.type==="childList")for(const r of o.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&a(r)}).observe(document,{childList:!0,subtree:!0});function t(i){const o={};return i.integrity&&(o.integrity=i.integrity),i.referrerPolicy&&(o.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?o.credentials="include":i.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function a(i){if(i.ep)return;i.ep=!0;const o=t(i);fetch(i.href,o)}})();class U{constructor(){this.listeners=new Map}on(e,t){return this.listeners.has(e)||this.listeners.set(e,new Set),this.listeners.get(e).add(t),()=>this.off(e,t)}off(e,t){this.listeners.has(e)&&this.listeners.get(e).delete(t)}emit(e,t){this.listeners.has(e)&&this.listeners.get(e).forEach(a=>{try{a(t)}catch(i){console.error(`[EventBus] Error executing listener for "${e}":`,i)}})}clear(){this.listeners.clear()}}const B=new U;class Y{constructor(e={}){this._state={activeCategory:"all",activeTag:null,searchTerm:"",activeFramework:"vanilla",currentTheme:"dark",viewMode:"feed",...e},this._subscribers=new Set}get state(){return Object.freeze({...this._state})}get(e){return this._state[e]}setState(e){const t={...this._state};this._state={...this._state,...e},this._subscribers.forEach(a=>{try{a(this.state,t)}catch(i){console.error("[StateManager] Subscriber error:",i)}}),B.emit("state:change",{state:this.state,prevState:t})}subscribe(e){return this._subscribers.add(e),()=>this._subscribers.delete(e)}resetFilters(){this.setState({activeCategory:"all",activeTag:null,searchTerm:""})}}const W={id:"navbar-floating-glass",name:"Floating Glass Navbar",category:"navigation",tags:["navbar","glassmorphism","sticky","responsive","header"],description:"Ultra-clean floating navigation bar with scroll-aware backdrop blur, interactive links, and mobile drawer.",complexity:"Intermediate",variants:{vanilla:{html:`<header class="dv-nav-wrapper">
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))a(i);new MutationObserver(i=>{for(const o of i)if(o.type==="childList")for(const r of o.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&a(r)}).observe(document,{childList:!0,subtree:!0});function t(i){const o={};return i.integrity&&(o.integrity=i.integrity),i.referrerPolicy&&(o.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?o.credentials="include":i.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function a(i){if(i.ep)return;i.ep=!0;const o=t(i);fetch(i.href,o)}})();class U{constructor(){this.listeners=new Map}on(e,t){return this.listeners.has(e)||this.listeners.set(e,new Set),this.listeners.get(e).add(t),()=>this.off(e,t)}off(e,t){this.listeners.has(e)&&this.listeners.get(e).delete(t)}emit(e,t){this.listeners.has(e)&&this.listeners.get(e).forEach(a=>{try{a(t)}catch(i){console.error(`[EventBus] Error executing listener for "${e}":`,i)}})}clear(){this.listeners.clear()}}const B=new U;class Y{constructor(e={}){this._state={activeCategory:"all",activeTag:null,searchTerm:"",activeFramework:"vanilla",currentTheme:"dark",viewMode:"feed",...e},this._subscribers=new Set}get state(){return Object.freeze({...this._state})}get(e){return this._state[e]}setState(e){const t={...this._state};this._state={...this._state,...e},this._subscribers.forEach(a=>{try{a(this.state,t)}catch(i){console.error("[StateManager] Subscriber error:",i)}}),B.emit("state:change",{state:this.state,prevState:t})}subscribe(e){return this._subscribers.add(e),()=>this._subscribers.delete(e)}resetFilters(){this.setState({activeCategory:"all",activeTag:null,searchTerm:""})}}const X={id:"navbar-floating-glass",name:"Floating Glass Navbar",category:"navigation",tags:["navbar","glassmorphism","sticky","responsive","header"],description:"Ultra-clean floating navigation bar with scroll-aware backdrop blur, interactive links, and mobile drawer.",complexity:"Intermediate",variants:{vanilla:{html:`<header class="dv-nav-wrapper">
   <div class="dv-nav-bar">
     <a href="#" class="dv-logo">
       <span class="dv-logo-dot"></span>
@@ -411,7 +411,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<aside class="
     <a href="#" class="flex items-center gap-2 rounded-lg bg-indigo-600/10 px-3 py-2 font-semibold text-indigo-400">Dashboard</a>
     <a href="#" class="flex items-center gap-2 rounded-lg px-3 py-2 text-zinc-400 hover:bg-zinc-900 hover:text-white">Analytics</a>
   </nav>
-</aside>`}}},K={id:"hero-saas-glow",name:"Modern SaaS Glow Hero",category:"heroes",tags:["hero","saas","landing","call-to-action","glow"],description:"High-impact landing hero with an ambient gradient glow, release badge, dual CTA, and dashboard preview mockup.",complexity:"Intermediate",variants:{vanilla:{html:`<section class="dv-hero">
+</aside>`}}},W={id:"hero-saas-glow",name:"Modern SaaS Glow Hero",category:"heroes",tags:["hero","saas","landing","call-to-action","glow"],description:"High-impact landing hero with an ambient gradient glow, release badge, dual CTA, and dashboard preview mockup.",complexity:"Intermediate",variants:{vanilla:{html:`<section class="dv-hero">
   <div class="dv-hero-badge">
     <span class="dv-badge-pill">v2.4 Released</span>
     <span class="dv-badge-text">Explore real-time data sync &rarr;</span>
@@ -658,7 +658,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<aside class="
     <button class="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg hover:bg-indigo-500 transition-all">Start Building Free</button>
     <button class="rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2.5 text-sm font-medium text-zinc-200 hover:bg-zinc-800">Watch Demo</button>
   </div>
-</section>`}}},X={id:"section-hero-split-agency",name:"Editorial Minimal Typography Hero",category:"heroes",tags:["hero","editorial","agency","typography","clean","portfolio"],description:"Swiss typography-driven hero section with bold headline, dynamic metric badges, and interactive client logo pill cloud.",complexity:"Beginner",variants:{vanilla:{html:`<section class="dv-agency-hero">
+</section>`}}},K={id:"section-hero-split-agency",name:"Editorial Minimal Typography Hero",category:"heroes",tags:["hero","editorial","agency","typography","clean","portfolio"],description:"Swiss typography-driven hero section with bold headline, dynamic metric badges, and interactive client logo pill cloud.",complexity:"Beginner",variants:{vanilla:{html:`<section class="dv-agency-hero">
   <div class="dv-agency-header">
     <div class="dv-agency-badge">
       <span class="dv-pulse-dot"></span> Available for Select Q4 Projects
@@ -3809,7 +3809,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="ma
     </div>
     <p class="mt-2 text-zinc-400">Yes! Standard HTML5 and modern CSS custom properties.</p>
   </div>
-</div>`}}},ge={id:"toast-notification-system",name:"Toast Notification Dispatcher",category:"elements",tags:["toast","notification","alert","feedback","popover"],description:"Clean stacked toast notification manager with interactive trigger buttons for Success, Error, Warning, and Info states.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-toast-demo-wrapper">
+</div>`}}},xe={id:"toast-notification-system",name:"Toast Notification Dispatcher",category:"elements",tags:["toast","notification","alert","feedback","popover"],description:"Clean stacked toast notification manager with interactive trigger buttons for Success, Error, Warning, and Info states.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-toast-demo-wrapper">
   <div class="dv-toast-triggers">
     <button class="dv-btn-toast dv-toast-btn-success" onclick="triggerToast('success')">
       <i data-lucide="check-circle" style="width:14px;height:14px;"></i>
@@ -3938,7 +3938,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="fl
   <div class="w-full max-w-sm rounded-xl border border-zinc-800 bg-zinc-950 p-3 text-zinc-200 shadow-xl">
     Deployment completed successfully.
   </div>
-</div>`}}},xe={id:"marquee-logo-cloud",name:"Infinite Seamless Logo Marquee",category:"elements",tags:["marquee","logos","animation","infinite","ticker","social-proof"],description:"Pure CSS infinite scrolling marquee for client logos, partner badges, and tech stack showcases with edge fade gradients.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-marquee-container">
+</div>`}}},ge={id:"marquee-logo-cloud",name:"Infinite Seamless Logo Marquee",category:"elements",tags:["marquee","logos","animation","infinite","ticker","social-proof"],description:"Pure CSS infinite scrolling marquee for client logos, partner badges, and tech stack showcases with edge fade gradients.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-marquee-container">
   <div class="dv-marquee-track">
     <!-- Group 1 -->
     <div class="dv-marquee-group">
@@ -4019,7 +4019,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="fl
     <span class="rounded-full border border-zinc-800 bg-zinc-950 px-4 py-2 text-xs font-semibold text-white">🎨 Tailwind CSS</span>
     <span class="rounded-full border border-zinc-800 bg-zinc-950 px-4 py-2 text-xs font-semibold text-white">🔥 TypeScript</span>
   </div>
-</div>`}}},ue={id:"skeleton-shimmer-card",name:"Dashboard Skeleton Shimmer Loaders",category:"feedback",tags:["skeleton","loader","shimmer","loading","placeholder","feedback"],description:"Pure CSS animated shimmer skeleton placeholders for dashboard metric cards, user profiles, and table rows.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-skeleton-container">
+</div>`}}},me={id:"skeleton-shimmer-card",name:"Dashboard Skeleton Shimmer Loaders",category:"feedback",tags:["skeleton","loader","shimmer","loading","placeholder","feedback"],description:"Pure CSS animated shimmer skeleton placeholders for dashboard metric cards, user profiles, and table rows.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-skeleton-container">
   <!-- Metric Card Skeleton -->
   <div class="dv-skeleton-card">
     <div class="dv-skeleton-line" style="width: 40%; height: 14px;"></div>
@@ -4100,7 +4100,7 @@ if (window.lucide) window.lucide.createIcons();`},tailwind:{html:`<div class="fl
     <div class="h-6 w-2/3 rounded bg-zinc-800"></div>
     <div class="h-3 w-1/2 rounded bg-zinc-800"></div>
   </div>
-</div>`}}},me={id:"effect-spotlight-card",name:"Interactive Mouse Spotlight Card",category:"animations",tags:["spotlight","glow","mouse","hover","interactive","cards"],description:"Clean modern card with a dynamic radial gradient spotlight that tracks the user cursor position across the card border.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-spotlight-container">
+</div>`}}},ue={id:"effect-spotlight-card",name:"Interactive Mouse Spotlight Card",category:"animations",tags:["spotlight","glow","mouse","hover","interactive","cards"],description:"Clean modern card with a dynamic radial gradient spotlight that tracks the user cursor position across the card border.",complexity:"Intermediate",variants:{vanilla:{html:`<div class="dv-spotlight-container">
   <div class="dv-spotlight-card" id="dv-spotlight-1">
     <div class="dv-spotlight-glow"></div>
     <div class="dv-spotlight-content">
@@ -6035,7 +6035,7 @@ if (holoCard) {
     <span>#001 / 250</span>
   </div>
   <h3 class="mt-8 text-center text-lg font-black tracking-tight text-white">Aetherial Genesis</h3>
-</div>`}}},Be={id:"style-memphis-pop",name:"Memphis Geometric Pop Art Card",category:"morphisms",tags:["memphis","popart","80s","geometric","retro","playful","morphism"],description:"80s/90s Memphis Design movement style with bold geometric squiggles, vibrant color blocking (teal, yellow, coral), and dotted matrix patterns.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-memphis-stage">
+</div>`}}},Ie={id:"style-memphis-pop",name:"Memphis Geometric Pop Art Card",category:"morphisms",tags:["memphis","popart","80s","geometric","retro","playful","morphism"],description:"80s/90s Memphis Design movement style with bold geometric squiggles, vibrant color blocking (teal, yellow, coral), and dotted matrix patterns.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-memphis-stage">
   <div class="dv-memphis-card">
     <!-- Geometric shapes & confetti decoration -->
     <div class="dv-memphis-shape dv-shape-circle"></div>
@@ -6188,7 +6188,7 @@ if (holoCard) {
     <h3 class="mt-2 text-base font-black">Geometric Pop Art</h3>
     <button class="mt-4 border-2 border-black bg-rose-500 px-3 py-1.5 text-xs font-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Explore</button>
   </div>
-</div>`}}},Ie={id:"style-biomorphism-fluid",name:"Biomorphism Organic Fluid Blob Card",category:"morphisms",tags:["biomorphism","organic","fluid","blob","nature","curves","morphism"],description:"Organic biomorphic design with naturally shifting fluid blob geometry, soft botanical earthy gradients, and harmonic continuous curvature.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-bio-stage">
+</div>`}}},Be={id:"style-biomorphism-fluid",name:"Biomorphism Organic Fluid Blob Card",category:"morphisms",tags:["biomorphism","organic","fluid","blob","nature","curves","morphism"],description:"Organic biomorphic design with naturally shifting fluid blob geometry, soft botanical earthy gradients, and harmonic continuous curvature.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-bio-stage">
   <div class="dv-bio-card">
     <div class="dv-bio-badge">🌿 BIOMORPHISM</div>
     <h3 class="dv-bio-title">Harmonic Organic Curvature</h3>
@@ -6298,7 +6298,7 @@ if (holoCard) {
   <span class="text-xs font-bold text-emerald-400">🌿 BIOMORPHISM</span>
   <h3 class="mt-2 text-lg font-bold">Organic Curvature</h3>
   <p class="mt-2 text-xs text-slate-400">Continuous organic non-uniform geometry inspired by natural cell structures.</p>
-</div>`}}},Te={id:"section-cta-gradient",name:"High-Conversion Glowing CTA Section",category:"pages",tags:["cta","banner","landing","conversion","newsletter","gradient"],description:"Full-width high-converting call to action section with glowing ambient mesh background and instant email capture form.",complexity:"Beginner",variants:{vanilla:{html:`<section class="dv-cta-banner">
+</div>`}}},Ae={id:"section-cta-gradient",name:"High-Conversion Glowing CTA Section",category:"pages",tags:["cta","banner","landing","conversion","newsletter","gradient"],description:"Full-width high-converting call to action section with glowing ambient mesh background and instant email capture form.",complexity:"Beginner",variants:{vanilla:{html:`<section class="dv-cta-banner">
   <div class="dv-cta-glow-mesh"></div>
   <div class="dv-cta-inner">
     <h2>Ready to accelerate your next web project?</h2>
@@ -6423,7 +6423,7 @@ if (holoCard) {
     <input type="email" placeholder="Enter email..." class="flex-1 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-xs text-white" />
     <button class="rounded-lg bg-indigo-600 px-4 py-2 text-xs font-semibold text-white">Start Free</button>
   </div>
-</section>`}}},Ae={id:"page-error-404",name:"Minimalist Swiss 404 Error State",category:"pages",tags:["404","error","not-found","empty-state","pages","swiss"],description:"Clean Swiss-style 404 Not Found error page with live search bar, quick recovery navigation links, and support action.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-404-container">
+</section>`}}},Te={id:"page-error-404",name:"Minimalist Swiss 404 Error State",category:"pages",tags:["404","error","not-found","empty-state","pages","swiss"],description:"Clean Swiss-style 404 Not Found error page with live search bar, quick recovery navigation links, and support action.",complexity:"Beginner",variants:{vanilla:{html:`<div class="dv-404-container">
   <div class="dv-404-content">
     <div class="dv-404-code">404</div>
     <h1 class="dv-404-title">Page not found</h1>
@@ -6985,7 +6985,7 @@ if (holoCard) {
       </div>
     </div>
   </div>
-</footer>`}}},je=[W,J,K,X,Q,Z,ee,te,ae,ie,oe,re,se,ne,de,le,ce,pe,ve,be,ge,xe,ue,me,he,fe,ye,we,ke,ze,Se,Ce,Ee,Le,Be,Ie,Te,Ae,Me,De],I="devvault_custom_snippets_v1",F="devvault_user_preferences_v1";function C(){try{const n=localStorage.getItem(I);return n?JSON.parse(n):[]}catch(n){return console.error("Failed to load custom snippets from storage:",n),[]}}function O(n){const e=C(),t=e.findIndex(a=>a.id===n.id);return t>=0?e[t]={...n,updatedAt:new Date().toISOString()}:e.unshift({...n,id:n.id||`custom-${Date.now()}`,isCustom:!0,createdAt:new Date().toISOString()}),localStorage.setItem(I,JSON.stringify(e)),e}function $e(n){const e=C().filter(t=>t.id!==n);return localStorage.setItem(I,JSON.stringify(e)),e}function qe(){const n=C(),e={app:"DevVault",version:"1.0.0",exportedAt:new Date().toISOString(),snippetsCount:n.length,snippets:n},t=new Blob([JSON.stringify(e,null,2)],{type:"application/json"}),a=URL.createObjectURL(t),i=document.createElement("a");i.href=a,i.download=`devvault-backup-${new Date().toISOString().slice(0,10)}.json`,document.body.appendChild(i),i.click(),document.body.removeChild(i),URL.revokeObjectURL(a)}function Pe(n){try{const e=JSON.parse(n),t=Array.isArray(e)?e:e.snippets||[];if(!Array.isArray(t))throw new Error("Invalid JSON format: snippets array not found");const a=C(),i=new Map;a.forEach(r=>i.set(r.id,r)),t.forEach(r=>{r.name&&r.category&&i.set(r.id||`custom-${Date.now()}-${Math.random()}`,{...r,isCustom:!0})});const o=Array.from(i.values());return localStorage.setItem(I,JSON.stringify(o)),{success:!0,count:t.length}}catch(e){return{success:!1,error:e.message}}}function H(){try{const n=localStorage.getItem(F);return n?JSON.parse(n):{theme:"dark",defaultFramework:"vanilla"}}catch{return{theme:"dark",defaultFramework:"vanilla"}}}function Re(n){try{const e=H();localStorage.setItem(F,JSON.stringify({...e,...n}))}catch(e){console.error("Failed to save preferences:",e)}}class Fe{constructor(){this._builtin=je,this._custom=C()}reloadCustomSnippets(){this._custom=C(),B.emit("registry:updated",this.getAll())}getAll(){return[...this._custom,...this._builtin]}getById(e){return this.getAll().find(t=>t.id===e)||null}filter({category:e="all",tag:t=null,query:a=""}={}){let i=this.getAll();if(e==="custom"?i=i.filter(o=>o.isCustom):e&&e!=="all"&&(i=i.filter(o=>o.category===e)),t&&(i=i.filter(o=>o.tags&&o.tags.includes(t))),a&&a.trim()){const o=a.toLowerCase().trim();i=i.filter(r=>r.name.toLowerCase().includes(o)||r.category.toLowerCase().includes(o)||r.tags&&r.tags.some(s=>s.toLowerCase().includes(o))||r.description&&r.description.toLowerCase().includes(o))}return i}getPopularTags(e=16){const t={};return this.getAll().forEach(a=>{(a.tags||[]).forEach(i=>{t[i]=(t[i]||0)+1})}),Object.entries(t).sort((a,i)=>i[1]-a[1]).slice(0,e).map(a=>a[0])}getCategoryCounts(){const e=this.getAll(),t={all:e.length,custom:this._custom.length};return e.forEach(a=>{a.category&&(t[a.category]=(t[a.category]||0)+1)}),t}saveCustomSnippet(e){const t=O(e);return this.reloadCustomSnippets(),t}deleteCustomSnippet(e){$e(e),this.reloadCustomSnippets()}}class A{constructor(e,t={}){this.container=typeof e=="string"?document.getElementById(e):e,this.context=t,this.stateManager=t.stateManager,this.registry=t.registry,this.events=B,this._unsubscribers=[],this._domListeners=[]}init(){return this.render(),this.bindEvents(),this}render(){}bindEvents(){}subscribe(e,t){const a=this.events.on(e,t);this._unsubscribers.push(a)}listen(e,t,a,i){e&&(e.addEventListener(t,a,i),this._domListeners.push(()=>e.removeEventListener(t,a,i)))}destroy(){this._unsubscribers.forEach(e=>e()),this._unsubscribers=[],this._domListeners.forEach(e=>e()),this._domListeners=[],this.container&&(this.container.innerHTML="")}}class Oe extends A{constructor(e,t){super(e,t)}render(){if(!this.container)return;const e=this.stateManager.get("currentTheme"),a=navigator.platform.toUpperCase().indexOf("MAC")>=0?"⌘K":"Ctrl+K";this.container.innerHTML=`
+</footer>`}}},je=[X,J,W,K,Q,Z,ee,te,ae,ie,oe,re,se,ne,de,le,ce,pe,ve,be,xe,ge,me,ue,he,fe,ye,we,ke,ze,Se,Ce,Ee,Le,Ie,Be,Ae,Te,Me,De],A="devvault_custom_snippets_v1",F="devvault_user_preferences_v1";function E(){try{const n=localStorage.getItem(A);return n?JSON.parse(n):[]}catch(n){return console.error("Failed to load custom snippets from storage:",n),[]}}function O(n){const e=E(),t=e.findIndex(a=>a.id===n.id);return t>=0?e[t]={...n,updatedAt:new Date().toISOString()}:e.unshift({...n,id:n.id||`custom-${Date.now()}`,isCustom:!0,createdAt:new Date().toISOString()}),localStorage.setItem(A,JSON.stringify(e)),e}function $e(n){const e=E().filter(t=>t.id!==n);return localStorage.setItem(A,JSON.stringify(e)),e}function qe(){const n=E(),e={app:"DevVault",version:"1.0.0",exportedAt:new Date().toISOString(),snippetsCount:n.length,snippets:n},t=new Blob([JSON.stringify(e,null,2)],{type:"application/json"}),a=URL.createObjectURL(t),i=document.createElement("a");i.href=a,i.download=`devvault-backup-${new Date().toISOString().slice(0,10)}.json`,document.body.appendChild(i),i.click(),document.body.removeChild(i),URL.revokeObjectURL(a)}function Pe(n){try{const e=JSON.parse(n),t=Array.isArray(e)?e:e.snippets||[];if(!Array.isArray(t))throw new Error("Invalid JSON format: snippets array not found");const a=E(),i=new Map;a.forEach(r=>i.set(r.id,r)),t.forEach(r=>{r.name&&r.category&&i.set(r.id||`custom-${Date.now()}-${Math.random()}`,{...r,isCustom:!0})});const o=Array.from(i.values());return localStorage.setItem(A,JSON.stringify(o)),{success:!0,count:t.length}}catch(e){return{success:!1,error:e.message}}}function _(){try{const n=localStorage.getItem(F);return n?JSON.parse(n):{theme:"dark",defaultFramework:"vanilla"}}catch{return{theme:"dark",defaultFramework:"vanilla"}}}function Re(n){try{const e=_();localStorage.setItem(F,JSON.stringify({...e,...n}))}catch(e){console.error("Failed to save preferences:",e)}}class Fe{constructor(){this._builtin=je,this._custom=E()}reloadCustomSnippets(){this._custom=E(),B.emit("registry:updated",this.getAll())}getAll(){return[...this._custom,...this._builtin]}getById(e){return this.getAll().find(t=>t.id===e)||null}filter({category:e="all",tag:t=null,query:a=""}={}){let i=this.getAll();if(e==="custom"?i=i.filter(o=>o.isCustom):e&&e!=="all"&&(i=i.filter(o=>o.category===e)),t&&(i=i.filter(o=>o.tags&&o.tags.includes(t))),a&&a.trim()){const o=a.toLowerCase().trim();i=i.filter(r=>r.name.toLowerCase().includes(o)||r.category.toLowerCase().includes(o)||r.tags&&r.tags.some(s=>s.toLowerCase().includes(o))||r.description&&r.description.toLowerCase().includes(o))}return i}getPopularTags(e=16){const t={};return this.getAll().forEach(a=>{(a.tags||[]).forEach(i=>{t[i]=(t[i]||0)+1})}),Object.entries(t).sort((a,i)=>i[1]-a[1]).slice(0,e).map(a=>a[0])}getCategoryCounts(){const e=this.getAll(),t={all:e.length,custom:this._custom.length};return e.forEach(a=>{a.category&&(t[a.category]=(t[a.category]||0)+1)}),t}saveCustomSnippet(e){const t=O(e);return this.reloadCustomSnippets(),t}deleteCustomSnippet(e){$e(e),this.reloadCustomSnippets()}}class M{constructor(e,t={}){this.container=typeof e=="string"?document.getElementById(e):e,this.context=t,this.stateManager=t.stateManager,this.registry=t.registry,this.events=B,this._unsubscribers=[],this._domListeners=[]}init(){return this.render(),this.bindEvents(),this}render(){}bindEvents(){}subscribe(e,t){const a=this.events.on(e,t);this._unsubscribers.push(a)}listen(e,t,a,i){e&&(e.addEventListener(t,a,i),this._domListeners.push(()=>e.removeEventListener(t,a,i)))}destroy(){this._unsubscribers.forEach(e=>e()),this._unsubscribers=[],this._domListeners.forEach(e=>e()),this._domListeners=[],this.container&&(this.container.innerHTML="")}}class Oe extends M{constructor(e,t){super(e,t)}render(){if(!this.container)return;const e=this.stateManager.get("currentTheme"),a=navigator.platform.toUpperCase().indexOf("MAC")>=0?"⌘K":"Ctrl+K";this.container.innerHTML=`
       <div class="header-left">
         <!-- Mobile Sidebar Hamburger -->
         <button id="mobile-sidebar-toggle" class="btn-icon mobile-only" aria-label="Toggle Navigation Sidebar">
@@ -7032,10 +7032,10 @@ if (holoCard) {
           <span class="hide-xs">New</span>
         </button>
       </div>
-    `}bindEvents(){this.listen(document.getElementById("mobile-sidebar-toggle"),"click",()=>{this.events.emit("sidebar:toggle-mobile")}),this.listen(document.getElementById("header-search-trigger"),"click",()=>{this.events.emit("modal:open-search")}),this.listen(document.getElementById("dev-tools-btn"),"click",()=>{this.events.emit("modal:open-tools")}),this.listen(document.getElementById("backup-btn"),"click",()=>{this.events.emit("modal:open-backup")}),this.listen(document.getElementById("new-snippet-btn"),"click",()=>{this.events.emit("modal:open-snippet")}),this.listen(document.getElementById("theme-toggle-btn"),"click",()=>{this.events.emit("theme:toggle")}),this.listen(document.getElementById("brand-home-link"),"click",e=>{e.preventDefault(),this.stateManager.resetFilters()}),this.subscribe("theme:changed",()=>{this.render(),this.bindEvents()})}}const He=[{title:"Overview",items:[{id:"all",label:"All Patterns",icon:"layers"},{id:"custom",label:"My Custom Vault",icon:"folder-heart"}]},{title:"Layout & Navigation",items:[{id:"navigation",label:"Navbars & Sidebars",icon:"compass"},{id:"heroes",label:"Hero Sections",icon:"zap"},{id:"pages",label:"Landing & Sections",icon:"file-text"},{id:"footers",label:"Footers",icon:"layout"}]},{title:"Commerce & Data",items:[{id:"ecommerce",label:"E-Commerce & Carts",icon:"shopping-bag"},{id:"tables",label:"Tables & Data Grids",icon:"table"}]},{title:"Forms & Security",items:[{id:"auth",label:"Authentication & Forms",icon:"lock"},{id:"modals",label:"Modals & Dialogs",icon:"copy"}]},{title:"Components & Micro-UI",items:[{id:"cards",label:"Cards & Content",icon:"credit-card"},{id:"layout",label:"Bento & Grids",icon:"grid"},{id:"elements",label:"Buttons & Elements",icon:"mouse-pointer"},{id:"feedback",label:"Feedback & Loaders",icon:"activity"},{id:"animations",label:"Animations & Effects",icon:"sparkles"}]},{title:"Aesthetics & Morphisms",items:[{id:"morphisms",label:"UI Morphisms & Styles",icon:"palette"}]}];class _e extends A{constructor(e,t){super(e,t)}render(){if(!this.container)return;const e=this.registry.getCategoryCounts(),t=this.registry.getPopularTags(16),a=this.stateManager.get("activeCategory"),i=this.stateManager.get("activeTag");this.container.innerHTML=`
+    `}bindEvents(){this.listen(document.getElementById("mobile-sidebar-toggle"),"click",()=>{this.events.emit("sidebar:toggle-mobile")}),this.listen(document.getElementById("header-search-trigger"),"click",()=>{this.events.emit("modal:open-search")}),this.listen(document.getElementById("dev-tools-btn"),"click",()=>{this.events.emit("modal:open-tools")}),this.listen(document.getElementById("backup-btn"),"click",()=>{this.events.emit("modal:open-backup")}),this.listen(document.getElementById("new-snippet-btn"),"click",()=>{this.events.emit("modal:open-snippet")}),this.listen(document.getElementById("theme-toggle-btn"),"click",()=>{this.events.emit("theme:toggle")}),this.listen(document.getElementById("brand-home-link"),"click",e=>{e.preventDefault(),this.stateManager.resetFilters()}),this.subscribe("theme:changed",()=>{this.render(),this.bindEvents()})}}const _e=[{title:"Overview",items:[{id:"all",label:"All Patterns",icon:"layers"},{id:"custom",label:"My Custom Vault",icon:"folder-heart"}]},{title:"Layout & Navigation",items:[{id:"navigation",label:"Navbars & Sidebars",icon:"compass"},{id:"heroes",label:"Hero Sections",icon:"zap"},{id:"pages",label:"Landing & Sections",icon:"file-text"},{id:"footers",label:"Footers",icon:"layout"}]},{title:"Commerce & Data",items:[{id:"ecommerce",label:"E-Commerce & Carts",icon:"shopping-bag"},{id:"tables",label:"Tables & Data Grids",icon:"table"}]},{title:"Forms & Security",items:[{id:"auth",label:"Authentication & Forms",icon:"lock"},{id:"modals",label:"Modals & Dialogs",icon:"copy"}]},{title:"Components & Micro-UI",items:[{id:"cards",label:"Cards & Content",icon:"credit-card"},{id:"layout",label:"Bento & Grids",icon:"grid"},{id:"elements",label:"Buttons & Elements",icon:"mouse-pointer"},{id:"feedback",label:"Feedback & Loaders",icon:"activity"},{id:"animations",label:"Animations & Effects",icon:"sparkles"}]},{title:"Aesthetics & Morphisms",items:[{id:"morphisms",label:"UI Morphisms & Styles",icon:"palette"}]}];class He extends M{constructor(e,t){super(e,t)}render(){if(!this.container)return;const e=this.registry.getCategoryCounts(),t=this.registry.getPopularTags(16),a=this.stateManager.get("activeCategory"),i=this.stateManager.get("activeTag");this.container.innerHTML=`
       <!-- Domain Group Navigation -->
       <div class="sidebar-groups-container">
-        ${He.map(o=>`
+        ${_e.map(o=>`
           <div class="sidebar-group">
             <div class="sidebar-section-title">${o.title}</div>
             <ul class="sidebar-nav-list">
@@ -7068,7 +7068,7 @@ if (holoCard) {
           <span style="font-weight: 600; color: var(--text-primary);">DevVault</span> — Press <kbd class="kbd-badge">Ctrl+N</kbd> to add custom components or <kbd class="kbd-badge">Ctrl+K</kbd> to search.
         </div>
       </div>
-    `}bindEvents(){this.container.querySelectorAll(".sidebar-nav-item").forEach(e=>{this.listen(e,"click",()=>{const t=e.dataset.cat;this.closeMobileDrawer(),this.stateManager.setState({activeCategory:t,activeTag:null})})}),this.container.querySelectorAll(".tag-pill").forEach(e=>{this.listen(e,"click",()=>{const t=e.dataset.tag,a=this.stateManager.get("activeTag");this.closeMobileDrawer(),this.stateManager.setState({activeTag:t===a?null:t})})}),this.subscribe("sidebar:toggle-mobile",()=>{this.container.classList.toggle("mobile-open")}),this.subscribe("state:change",()=>{this.render(),this.bindEvents()}),this.subscribe("registry:updated",()=>{this.render(),this.bindEvents()})}closeMobileDrawer(){var e;(e=this.container)==null||e.classList.remove("mobile-open")}}function _({html:n="",css:e="",js:t="",theme:a="dark",tokens:i={},cdnLinks:o=[],isTailwind:r=!1}){const{radius:s="6px",primaryColor:v="#6366f1",fontFamily:u="'Inter', sans-serif",density:b="normal",borderWidth:d="1px",animationSpeed:g="1"}=i,l=r?'<script src="https://cdn.tailwindcss.com"><\/script>':"",p=o.map(h=>h.endsWith(".css")?`<link rel="stylesheet" href="${h}">`:`<script src="${h}"><\/script>`).join(`
+    `}bindEvents(){this.container.querySelectorAll(".sidebar-nav-item").forEach(e=>{this.listen(e,"click",()=>{const t=e.dataset.cat;this.closeMobileDrawer(),this.stateManager.setState({activeCategory:t,activeTag:null})})}),this.container.querySelectorAll(".tag-pill").forEach(e=>{this.listen(e,"click",()=>{const t=e.dataset.tag,a=this.stateManager.get("activeTag");this.closeMobileDrawer(),this.stateManager.setState({activeTag:t===a?null:t})})}),this.subscribe("sidebar:toggle-mobile",()=>{this.container.classList.toggle("mobile-open")}),this.subscribe("state:change",()=>{this.render(),this.bindEvents()}),this.subscribe("registry:updated",()=>{this.render(),this.bindEvents()})}closeMobileDrawer(){var e;(e=this.container)==null||e.classList.remove("mobile-open")}}function H({html:n="",css:e="",js:t="",theme:a="dark",tokens:i={},cdnLinks:o=[],isTailwind:r=!1}){const{radius:s="6px",primaryColor:v="#6366f1",fontFamily:g="'Inter', sans-serif",density:b="normal",borderWidth:d="1px",animationSpeed:m="1",morphism:l="none"}=i,p=r?'<script src="https://cdn.tailwindcss.com"><\/script>':"",x=o.map(u=>u.endsWith(".css")?`<link rel="stylesheet" href="${u}">`:`<script src="${u}"><\/script>`).join(`
 `);return`<!DOCTYPE html>
 <html lang="en" class="${a}">
 <head>
@@ -7078,13 +7078,13 @@ if (holoCard) {
   <!-- Fonts: Inter, JetBrains Mono, Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"><\/script>
   
-  ${l}
   ${p}
+  ${x}
 
   <style>
     /* Precision CSS Reset & Dynamic Design Tokens */
@@ -7092,11 +7092,11 @@ if (holoCard) {
       --primary: ${v};
       --primary-hover: ${v}dd;
       --radius: ${s};
-      --font-sans: ${u};
+      --font-sans: ${g};
       --font-mono: 'JetBrains Mono', monospace;
       --border-width: ${d};
       --space-scale: ${b==="compact"?"0.8":b==="spacious"?"1.25":"1"};
-      --anim-speed: ${g};
+      --anim-speed: ${m};
       
       /* Dark Theme (Default) */
       --bg: #09090b;
@@ -7141,11 +7141,18 @@ if (holoCard) {
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      transition: background 0.2s ease, color 0.2s ease;
     }
 
     body {
       padding: 24px 16px;
       margin: 0;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     #dv-sandbox-root {
@@ -7160,8 +7167,275 @@ if (holoCard) {
       transition: transform 0.15s ease;
     }
 
-    /* Isolated Component CSS */
+    /* Isolated Component Base Styles */
     ${e}
+
+    /* ==========================================================================
+       REAL-TIME MORPHISM FX ENGINE (Deep Dynamic Style Injection)
+       ========================================================================== */
+
+    /* 1. GLASSMORPHISM FX */
+    ${l==="glass"?`
+      body {
+        background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.22) 0%, transparent 40%),
+                    radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.18) 0%, transparent 40%),
+                    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
+                    var(--bg) !important;
+      }
+      #dv-sandbox-root * {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      #dv-sandbox-root div[class], 
+      #dv-sandbox-root header, 
+      #dv-sandbox-root aside, 
+      #dv-sandbox-root section, 
+      #dv-sandbox-root article,
+      #dv-sandbox-root nav,
+      #dv-sandbox-root table,
+      #dv-sandbox-root form {
+        background: var(--bg-glass) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+      }
+      #dv-sandbox-root button,
+      #dv-sandbox-root a[class*="btn"],
+      #dv-sandbox-root input,
+      #dv-sandbox-root select,
+      #dv-sandbox-root textarea {
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
+      }
+    `:""}
+
+    /* 2. NEOBRUTALISM FX */
+    ${l==="neobrutalism"?`
+      body {
+        background-color: #fafafa !important;
+        color: #000000 !important;
+      }
+      html.dark body {
+        background-color: #121214 !important;
+        color: #ffffff !important;
+      }
+      #dv-sandbox-root * {
+        border-radius: 0px !important;
+        font-weight: 600;
+      }
+      #dv-sandbox-root div[class], 
+      #dv-sandbox-root header, 
+      #dv-sandbox-root aside, 
+      #dv-sandbox-root section, 
+      #dv-sandbox-root article,
+      #dv-sandbox-root nav,
+      #dv-sandbox-root table,
+      #dv-sandbox-root form,
+      #dv-sandbox-root button,
+      #dv-sandbox-root a[class*="btn"],
+      #dv-sandbox-root input,
+      #dv-sandbox-root select {
+        border: 2.5px solid #000000 !important;
+        box-shadow: 4px 4px 0px #000000 !important;
+        transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+      }
+      html.dark #dv-sandbox-root div[class],
+      html.dark #dv-sandbox-root button,
+      html.dark #dv-sandbox-root input {
+        border: 2.5px solid #ffffff !important;
+        box-shadow: 4px 4px 0px #ffffff !important;
+      }
+      #dv-sandbox-root button:hover,
+      #dv-sandbox-root a[class*="btn"]:hover {
+        transform: translate(-2px, -2px) !important;
+        box-shadow: 6px 6px 0px #000000 !important;
+      }
+      html.dark #dv-sandbox-root button:hover {
+        box-shadow: 6px 6px 0px #ffffff !important;
+      }
+    `:""}
+
+    /* 3. CLAYMORPHISM (3D INFLATED) FX */
+    ${l==="clay"?`
+      body {
+        background: #f0f4f8 !important;
+      }
+      html.dark body {
+        background: #181920 !important;
+      }
+      #dv-sandbox-root div[class], 
+      #dv-sandbox-root header, 
+      #dv-sandbox-root aside, 
+      #dv-sandbox-root section, 
+      #dv-sandbox-root article,
+      #dv-sandbox-root nav,
+      #dv-sandbox-root form {
+        border-radius: 24px !important;
+        background: var(--bg-card) !important;
+        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+        box-shadow: 14px 14px 28px rgba(0, 0, 0, 0.2), 
+                    inset -6px -6px 14px rgba(0, 0, 0, 0.16), 
+                    inset 6px 6px 14px rgba(255, 255, 255, 0.45) !important;
+      }
+      #dv-sandbox-root button,
+      #dv-sandbox-root a[class*="btn"],
+      #dv-sandbox-root input {
+        border-radius: 9999px !important;
+        box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.2), 
+                    inset -3px -3px 6px rgba(0, 0, 0, 0.18), 
+                    inset 3px 3px 6px rgba(255, 255, 255, 0.5) !important;
+        border: none !important;
+      }
+    `:""}
+
+    /* 4. NEUMORPHISM (SOFT UI) FX */
+    ${l==="neumorphism"?`
+      body {
+        background: #e6ecf4 !important;
+      }
+      html.dark body {
+        background: #1b1c22 !important;
+      }
+      #dv-sandbox-root div[class], 
+      #dv-sandbox-root header, 
+      #dv-sandbox-root aside, 
+      #dv-sandbox-root section, 
+      #dv-sandbox-root article,
+      #dv-sandbox-root nav,
+      #dv-sandbox-root form {
+        border-radius: 20px !important;
+        background: #e6ecf4 !important;
+        border: none !important;
+        box-shadow: 10px 10px 20px #c5cbd2, -10px -10px 20px #ffffff !important;
+        color: #2d3748 !important;
+      }
+      html.dark #dv-sandbox-root div[class],
+      html.dark #dv-sandbox-root header,
+      html.dark #dv-sandbox-root form {
+        background: #1b1c22 !important;
+        box-shadow: 10px 10px 20px #121317, -10px -10px 20px #24252d !important;
+        color: #f7fafc !important;
+      }
+      #dv-sandbox-root input,
+      #dv-sandbox-root select,
+      #dv-sandbox-root textarea {
+        background: #e6ecf4 !important;
+        border: none !important;
+        box-shadow: inset 4px 4px 8px #c5cbd2, inset -4px -4px 8px #ffffff !important;
+        color: #2d3748 !important;
+      }
+      html.dark #dv-sandbox-root input {
+        background: #1b1c22 !important;
+        box-shadow: inset 4px 4px 8px #121317, inset -4px -4px 8px #24252d !important;
+        color: #f7fafc !important;
+      }
+      #dv-sandbox-root button,
+      #dv-sandbox-root a[class*="btn"] {
+        border-radius: 12px !important;
+        background: #e6ecf4 !important;
+        border: none !important;
+        color: #4f46e5 !important;
+        font-weight: 700 !important;
+        box-shadow: 6px 6px 12px #c5cbd2, -6px -6px 12px #ffffff !important;
+      }
+      html.dark #dv-sandbox-root button,
+      html.dark #dv-sandbox-root a[class*="btn"] {
+        background: #1b1c22 !important;
+        box-shadow: 6px 6px 12px #121317, -6px -6px 12px #24252d !important;
+        color: #818cf8 !important;
+      }
+      #dv-sandbox-root button:active {
+        box-shadow: inset 4px 4px 8px #c5cbd2, inset -4px -4px 8px #ffffff !important;
+      }
+      html.dark #dv-sandbox-root button:active {
+        box-shadow: inset 4px 4px 8px #121317, inset -4px -4px 8px #24252d !important;
+      }
+    `:""}
+
+    /* 5. CYBERPUNK HUD FX */
+    ${l==="cyberpunk"?`
+      body {
+        background: #040814 !important;
+        background-image: linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px) !important;
+        background-size: 20px 20px !important;
+        color: #00f3ff !important;
+        font-family: var(--font-mono) !important;
+      }
+      #dv-sandbox-root div[class], 
+      #dv-sandbox-root header, 
+      #dv-sandbox-root aside, 
+      #dv-sandbox-root section, 
+      #dv-sandbox-root article,
+      #dv-sandbox-root nav,
+      #dv-sandbox-root form {
+        background: rgba(6, 12, 28, 0.9) !important;
+        border: 1.5px solid #00f3ff !important;
+        box-shadow: 0 0 24px rgba(0, 243, 255, 0.35), inset 0 0 12px rgba(0, 243, 255, 0.15) !important;
+        border-radius: 4px !important;
+      }
+      #dv-sandbox-root h1, 
+      #dv-sandbox-root h2, 
+      #dv-sandbox-root h3, 
+      #dv-sandbox-root h4 {
+        color: #00f3ff !important;
+        text-shadow: 0 0 10px rgba(0, 243, 255, 0.6) !important;
+        letter-spacing: 0.05em !important;
+      }
+      #dv-sandbox-root button,
+      #dv-sandbox-root a[class*="btn"] {
+        background: #00f3ff !important;
+        color: #000000 !important;
+        font-weight: 800 !important;
+        border: 1px solid #00f3ff !important;
+        box-shadow: 0 0 16px rgba(0, 243, 255, 0.6) !important;
+        text-transform: uppercase !important;
+        border-radius: 2px !important;
+      }
+      #dv-sandbox-root input {
+        background: rgba(0, 0, 0, 0.8) !important;
+        border: 1px solid #00f3ff !important;
+        color: #00f3ff !important;
+        box-shadow: inset 0 0 8px rgba(0, 243, 255, 0.3) !important;
+      }
+    `:""}
+
+    /* 6. LIQUID AURORA FX */
+    ${l==="liquid"?`
+      body {
+        background: linear-gradient(135deg, #1e1b4b, #311042, #0c2d48) !important;
+        background-size: 400% 400% !important;
+        animation: auroraMesh 10s ease infinite !important;
+      }
+      @keyframes auroraMesh {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      #dv-sandbox-root div[class], 
+      #dv-sandbox-root header, 
+      #dv-sandbox-root aside, 
+      #dv-sandbox-root section, 
+      #dv-sandbox-root article,
+      #dv-sandbox-root nav,
+      #dv-sandbox-root form {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03)) !important;
+        backdrop-filter: blur(28px) !important;
+        -webkit-backdrop-filter: blur(28px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        border-radius: 20px !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+      }
+      #dv-sandbox-root button,
+      #dv-sandbox-root a[class*="btn"] {
+        background: linear-gradient(135deg, #6366f1, #ec4899) !important;
+        color: #ffffff !important;
+        border: none !important;
+        box-shadow: 0 8px 24px rgba(236, 72, 153, 0.45) !important;
+        border-radius: 9999px !important;
+      }
+    `:""}
   </style>
 </head>
 <body>
@@ -7174,57 +7448,36 @@ if (holoCard) {
       window.lucide.createIcons();
     }
 
-    try {
-      ${t}
-    } catch (err) {
-      console.warn('Sandbox Component Script Warning:', err);
-    }
-
-    // Intercept all anchor link clicks to prevent iframe navigation / redirection
-    document.addEventListener('click', (e) => {
-      const anchor = e.target.closest('a');
-      if (anchor) {
-        e.preventDefault();
-        // Provide micro-interaction click feedback
-        anchor.style.transition = 'transform 0.1s ease';
-        anchor.style.transform = 'scale(0.95)';
-        setTimeout(() => { anchor.style.transform = ''; }, 120);
-      }
-    });
-
-    let lastHeight = 0;
-    function reportContentHeight() {
+    // Dynamic Height Observer Protocol
+    function postSize() {
       const root = document.getElementById('dv-sandbox-root');
       if (!root) return;
-      
-      const contentHeight = root.getBoundingClientRect().height;
-      const targetHeight = Math.min(Math.max(Math.ceil(contentHeight + 48), 140), 650);
-
-      if (Math.abs(targetHeight - lastHeight) >= 6) {
-        lastHeight = targetHeight;
-        window.parent.postMessage({ type: 'DEVVAULT_SANDBOX_RESIZE', height: targetHeight }, '*');
-      }
+      const height = Math.max(root.scrollHeight + 50, document.body.scrollHeight + 30);
+      window.parent.postMessage({
+        type: 'DEVVAULT_SANDBOX_RESIZE',
+        height: height
+      }, '*');
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      reportContentHeight();
-      setTimeout(reportContentHeight, 100);
-      setTimeout(reportContentHeight, 400);
-    });
+    window.addEventListener('load', postSize);
+    window.addEventListener('resize', postSize);
+    const observer = new ResizeObserver(postSize);
+    observer.observe(document.body);
+    setTimeout(postSize, 100);
+    setTimeout(postSize, 300);
 
-    if (window.ResizeObserver) {
-      const observer = new ResizeObserver(() => {
-        reportContentHeight();
-      });
-      const root = document.getElementById('dv-sandbox-root');
-      if (root) observer.observe(root);
+    // Isolated Component JS
+    try {
+      ${t}
+    } catch(err) {
+      console.warn('Sandbox Script Evaluation:', err);
     }
   <\/script>
 </body>
-</html>`}function S(n,e="success",t=2500){const a=document.getElementById("toast-container");if(!a)return;const i=document.createElement("div");i.className="toast";const o=e==="success"?"✓":"ℹ";i.innerHTML=`
+</html>`}function C(n,e="success",t=2500){const a=document.getElementById("toast-container");if(!a)return;const i=document.createElement("div");i.className="toast";const o=e==="success"?"✓":"ℹ";i.innerHTML=`
     <span class="toast-icon-success">${o}</span>
     <span>${n}</span>
-  `,a.appendChild(i),setTimeout(()=>{i.style.opacity="0",i.style.transform="translateY(10px)",i.style.transition="all 150ms ease-out",setTimeout(()=>{i.parentElement&&i.parentElement.removeChild(i)},150)},t)}const Ne=[{name:"Indigo",hex:"#6366f1"},{name:"Emerald",hex:"#10b981"},{name:"Amber",hex:"#f59e0b"},{name:"Rose",hex:"#f43f5e"},{name:"Cyan",hex:"#06b6d4"},{name:"Violet",hex:"#8b5cf6"},{name:"Orange",hex:"#f97316"},{name:"Zinc",hex:"#71717a"}];class Ge{constructor(e,t={}){this.component=e,this.options=t,this.currentTheme=t.currentTheme||"dark",this.state={viewport:"desktop",activeTab:"html",activeColor:"#6366f1",activeRadius:"6px",activeFont:"'Inter', sans-serif",activeDensity:"normal",activeStageBg:this.currentTheme==="light"?"dot-light":"dot-dark",sandboxTheme:this.currentTheme,isInspectorOpen:!1,isCustomizerOpen:!1},this.element=null,this.iframe=null,this.boundResizeHandler=this.handleIframeResize.bind(this)}render(){var i,o,r;const{component:e}=this,t=!!((i=e.variants)!=null&&i.tailwind),a=document.createElement("article");return a.className="component-card",a.id=`card-${e.id}`,a.innerHTML=`
+  `,a.appendChild(i),setTimeout(()=>{i.style.opacity="0",i.style.transform="translateY(10px)",i.style.transition="all 150ms ease-out",setTimeout(()=>{i.parentElement&&i.parentElement.removeChild(i)},150)},t)}const Ne=[{name:"Indigo",hex:"#6366f1"},{name:"Emerald",hex:"#10b981"},{name:"Amber",hex:"#f59e0b"},{name:"Rose",hex:"#f43f5e"},{name:"Cyan",hex:"#06b6d4"},{name:"Violet",hex:"#8b5cf6"},{name:"Orange",hex:"#f97316"},{name:"Zinc",hex:"#71717a"}];class Ge{constructor(e,t={}){this.component=e,this.options=t,this.currentTheme=t.currentTheme||"dark",this.state={viewport:"desktop",activeTab:"html",activeColor:"#6366f1",activeRadius:"6px",activeFont:"'Inter', sans-serif",activeDensity:"normal",activeMorphism:"none",activeStageBg:this.currentTheme==="light"?"dot-light":"dot-dark",sandboxTheme:this.currentTheme,isInspectorOpen:!1,isCustomizerOpen:!1},this.element=null,this.iframe=null,this.boundResizeHandler=this.handleIframeResize.bind(this)}render(){var i,o,r;const{component:e}=this,t=!!((i=e.variants)!=null&&i.tailwind),a=document.createElement("article");return a.className="component-card",a.id=`card-${e.id}`,a.innerHTML=`
       <!-- Card Header -->
       <div class="card-header">
         <div class="card-title-group">
@@ -7330,6 +7583,20 @@ if (holoCard) {
             </select>
           </div>
 
+          <!-- Morphism Aesthetic FX Engine -->
+          <div class="customizer-item">
+            <span style="font-weight: 600; color: var(--accent-primary);">✨ Morphism FX:</span>
+            <select class="form-select morphism-selector" style="padding:2px 8px; font-size:11px; font-weight:600; background:var(--bg-surface-elevated); border:1px solid var(--accent-primary); color:var(--text-primary); border-radius:var(--radius-sm);">
+              <option value="none" selected>Default (Clean)</option>
+              <option value="glass">🪟 Glassmorphism</option>
+              <option value="neobrutalism">⬛ Neobrutalism</option>
+              <option value="clay">🎨 Claymorphism (3D)</option>
+              <option value="neumorphism">🔘 Neumorphism</option>
+              <option value="cyberpunk">⚡ Cyberpunk Glow</option>
+              <option value="liquid">🌊 Liquid Aurora</option>
+            </select>
+          </div>
+
           <!-- Sandbox Theme (Dark/Light) -->
           <div class="customizer-item">
             <button class="btn btn-secondary btn-sandbox-theme" style="padding: 2px 7px; font-size: 11px;" title="Toggle Inner Preview Dark/Light Mode">
@@ -7369,25 +7636,65 @@ if (holoCard) {
           <pre><code class="code-content" id="code-content-${e.id}"></code></pre>
         </div>
       </div>
-    `,this.element=a,this.iframe=a.querySelector(`#iframe-${e.id}`),this.bindEvents(),this.updateSandbox(),window.addEventListener("message",this.boundResizeHandler),a}updateSandbox(){var i;if(!this.iframe)return;const{component:e,state:t}=this,a=((i=e.variants)==null?void 0:i.vanilla)||{html:"",css:"",js:""};this.iframe.srcdoc=_({html:a.html,css:a.css,js:a.js,theme:t.sandboxTheme,tokens:{radius:t.activeRadius,primaryColor:t.activeColor,fontFamily:t.activeFont,density:t.activeDensity},cdnLinks:e.cdnLinks||[]}),t.isInspectorOpen&&this.updateCodeView()}updateCodeView(){var s,v;const e=this.element.querySelector(`#code-content-${this.component.id}`);if(!e)return;const t=((s=this.component.variants)==null?void 0:s.vanilla)||{html:"",css:"",js:""},a=((v=this.component.variants)==null?void 0:v.tailwind)||{html:""},{state:i}=this,o=`/* Customized DevVault Design Tokens */
+    `,this.element=a,this.iframe=a.querySelector(`#iframe-${e.id}`),this.bindEvents(),this.updateSandbox(),window.addEventListener("message",this.boundResizeHandler),a}updateSandbox(){var i;if(!this.iframe)return;const{component:e,state:t}=this,a=((i=e.variants)==null?void 0:i.vanilla)||{html:"",css:"",js:""};this.iframe.srcdoc=H({html:a.html,css:a.css,js:a.js,theme:t.sandboxTheme,tokens:{radius:t.activeRadius,primaryColor:t.activeColor,fontFamily:t.activeFont,density:t.activeDensity,morphism:t.activeMorphism},cdnLinks:e.cdnLinks||[]}),t.isInspectorOpen&&this.updateCodeView()}updateCodeView(){var v,g;const e=this.element.querySelector(`#code-content-${this.component.id}`);if(!e)return;const t=((v=this.component.variants)==null?void 0:v.vanilla)||{html:"",css:"",js:""},a=((g=this.component.variants)==null?void 0:g.tailwind)||{html:""},{state:i}=this;let o="";i.activeMorphism==="glass"?o=`
+/* Glassmorphism FX Overlay */
+.dv-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}`:i.activeMorphism==="neobrutalism"?o=`
+/* Neobrutalism FX Overlay */
+.dv-brutal-card {
+  border: 2.5px solid #000000;
+  box-shadow: 5px 5px 0px #000000;
+  border-radius: 0px;
+  font-weight: 600;
+}`:i.activeMorphism==="clay"?o=`
+/* Claymorphism 3D FX Overlay */
+.dv-clay-card {
+  border-radius: 24px;
+  box-shadow: 14px 14px 28px rgba(0, 0, 0, 0.2), inset -6px -6px 14px rgba(0, 0, 0, 0.16), inset 6px 6px 14px rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}`:i.activeMorphism==="neumorphism"?o=`
+/* Neumorphism Soft UI FX Overlay */
+.dv-neumorph-card {
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.35), -10px -10px 20px rgba(255,255,255,0.05);
+  border: none;
+}`:i.activeMorphism==="cyberpunk"?o=`
+/* Cyberpunk HUD FX Overlay */
+.dv-cyber-card {
+  border: 1.5px solid #00f3ff;
+  box-shadow: 0 0 24px rgba(0, 243, 255, 0.4), inset 0 0 12px rgba(0, 243, 255, 0.15);
+  font-family: 'JetBrains Mono', monospace;
+}`:i.activeMorphism==="liquid"&&(o=`
+/* Liquid Aurora FX Overlay */
+.dv-liquid-card {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.28), rgba(244, 63, 94, 0.28));
+  backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 16px 48px rgba(99, 102, 241, 0.25);
+}`);const r=`/* Customized DevVault Design Tokens */
 :root {
   --primary: ${i.activeColor};
   --radius: ${i.activeRadius};
   --font-sans: ${i.activeFont};
 }
 
-${t.css}`;let r="";switch(this.state.activeTab){case"html":r=t.html;break;case"css":r=o;break;case"js":r=t.js||"// Zero JavaScript required";break;case"tailwind":r=a.html;break;case"all":r=`<!-- === HTML === -->
+${t.css}${o}`;let s="";switch(this.state.activeTab){case"html":s=t.html;break;case"css":s=r;break;case"js":s=t.js||"// Zero JavaScript required";break;case"tailwind":s=a.html;break;case"all":s=`<!-- === HTML === -->
 ${t.html}
 
 /* === CSS (with custom tokens) === */
 <style>
-${o}
+${r}
 </style>
 
 // === JS ===
 <script>
 ${t.js||"// Zero JS"}
-<\/script>`;break}e.textContent=r.trim()}bindEvents(){var d,g,l,p,x,h,f,z;const{element:e,component:t,state:a}=this;e.querySelectorAll(".viewport-btn").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".viewport-btn").forEach(E=>E.classList.remove("active")),c.classList.add("active");const m=c.dataset.vp,w=e.querySelector(`#frame-wrapper-${t.id}`);m==="desktop"&&(w.style.maxWidth="100%"),m==="laptop"&&(w.style.maxWidth="1024px"),m==="tablet"&&(w.style.maxWidth="768px"),m==="mobile"&&(w.style.maxWidth="375px")})});const i=e.querySelector(".btn-toggle-customize"),o=e.querySelector(`#customizer-${t.id}`);i==null||i.addEventListener("click",()=>{a.isCustomizerOpen=!a.isCustomizerOpen,o==null||o.classList.toggle("hidden",!a.isCustomizerOpen),i.classList.toggle("btn-primary",a.isCustomizerOpen),i.classList.toggle("btn-secondary",!a.isCustomizerOpen)}),e.querySelectorAll(".color-swatch").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".color-swatch").forEach(w=>w.classList.remove("active")),c.classList.add("active"),a.activeColor=c.dataset.color;const m=e.querySelector(`#native-color-picker-${t.id}`);m&&(m.value=a.activeColor),this.updateSandbox()})});const r=e.querySelector(`#native-color-picker-${t.id}`);r&&r.addEventListener("input",c=>{a.activeColor=c.target.value,e.querySelectorAll(".color-swatch").forEach(m=>m.classList.remove("active")),this.updateSandbox()}),(d=e.querySelector(".radius-selector"))==null||d.addEventListener("change",c=>{a.activeRadius=c.target.value,this.updateSandbox()}),(g=e.querySelector(".font-selector"))==null||g.addEventListener("change",c=>{a.activeFont=c.target.value,this.updateSandbox()}),(l=e.querySelector(".density-selector"))==null||l.addEventListener("change",c=>{a.activeDensity=c.target.value,this.updateSandbox()}),(p=e.querySelector(".bg-stage-selector"))==null||p.addEventListener("change",c=>{const m=e.querySelector(`#stage-${t.id}`);a.activeStageBg=c.target.value,m&&(m.className=`sandbox-stage stage-bg-${a.activeStageBg}`)});const s=e.querySelector(".btn-sandbox-theme"),v=e.querySelector(`#theme-label-${t.id}`);s==null||s.addEventListener("click",()=>{a.sandboxTheme=a.sandboxTheme==="dark"?"light":"dark",v&&(v.textContent=a.sandboxTheme==="dark"?"🌙 Dark":"☀️ Light"),this.updateSandbox()});const u=e.querySelector(".btn-toggle-code"),b=e.querySelector(`#inspector-${t.id}`);u==null||u.addEventListener("click",()=>{a.isInspectorOpen=!a.isInspectorOpen,b.classList.toggle("hidden",!a.isInspectorOpen),u.classList.toggle("btn-primary",a.isInspectorOpen),u.classList.toggle("btn-secondary",!a.isInspectorOpen),a.isInspectorOpen&&this.updateCodeView()}),e.querySelectorAll(".code-tab-btn").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".code-tab-btn").forEach(m=>m.classList.remove("active")),c.classList.add("active"),a.activeTab=c.dataset.tab,this.updateCodeView()})}),(x=e.querySelector(".btn-copy-primary"))==null||x.addEventListener("click",()=>{var m,w;const c=((w=(m=t.variants)==null?void 0:m.vanilla)==null?void 0:w.html)||"";navigator.clipboard.writeText(c).then(()=>{S(`Copied ${t.name} HTML!`)})}),(h=e.querySelector(".btn-copy-tab"))==null||h.addEventListener("click",()=>{const c=e.querySelector(`#code-content-${t.id}`);c&&navigator.clipboard.writeText(c.textContent).then(()=>{S(`Copied customized ${a.activeTab.toUpperCase()} code!`)})}),t.isCustom&&((f=e.querySelector(".btn-edit-custom"))==null||f.addEventListener("click",()=>{this.options.onEditCustom&&this.options.onEditCustom(t)}),(z=e.querySelector(".btn-delete-custom"))==null||z.addEventListener("click",()=>{confirm(`Delete custom snippet "${t.name}"?`)&&this.options.onDeleteCustom&&this.options.onDeleteCustom(t.id)}))}handleIframeResize(e){e.data&&e.data.type==="DEVVAULT_SANDBOX_RESIZE"&&this.iframe&&e.source===this.iframe.contentWindow&&(this.iframe.style.height=`${e.data.height}px`)}destroy(){window.removeEventListener("message",this.boundResizeHandler)}}function Ve(n,e={}){return new Ge(n,e).render()}const T={all:{title:"All UI Patterns",desc:"Browse the entire collection of production-tested web patterns and micro-interactions."},custom:{title:"My Custom Vault",desc:"Your saved custom snippets and modified components stored locally in your browser."},navigation:{title:"Navbars & Navigation",desc:"Header bars, floating glass navigation, responsive drawers, and collapsible sidebars."},heroes:{title:"Hero Sections & Headings",desc:"High-impact conversion hero banners, ambient radial glows, and split agency layouts."},pages:{title:"Landing & Full Page Sections",desc:"Call to action sections, Swiss 404 error recovery pages, and split inquiry forms."},footers:{title:"Footers & Utility Layouts",desc:"Multi-column corporate SaaS footers with newsletter signups and status beacons."},ecommerce:{title:"E-Commerce & Transactions",desc:"Slide-out cart drawers, annual/monthly pricing matrices, and product cards."},tables:{title:"Tables & Data Grids",desc:"Sortable datagrids with live search, status badges, and SaaS feature comparison matrices."},auth:{title:"Authentication & Security Forms",desc:"Split-pane login forms, floating input fields, and multi-step onboarding wizards."},modals:{title:"Modals & Overlays",desc:"Destructive confirmation dialogs, GDPR cookie consent banners, and command palettes."},cards:{title:"Cards & Content Modules",desc:"Interactive e-commerce quickviews, pricing cards, and holographic foils."},layout:{title:"Bento & Grid Layouts",desc:"Asymmetric feature bento grids, KPI metric counters, and vertical activity feeds."},elements:{title:"Buttons & Micro-Elements",desc:"Magnetic buttons, rotating shimmer borders, infinite logo tickers, and FAQ accordions."},feedback:{title:"Feedback & Skeleton Loaders",desc:"Dynamic shimmer skeletons and interactive toast notification stacks."},animations:{title:"Animations & Micro-Effects",desc:"Mouse-following radial spotlight effects and GPU spring physics."},morphisms:{title:"UI Morphisms & Visual Styles",desc:"Master showcase of modern visual aesthetics: Glassmorphism, Neobrutalism, Claymorphism, Neumorphism, Spatial UI, Cyberpunk, and Liquid Glass."}};class Ue extends A{constructor(e,t){super(e,t),this.filterBarEl=document.getElementById("filter-bar"),this.emptyStateEl=document.getElementById("empty-state"),this._cardControllers=[]}render(){if(!this.container)return;const e=this.stateManager.state,t=this.registry.filter({category:e.activeCategory,tag:e.activeTag,query:e.searchTerm});this.renderFilterBar(t.length),this.renderCards(t)}renderFilterBar(e){var u;if(!this.filterBarEl)return;const{activeCategory:t,activeTag:a,searchTerm:i,activeFramework:o}=this.stateManager.state;let r="UI Patterns",s="Explore components and micro-interactions.";a?(r=`#${a}`,s=`Showing patterns matching tag #${a}`):T[t]&&(r=T[t].title,s=T[t].desc),this.filterBarEl.innerHTML=`
+<\/script>`;break}e.textContent=s.trim()}bindEvents(){var d,m,l,p,x,f,u,z,S;const{element:e,component:t,state:a}=this;e.querySelectorAll(".viewport-btn").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".viewport-btn").forEach(L=>L.classList.remove("active")),c.classList.add("active");const h=c.dataset.vp,w=e.querySelector(`#frame-wrapper-${t.id}`);h==="desktop"&&(w.style.maxWidth="100%"),h==="laptop"&&(w.style.maxWidth="1024px"),h==="tablet"&&(w.style.maxWidth="768px"),h==="mobile"&&(w.style.maxWidth="375px")})});const i=e.querySelector(".btn-toggle-customize"),o=e.querySelector(`#customizer-${t.id}`);i==null||i.addEventListener("click",()=>{a.isCustomizerOpen=!a.isCustomizerOpen,o==null||o.classList.toggle("hidden",!a.isCustomizerOpen),i.classList.toggle("btn-primary",a.isCustomizerOpen),i.classList.toggle("btn-secondary",!a.isCustomizerOpen)}),e.querySelectorAll(".color-swatch").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".color-swatch").forEach(w=>w.classList.remove("active")),c.classList.add("active"),a.activeColor=c.dataset.color;const h=e.querySelector(`#native-color-picker-${t.id}`);h&&(h.value=a.activeColor),this.updateSandbox()})});const r=e.querySelector(`#native-color-picker-${t.id}`);r&&r.addEventListener("input",c=>{a.activeColor=c.target.value,e.querySelectorAll(".color-swatch").forEach(h=>h.classList.remove("active")),this.updateSandbox()}),(d=e.querySelector(".radius-selector"))==null||d.addEventListener("change",c=>{a.activeRadius=c.target.value,this.updateSandbox()}),(m=e.querySelector(".font-selector"))==null||m.addEventListener("change",c=>{a.activeFont=c.target.value,this.updateSandbox()}),(l=e.querySelector(".density-selector"))==null||l.addEventListener("change",c=>{a.activeDensity=c.target.value,this.updateSandbox()}),(p=e.querySelector(".bg-stage-selector"))==null||p.addEventListener("change",c=>{const h=e.querySelector(`#stage-${t.id}`);a.activeStageBg=c.target.value,h&&(h.className=`sandbox-stage stage-bg-${a.activeStageBg}`)}),(x=e.querySelector(".morphism-selector"))==null||x.addEventListener("change",c=>{a.activeMorphism=c.target.value,this.updateSandbox(),C(`Applied ${c.target.options[c.target.selectedIndex].text} effect!`)});const s=e.querySelector(".btn-sandbox-theme"),v=e.querySelector(`#theme-label-${t.id}`);s==null||s.addEventListener("click",()=>{a.sandboxTheme=a.sandboxTheme==="dark"?"light":"dark",v&&(v.textContent=a.sandboxTheme==="dark"?"🌙 Dark":"☀️ Light"),this.updateSandbox()});const g=e.querySelector(".btn-toggle-code"),b=e.querySelector(`#inspector-${t.id}`);g==null||g.addEventListener("click",()=>{a.isInspectorOpen=!a.isInspectorOpen,b.classList.toggle("hidden",!a.isInspectorOpen),g.classList.toggle("btn-primary",a.isInspectorOpen),g.classList.toggle("btn-secondary",!a.isInspectorOpen),a.isInspectorOpen&&this.updateCodeView()}),e.querySelectorAll(".code-tab-btn").forEach(c=>{c.addEventListener("click",()=>{e.querySelectorAll(".code-tab-btn").forEach(h=>h.classList.remove("active")),c.classList.add("active"),a.activeTab=c.dataset.tab,this.updateCodeView()})}),(f=e.querySelector(".btn-copy-primary"))==null||f.addEventListener("click",()=>{var h,w;const c=((w=(h=t.variants)==null?void 0:h.vanilla)==null?void 0:w.html)||"";navigator.clipboard.writeText(c).then(()=>{C(`Copied ${t.name} HTML!`)})}),(u=e.querySelector(".btn-copy-tab"))==null||u.addEventListener("click",()=>{const c=e.querySelector(`#code-content-${t.id}`);c&&navigator.clipboard.writeText(c.textContent).then(()=>{C(`Copied customized ${a.activeTab.toUpperCase()} code!`)})}),t.isCustom&&((z=e.querySelector(".btn-edit-custom"))==null||z.addEventListener("click",()=>{this.options.onEditCustom&&this.options.onEditCustom(t)}),(S=e.querySelector(".btn-delete-custom"))==null||S.addEventListener("click",()=>{confirm(`Delete custom snippet "${t.name}"?`)&&this.options.onDeleteCustom&&this.options.onDeleteCustom(t.id)}))}handleIframeResize(e){e.data&&e.data.type==="DEVVAULT_SANDBOX_RESIZE"&&this.iframe&&e.source===this.iframe.contentWindow&&(this.iframe.style.height=`${e.data.height}px`)}destroy(){window.removeEventListener("message",this.boundResizeHandler)}}function Ve(n,e={}){return new Ge(n,e).render()}const T={all:{title:"All UI Patterns",desc:"Browse the entire collection of production-tested web patterns and micro-interactions."},custom:{title:"My Custom Vault",desc:"Your saved custom snippets and modified components stored locally in your browser."},navigation:{title:"Navbars & Navigation",desc:"Header bars, floating glass navigation, responsive drawers, and collapsible sidebars."},heroes:{title:"Hero Sections & Headings",desc:"High-impact conversion hero banners, ambient radial glows, and split agency layouts."},pages:{title:"Landing & Full Page Sections",desc:"Call to action sections, Swiss 404 error recovery pages, and split inquiry forms."},footers:{title:"Footers & Utility Layouts",desc:"Multi-column corporate SaaS footers with newsletter signups and status beacons."},ecommerce:{title:"E-Commerce & Transactions",desc:"Slide-out cart drawers, annual/monthly pricing matrices, and product cards."},tables:{title:"Tables & Data Grids",desc:"Sortable datagrids with live search, status badges, and SaaS feature comparison matrices."},auth:{title:"Authentication & Security Forms",desc:"Split-pane login forms, floating input fields, and multi-step onboarding wizards."},modals:{title:"Modals & Overlays",desc:"Destructive confirmation dialogs, GDPR cookie consent banners, and command palettes."},cards:{title:"Cards & Content Modules",desc:"Interactive e-commerce quickviews, pricing cards, and holographic foils."},layout:{title:"Bento & Grid Layouts",desc:"Asymmetric feature bento grids, KPI metric counters, and vertical activity feeds."},elements:{title:"Buttons & Micro-Elements",desc:"Magnetic buttons, rotating shimmer borders, infinite logo tickers, and FAQ accordions."},feedback:{title:"Feedback & Skeleton Loaders",desc:"Dynamic shimmer skeletons and interactive toast notification stacks."},animations:{title:"Animations & Micro-Effects",desc:"Mouse-following radial spotlight effects and GPU spring physics."},morphisms:{title:"UI Morphisms & Visual Styles",desc:"Master showcase of modern visual aesthetics: Glassmorphism, Neobrutalism, Claymorphism, Neumorphism, Spatial UI, Cyberpunk, and Liquid Glass."}};class Ue extends M{constructor(e,t){super(e,t),this.filterBarEl=document.getElementById("filter-bar"),this.emptyStateEl=document.getElementById("empty-state"),this._cardControllers=[]}render(){if(!this.container)return;const e=this.stateManager.state,t=this.registry.filter({category:e.activeCategory,tag:e.activeTag,query:e.searchTerm});this.renderFilterBar(t.length),this.renderCards(t)}renderFilterBar(e){var g;if(!this.filterBarEl)return;const{activeCategory:t,activeTag:a,searchTerm:i,activeFramework:o}=this.stateManager.state;let r="UI Patterns",s="Explore components and micro-interactions.";a?(r=`#${a}`,s=`Showing patterns matching tag #${a}`):T[t]&&(r=T[t].title,s=T[t].desc),this.filterBarEl.innerHTML=`
       <div class="filter-title-row">
         <div class="filter-header-text">
           <div class="flex items-center gap-2">
@@ -7412,7 +7719,7 @@ ${t.js||"// Zero JS"}
           </div>
         </div>
       </div>
-    `;const v=this.filterBarEl.querySelector("#inline-search-input");v==null||v.addEventListener("input",b=>{this.stateManager.setState({searchTerm:b.target.value})}),(u=this.filterBarEl.querySelector("#clear-search-btn"))==null||u.addEventListener("click",()=>{this.stateManager.setState({searchTerm:""})}),this.filterBarEl.querySelectorAll(".framework-btn").forEach(b=>{b.addEventListener("click",()=>{this.stateManager.setState({activeFramework:b.dataset.fw})})})}renderCards(e){var a,i;if(this.container.innerHTML="",e.length===0){(a=this.emptyStateEl)==null||a.classList.remove("hidden");return}else(i=this.emptyStateEl)==null||i.classList.add("hidden");const t=this.stateManager.get("currentTheme");e.forEach(o=>{const r=Ve(o,{currentTheme:t,onEditCustom:s=>this.events.emit("modal:edit-snippet",s),onDeleteCustom:s=>{this.registry.deleteCustomSnippet(s),this.events.emit("toast:show","Snippet deleted from library.")}});this.container.appendChild(r)})}bindEvents(){this.subscribe("state:change",()=>{this.render()}),this.subscribe("registry:updated",()=>{this.render()}),this.subscribe("theme:changed",()=>{this.render()}),this.subscribe("component:scroll-to",e=>{this.stateManager.setState({activeCategory:"all",activeTag:null}),setTimeout(()=>{const t=document.getElementById(`card-${e.id}`);t&&(t.scrollIntoView({behavior:"smooth",block:"center"}),t.style.borderColor="var(--accent-primary)",setTimeout(()=>{t.style.borderColor=""},1200))},100)})}}function Ye({getAllComponents:n,onSelectComponent:e}){const t=document.getElementById("command-palette-backdrop"),a=document.getElementById("command-input"),i=document.getElementById("command-results");if(!t||!a||!i)return;let o=0,r=[];function s(){t.classList.remove("hidden"),a.value="",o=0,u(""),setTimeout(()=>a.focus(),50)}function v(){t.classList.add("hidden")}function u(d){const g=n(),l=d.trim().toLowerCase();if(r=g.filter(p=>l?p.name.toLowerCase().includes(l)||p.category.toLowerCase().includes(l)||p.tags&&p.tags.some(x=>x.toLowerCase().includes(l))||p.description&&p.description.toLowerCase().includes(l):!0).slice(0,8),r.length===0){i.innerHTML=`
+    `;const v=this.filterBarEl.querySelector("#inline-search-input");v==null||v.addEventListener("input",b=>{this.stateManager.setState({searchTerm:b.target.value})}),(g=this.filterBarEl.querySelector("#clear-search-btn"))==null||g.addEventListener("click",()=>{this.stateManager.setState({searchTerm:""})}),this.filterBarEl.querySelectorAll(".framework-btn").forEach(b=>{b.addEventListener("click",()=>{this.stateManager.setState({activeFramework:b.dataset.fw})})})}renderCards(e){var a,i;if(this.container.innerHTML="",e.length===0){(a=this.emptyStateEl)==null||a.classList.remove("hidden");return}else(i=this.emptyStateEl)==null||i.classList.add("hidden");const t=this.stateManager.get("currentTheme");e.forEach(o=>{const r=Ve(o,{currentTheme:t,onEditCustom:s=>this.events.emit("modal:edit-snippet",s),onDeleteCustom:s=>{this.registry.deleteCustomSnippet(s),this.events.emit("toast:show","Snippet deleted from library.")}});this.container.appendChild(r)})}bindEvents(){this.subscribe("state:change",()=>{this.render()}),this.subscribe("registry:updated",()=>{this.render()}),this.subscribe("theme:changed",()=>{this.render()}),this.subscribe("component:scroll-to",e=>{this.stateManager.setState({activeCategory:"all",activeTag:null}),setTimeout(()=>{const t=document.getElementById(`card-${e.id}`);t&&(t.scrollIntoView({behavior:"smooth",block:"center"}),t.style.borderColor="var(--accent-primary)",setTimeout(()=>{t.style.borderColor=""},1200))},100)})}}function Ye({getAllComponents:n,onSelectComponent:e}){const t=document.getElementById("command-palette-backdrop"),a=document.getElementById("command-input"),i=document.getElementById("command-results");if(!t||!a||!i)return;let o=0,r=[];function s(){t.classList.remove("hidden"),a.value="",o=0,g(""),setTimeout(()=>a.focus(),50)}function v(){t.classList.add("hidden")}function g(d){const m=n(),l=d.trim().toLowerCase();if(r=m.filter(p=>l?p.name.toLowerCase().includes(l)||p.category.toLowerCase().includes(l)||p.tags&&p.tags.some(x=>x.toLowerCase().includes(l))||p.description&&p.description.toLowerCase().includes(l):!0).slice(0,8),r.length===0){i.innerHTML=`
         <div style="padding: 24px; text-align: center; color: var(--text-dim); font-size: 13px;">
           No matching components found.
         </div>
@@ -7427,7 +7734,7 @@ ${t.js||"// Zero JS"}
           <span style="font-size: 11px; color: var(--text-dim);">${p.complexity||""}</span>
         </div>
       </div>
-    `).join(""),i.querySelectorAll(".command-item").forEach(p=>{p.addEventListener("click",()=>{const x=parseInt(p.dataset.idx,10);b(x)})})}function b(d){const g=r[d];g&&(v(),e&&e(g))}return a.addEventListener("input",d=>{o=0,u(d.target.value)}),a.addEventListener("keydown",d=>{d.key==="ArrowDown"?(d.preventDefault(),r.length>0&&(o=(o+1)%r.length,u(a.value))):d.key==="ArrowUp"?(d.preventDefault(),r.length>0&&(o=(o-1+r.length)%r.length,u(a.value))):d.key==="Enter"?(d.preventDefault(),b(o)):d.key==="Escape"&&v()}),t.addEventListener("click",d=>{d.target===t&&v()}),window.addEventListener("keydown",d=>{(d.metaKey||d.ctrlKey)&&d.key.toLowerCase()==="k"?(d.preventDefault(),t.classList.contains("hidden")?s():v()):d.key==="Escape"&&!t.classList.contains("hidden")&&v()}),{openPalette:s,closePalette:v}}const R={blank:{name:"New Custom Component",category:"elements",html:`<div class="custom-card">
+    `).join(""),i.querySelectorAll(".command-item").forEach(p=>{p.addEventListener("click",()=>{const x=parseInt(p.dataset.idx,10);b(x)})})}function b(d){const m=r[d];m&&(v(),e&&e(m))}return a.addEventListener("input",d=>{o=0,g(d.target.value)}),a.addEventListener("keydown",d=>{d.key==="ArrowDown"?(d.preventDefault(),r.length>0&&(o=(o+1)%r.length,g(a.value))):d.key==="ArrowUp"?(d.preventDefault(),r.length>0&&(o=(o-1+r.length)%r.length,g(a.value))):d.key==="Enter"?(d.preventDefault(),b(o)):d.key==="Escape"&&v()}),t.addEventListener("click",d=>{d.target===t&&v()}),window.addEventListener("keydown",d=>{(d.metaKey||d.ctrlKey)&&d.key.toLowerCase()==="k"?(d.preventDefault(),t.classList.contains("hidden")?s():v()):d.key==="Escape"&&!t.classList.contains("hidden")&&v()}),{openPalette:s,closePalette:v}}const R={blank:{name:"New Custom Component",category:"elements",html:`<div class="custom-card">
   <h3>Hello DevVault</h3>
   <p>Start styling your custom component here...</p>
   <button class="custom-btn">Click Me</button>
@@ -7498,7 +7805,7 @@ ${t.js||"// Zero JS"}
 .metric-label {
   font-size: 12px;
   color: var(--text-dim);
-}`,js:""}};function We({onSaved:n}){const e=document.getElementById("snippet-modal-backdrop"),t=document.getElementById("snippet-modal");if(!e||!t)return;let a=null;function i(s=null){var m,w,E,M,D,j,$,q,P;a=s||{id:null,name:"",category:"elements",tags:[],variants:{vanilla:{html:"",css:"",js:""},tailwind:{html:""}}};const v=R.blank,u=s?((w=(m=s.variants)==null?void 0:m.vanilla)==null?void 0:w.html)||"":v.html,b=s?((M=(E=s.variants)==null?void 0:E.vanilla)==null?void 0:M.css)||"":v.css,d=s?((j=(D=s.variants)==null?void 0:D.vanilla)==null?void 0:j.js)||"":v.js,g=s?s.name:v.name,l=s?s.category:v.category,p=s?(s.tags||[]).join(", "):"custom, ui, snippet";t.innerHTML=`
+}`,js:""}};function Xe({onSaved:n}){const e=document.getElementById("snippet-modal-backdrop"),t=document.getElementById("snippet-modal");if(!e||!t)return;let a=null;function i(s=null){var c,h,w,L,D,j,$,q,P;a=s||{id:null,name:"",category:"elements",tags:[],variants:{vanilla:{html:"",css:"",js:""},tailwind:{html:""}}};const v=R.blank,g=s?((h=(c=s.variants)==null?void 0:c.vanilla)==null?void 0:h.html)||"":v.html,b=s?((L=(w=s.variants)==null?void 0:w.vanilla)==null?void 0:L.css)||"":v.css,d=s?((j=(D=s.variants)==null?void 0:D.vanilla)==null?void 0:j.js)||"":v.js,m=s?s.name:v.name,l=s?s.category:v.category,p=s?(s.tags||[]).join(", "):"custom, ui, snippet";t.innerHTML=`
       <div class="modal-header">
         <div class="flex items-center gap-2">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
@@ -7521,7 +7828,7 @@ ${t.js||"// Zero JS"}
         <div class="form-grid-2">
           <div class="form-group">
             <label class="form-label">Component Name *</label>
-            <input type="text" id="snippet-name-input" class="form-input" placeholder="e.g. Floating Action Pill" value="${g}" required />
+            <input type="text" id="snippet-name-input" class="form-input" placeholder="e.g. Floating Action Pill" value="${m}" required />
           </div>
 
           <div class="form-group">
@@ -7560,7 +7867,7 @@ ${t.js||"// Zero JS"}
               <button type="button" class="editor-tab-btn" data-tab="js">JavaScript</button>
             </div>
 
-            <textarea id="modal-editor-html" class="code-editor-textarea" placeholder="Paste or type HTML here...">${u}</textarea>
+            <textarea id="modal-editor-html" class="code-editor-textarea" placeholder="Paste or type HTML here...">${g}</textarea>
             <textarea id="modal-editor-css" class="code-editor-textarea hidden" placeholder="Paste or type CSS here...">${b}</textarea>
             <textarea id="modal-editor-js" class="code-editor-textarea hidden" placeholder="Paste or type JavaScript here...">${d}</textarea>
           </div>
@@ -7582,7 +7889,7 @@ ${t.js||"// Zero JS"}
           <span>Save to Library</span>
         </button>
       </div>
-    `;const x=t.querySelector("#modal-editor-html"),h=t.querySelector("#modal-editor-css"),f=t.querySelector("#modal-editor-js"),z=t.querySelector("#modal-preview-iframe");function c(){if(!z)return;const k=x.value,y=h.value,L=f.value;z.srcdoc=_({html:k,css:y,js:L,theme:"dark"})}t.querySelectorAll(".editor-tab-btn").forEach(k=>{k.addEventListener("click",()=>{t.querySelectorAll(".editor-tab-btn").forEach(L=>L.classList.remove("active")),k.classList.add("active");const y=k.dataset.tab;x.classList.toggle("hidden",y!=="html"),h.classList.toggle("hidden",y!=="css"),f.classList.toggle("hidden",y!=="js")})}),x.addEventListener("input",c),h.addEventListener("input",c),f.addEventListener("input",c),t.querySelectorAll(".template-picker-btn").forEach(k=>{k.addEventListener("click",()=>{const y=R[k.dataset.tmpl];y&&(t.querySelector("#snippet-name-input").value=y.name,t.querySelector("#snippet-category-select").value=y.category,x.value=y.html,h.value=y.css,f.value=y.js,c())})}),($=t.querySelector("#close-snippet-modal-btn"))==null||$.addEventListener("click",r),(q=t.querySelector("#cancel-snippet-btn"))==null||q.addEventListener("click",r),(P=t.querySelector("#save-snippet-btn"))==null||P.addEventListener("click",()=>{const k=t.querySelector("#snippet-name-input").value.trim();if(!k){alert("Please enter a component name.");return}const y=t.querySelector("#snippet-category-select").value,N=t.querySelector("#snippet-tags-input").value.split(",").map(V=>V.trim().toLowerCase()).filter(Boolean),G={id:a.id||`custom-${Date.now()}`,name:k,category:y,tags:N,complexity:"Custom",isCustom:!0,variants:{vanilla:{html:x.value,css:h.value,js:f.value}}};O(G),S(`Saved "${k}" to your library!`),r(),n&&n()}),c()}function o(s=null){i(s),e.classList.remove("hidden")}function r(){e.classList.add("hidden")}return e.addEventListener("click",s=>{s.target===e&&r()}),{openModal:o,closeModal:r}}function Je({onImportCompleted:n}){const e=document.getElementById("backup-modal-backdrop"),t=document.getElementById("backup-modal");if(!e||!t)return;function a(){var v,u,b;const r=C().length;t.innerHTML=`
+    `;const x=t.querySelector("#modal-editor-html"),f=t.querySelector("#modal-editor-css"),u=t.querySelector("#modal-editor-js"),z=t.querySelector("#modal-preview-iframe");function S(){if(!z)return;const k=x.value,y=f.value,I=u.value;z.srcdoc=H({html:k,css:y,js:I,theme:"dark"})}t.querySelectorAll(".editor-tab-btn").forEach(k=>{k.addEventListener("click",()=>{t.querySelectorAll(".editor-tab-btn").forEach(I=>I.classList.remove("active")),k.classList.add("active");const y=k.dataset.tab;x.classList.toggle("hidden",y!=="html"),f.classList.toggle("hidden",y!=="css"),u.classList.toggle("hidden",y!=="js")})}),x.addEventListener("input",S),f.addEventListener("input",S),u.addEventListener("input",S),t.querySelectorAll(".template-picker-btn").forEach(k=>{k.addEventListener("click",()=>{const y=R[k.dataset.tmpl];y&&(t.querySelector("#snippet-name-input").value=y.name,t.querySelector("#snippet-category-select").value=y.category,x.value=y.html,f.value=y.css,u.value=y.js,S())})}),($=t.querySelector("#close-snippet-modal-btn"))==null||$.addEventListener("click",r),(q=t.querySelector("#cancel-snippet-btn"))==null||q.addEventListener("click",r),(P=t.querySelector("#save-snippet-btn"))==null||P.addEventListener("click",()=>{const k=t.querySelector("#snippet-name-input").value.trim();if(!k){alert("Please enter a component name.");return}const y=t.querySelector("#snippet-category-select").value,N=t.querySelector("#snippet-tags-input").value.split(",").map(V=>V.trim().toLowerCase()).filter(Boolean),G={id:a.id||`custom-${Date.now()}`,name:k,category:y,tags:N,complexity:"Custom",isCustom:!0,variants:{vanilla:{html:x.value,css:f.value,js:u.value}}};O(G),C(`Saved "${k}" to your library!`),r(),n&&n()}),S()}function o(s=null){i(s),e.classList.remove("hidden")}function r(){e.classList.add("hidden")}return e.addEventListener("click",s=>{s.target===e&&r()}),{openModal:o,closeModal:r}}function Je({onImportCompleted:n}){const e=document.getElementById("backup-modal-backdrop"),t=document.getElementById("backup-modal");if(!e||!t)return;function a(){var v,g,b;const r=E().length;t.innerHTML=`
       <div class="modal-header">
         <div class="flex items-center gap-2">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -7618,7 +7925,7 @@ ${t.js||"// Zero JS"}
           </button>
         </div>
       </div>
-    `,(v=t.querySelector("#close-backup-modal-btn"))==null||v.addEventListener("click",o),(u=t.querySelector("#export-json-btn"))==null||u.addEventListener("click",()=>{qe(),S("Exported library backup successfully!"),o()});const s=t.querySelector("#import-file-input");(b=t.querySelector("#trigger-import-file-btn"))==null||b.addEventListener("click",()=>{s==null||s.click()}),s==null||s.addEventListener("change",d=>{var l;const g=(l=d.target.files)==null?void 0:l[0];if(g){const p=new FileReader;p.onload=x=>{var f;const h=(f=x.target)==null?void 0:f.result;if(typeof h=="string"){const z=Pe(h);z.success?(S(`Imported ${z.count} component snippets!`),o(),n&&n()):alert("Failed to import JSON: "+z.error)}},p.readAsText(g)}})}function i(){a(),e.classList.remove("hidden")}function o(){e.classList.add("hidden")}return e.addEventListener("click",r=>{r.target===e&&o()}),{openModal:i,closeModal:o}}function Ke(){let n=document.getElementById("modal-container");n||(n=document.createElement("div"),n.id="modal-container",document.body.appendChild(n));let e="glass";function t(){var v,u;const o=document.getElementById("tools-modal-body");if(o){if(e==="glass"){let p=function(){const x=b.value,h=(d.value/100).toFixed(2),f=(g.value/100).toFixed(2);document.getElementById("glass-blur-val").textContent=`${x}px`,document.getElementById("glass-op-val").textContent=h,document.getElementById("glass-border-val").textContent=f,l.style.backdropFilter=`blur(${x}px)`,l.style.webkitBackdropFilter=`blur(${x}px)`,l.style.background=`rgba(255, 255, 255, ${h})`,l.style.border=`1px solid rgba(255, 255, 255, ${f})`};var r=p;o.innerHTML=`
+    `,(v=t.querySelector("#close-backup-modal-btn"))==null||v.addEventListener("click",o),(g=t.querySelector("#export-json-btn"))==null||g.addEventListener("click",()=>{qe(),C("Exported library backup successfully!"),o()});const s=t.querySelector("#import-file-input");(b=t.querySelector("#trigger-import-file-btn"))==null||b.addEventListener("click",()=>{s==null||s.click()}),s==null||s.addEventListener("change",d=>{var l;const m=(l=d.target.files)==null?void 0:l[0];if(m){const p=new FileReader;p.onload=x=>{var u;const f=(u=x.target)==null?void 0:u.result;if(typeof f=="string"){const z=Pe(f);z.success?(C(`Imported ${z.count} component snippets!`),o(),n&&n()):alert("Failed to import JSON: "+z.error)}},p.readAsText(m)}})}function i(){a(),e.classList.remove("hidden")}function o(){e.classList.add("hidden")}return e.addEventListener("click",r=>{r.target===e&&o()}),{openModal:i,closeModal:o}}function We(){let n=document.getElementById("modal-container");n||(n=document.createElement("div"),n.id="modal-container",document.body.appendChild(n));let e="glass";function t(){var v,g;const o=document.getElementById("tools-modal-body");if(o){if(e==="glass"){let p=function(){const x=b.value,f=(d.value/100).toFixed(2),u=(m.value/100).toFixed(2);document.getElementById("glass-blur-val").textContent=`${x}px`,document.getElementById("glass-op-val").textContent=f,document.getElementById("glass-border-val").textContent=u,l.style.backdropFilter=`blur(${x}px)`,l.style.webkitBackdropFilter=`blur(${x}px)`,l.style.background=`rgba(255, 255, 255, ${f})`,l.style.border=`1px solid rgba(255, 255, 255, ${u})`};var r=p;o.innerHTML=`
         <div class="tool-split-grid">
           <div class="tool-controls">
             <h4 style="font-size:13px; font-weight:700; color:var(--text-primary); margin-bottom:12px;">Glassmorphism Generator</h4>
@@ -7644,11 +7951,11 @@ ${t.js||"// Zero JS"}
             </div>
           </div>
         </div>
-      `;const b=document.getElementById("glass-blur-slider"),d=document.getElementById("glass-op-slider"),g=document.getElementById("glass-border-slider"),l=document.getElementById("glass-live-preview");b==null||b.addEventListener("input",p),d==null||d.addEventListener("input",p),g==null||g.addEventListener("input",p),(v=document.getElementById("copy-glass-css-btn"))==null||v.addEventListener("click",()=>{const x=`background: rgba(255, 255, 255, ${(d.value/100).toFixed(2)});
+      `;const b=document.getElementById("glass-blur-slider"),d=document.getElementById("glass-op-slider"),m=document.getElementById("glass-border-slider"),l=document.getElementById("glass-live-preview");b==null||b.addEventListener("input",p),d==null||d.addEventListener("input",p),m==null||m.addEventListener("input",p),(v=document.getElementById("copy-glass-css-btn"))==null||v.addEventListener("click",()=>{const x=`background: rgba(255, 255, 255, ${(d.value/100).toFixed(2)});
 backdrop-filter: blur(${b.value}px);
 -webkit-backdrop-filter: blur(${b.value}px);
-border: 1px solid rgba(255, 255, 255, ${(g.value/100).toFixed(2)});
-border-radius: 12px;`;navigator.clipboard.writeText(x).then(()=>S("Copied Glassmorphism CSS!"))})}else if(e==="clamp"){let b=function(){const d=parseFloat(document.getElementById("clamp-min-font").value)||16,g=parseFloat(document.getElementById("clamp-max-font").value)||36,l=parseFloat(document.getElementById("clamp-min-vp").value)||375,p=parseFloat(document.getElementById("clamp-max-vp").value)||1280,x=(d/16).toFixed(3),h=(g/16).toFixed(3),f=(g-d)/(p-l),z=(-l*f+d)/16,c=(f*100).toFixed(2),m=`clamp(${x}rem, ${z.toFixed(2)}rem + ${c}vw, ${h}rem)`;document.getElementById("clamp-output-code").textContent=`font-size: ${m};`,document.getElementById("clamp-preview-text").style.fontSize=`${d}px`};var s=b;o.innerHTML=`
+border: 1px solid rgba(255, 255, 255, ${(m.value/100).toFixed(2)});
+border-radius: 12px;`;navigator.clipboard.writeText(x).then(()=>C("Copied Glassmorphism CSS!"))})}else if(e==="clamp"){let b=function(){const d=parseFloat(document.getElementById("clamp-min-font").value)||16,m=parseFloat(document.getElementById("clamp-max-font").value)||36,l=parseFloat(document.getElementById("clamp-min-vp").value)||375,p=parseFloat(document.getElementById("clamp-max-vp").value)||1280,x=(d/16).toFixed(3),f=(m/16).toFixed(3),u=(m-d)/(p-l),z=(-l*u+d)/16,S=(u*100).toFixed(2),c=`clamp(${x}rem, ${z.toFixed(2)}rem + ${S}vw, ${f}rem)`;document.getElementById("clamp-output-code").textContent=`font-size: ${c};`,document.getElementById("clamp-preview-text").style.fontSize=`${d}px`};var s=b;o.innerHTML=`
         <div class="tool-split-grid">
           <div class="tool-controls">
             <h4 style="font-size:13px; font-weight:700; color:var(--text-primary); margin-bottom:12px;">Fluid clamp() Typography Calculator</h4>
@@ -7684,7 +7991,7 @@ border-radius: 12px;`;navigator.clipboard.writeText(x).then(()=>S("Copied Glassm
             </div>
           </div>
         </div>
-      `,["clamp-min-font","clamp-max-font","clamp-min-vp","clamp-max-vp"].forEach(d=>{var g;(g=document.getElementById(d))==null||g.addEventListener("input",b)}),(u=document.getElementById("copy-clamp-css-btn"))==null||u.addEventListener("click",()=>{const d=document.getElementById("clamp-output-code").textContent;navigator.clipboard.writeText(d).then(()=>S("Copied clamp() CSS!"))})}}}function a(){var r;n.innerHTML=`
+      `,["clamp-min-font","clamp-max-font","clamp-min-vp","clamp-max-vp"].forEach(d=>{var m;(m=document.getElementById(d))==null||m.addEventListener("input",b)}),(g=document.getElementById("copy-clamp-css-btn"))==null||g.addEventListener("click",()=>{const d=document.getElementById("clamp-output-code").textContent;navigator.clipboard.writeText(d).then(()=>C("Copied clamp() CSS!"))})}}}function a(){var r;n.innerHTML=`
       <div class="modal-backdrop" id="tools-modal-backdrop">
         <div class="modal-dialog" style="width: 720px;">
           <div class="modal-header">
@@ -7705,4 +8012,4 @@ border-radius: 12px;`;navigator.clipboard.writeText(x).then(()=>S("Copied Glassm
           </div>
         </div>
       </div>
-    `,t(),n.querySelectorAll(".tool-tab-btn").forEach(s=>{s.addEventListener("click",()=>{e=s.dataset.tool,a()})});const o=document.getElementById("tools-modal-backdrop");(r=document.getElementById("tools-modal-close"))==null||r.addEventListener("click",i),o==null||o.addEventListener("click",s=>{s.target===o&&i()})}function i(){n.innerHTML=""}return{openModal:a,closeModal:i}}class Xe{constructor(){const e=H();this.stateManager=new Y({currentTheme:e.theme||"dark"}),this.registry=new Fe,this.events=B,this.context={stateManager:this.stateManager,registry:this.registry,app:this},this.headerController=null,this.sidebarController=null,this.streamController=null,this.commandPalette=null,this.snippetModal=null,this.backupModal=null,this.toolsModal=null}bootstrap(){const e=this.stateManager.get("currentTheme");document.documentElement.className=e,this.initModals(),this.headerController=new Oe("app-header",this.context).init(),this.sidebarController=new _e("app-sidebar",this.context).init(),this.streamController=new Ue("component-container",this.context).init(),this.bindGlobalListeners(),console.log("✨ [DevVault] Enterprise OOP Architecture Initialized")}initModals(){this.commandPalette=Ye({getAllComponents:()=>this.registry.getAll(),onSelectComponent:e=>this.events.emit("component:scroll-to",e)}),this.snippetModal=We({onSaved:()=>this.registry.reloadCustomSnippets()}),this.backupModal=Je({onImportCompleted:()=>this.registry.reloadCustomSnippets()}),this.toolsModal=Ke()}bindGlobalListeners(){var e;window.addEventListener("keydown",t=>{(t.metaKey||t.ctrlKey)&&t.key.toLowerCase()==="n"&&(t.preventDefault(),this.snippetModal.openModal())}),this.events.on("modal:open-search",()=>this.commandPalette.openPalette()),this.events.on("modal:open-tools",()=>this.toolsModal.openModal()),this.events.on("modal:open-backup",()=>this.backupModal.openModal()),this.events.on("modal:open-snippet",()=>this.snippetModal.openModal()),this.events.on("modal:edit-snippet",t=>this.snippetModal.openModal(t)),this.events.on("toast:show",t=>S(t)),this.events.on("theme:toggle",()=>{const t=this.stateManager.get("currentTheme")==="dark"?"light":"dark";this.stateManager.setState({currentTheme:t}),document.documentElement.className=t,Re({theme:t}),this.events.emit("theme:changed",t),S(`Switched to ${t} mode`)}),(e=document.getElementById("empty-add-btn"))==null||e.addEventListener("click",()=>{this.snippetModal.openModal()})}}const Qe=new Xe;Qe.bootstrap();
+    `,t(),n.querySelectorAll(".tool-tab-btn").forEach(s=>{s.addEventListener("click",()=>{e=s.dataset.tool,a()})});const o=document.getElementById("tools-modal-backdrop");(r=document.getElementById("tools-modal-close"))==null||r.addEventListener("click",i),o==null||o.addEventListener("click",s=>{s.target===o&&i()})}function i(){n.innerHTML=""}return{openModal:a,closeModal:i}}class Ke{constructor(){const e=_();this.stateManager=new Y({currentTheme:e.theme||"dark"}),this.registry=new Fe,this.events=B,this.context={stateManager:this.stateManager,registry:this.registry,app:this},this.headerController=null,this.sidebarController=null,this.streamController=null,this.commandPalette=null,this.snippetModal=null,this.backupModal=null,this.toolsModal=null}bootstrap(){const e=this.stateManager.get("currentTheme");document.documentElement.className=e,this.initModals(),this.headerController=new Oe("app-header",this.context).init(),this.sidebarController=new He("app-sidebar",this.context).init(),this.streamController=new Ue("component-container",this.context).init(),this.bindGlobalListeners(),console.log("✨ [DevVault] Enterprise OOP Architecture Initialized")}initModals(){this.commandPalette=Ye({getAllComponents:()=>this.registry.getAll(),onSelectComponent:e=>this.events.emit("component:scroll-to",e)}),this.snippetModal=Xe({onSaved:()=>this.registry.reloadCustomSnippets()}),this.backupModal=Je({onImportCompleted:()=>this.registry.reloadCustomSnippets()}),this.toolsModal=We()}bindGlobalListeners(){var e;window.addEventListener("keydown",t=>{(t.metaKey||t.ctrlKey)&&t.key.toLowerCase()==="n"&&(t.preventDefault(),this.snippetModal.openModal())}),this.events.on("modal:open-search",()=>this.commandPalette.openPalette()),this.events.on("modal:open-tools",()=>this.toolsModal.openModal()),this.events.on("modal:open-backup",()=>this.backupModal.openModal()),this.events.on("modal:open-snippet",()=>this.snippetModal.openModal()),this.events.on("modal:edit-snippet",t=>this.snippetModal.openModal(t)),this.events.on("toast:show",t=>C(t)),this.events.on("theme:toggle",()=>{const t=this.stateManager.get("currentTheme")==="dark"?"light":"dark";this.stateManager.setState({currentTheme:t}),document.documentElement.className=t,Re({theme:t}),this.events.emit("theme:changed",t),C(`Switched to ${t} mode`)}),(e=document.getElementById("empty-add-btn"))==null||e.addEventListener("click",()=>{this.snippetModal.openModal()})}}const Qe=new Ke;Qe.bootstrap();
