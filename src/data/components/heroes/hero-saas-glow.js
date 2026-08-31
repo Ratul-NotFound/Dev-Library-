@@ -167,7 +167,7 @@ export const heroSaasGlow = {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow-box);
   overflow: hidden;
 }
 

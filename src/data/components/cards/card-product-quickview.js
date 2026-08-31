@@ -44,7 +44,7 @@ export const cardProductQuickview = {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-box);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 .dv-product-card:hover {

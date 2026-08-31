@@ -61,7 +61,7 @@ export const bentoGridFeatures = {
 .dv-bento-card:hover {
   border-color: var(--border-active);
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-box);
 }
 
 .dv-bento-col-2 {

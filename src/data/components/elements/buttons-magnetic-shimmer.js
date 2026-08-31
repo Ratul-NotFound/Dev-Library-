@@ -69,14 +69,14 @@ export const buttonsMagneticShimmer = {
   font-size: 13px;
   font-weight: 600;
   border-radius: 9999px;
-  background: #09090b;
-  color: #fafafa;
+  background: var(--bg);
+  color: var(--text);
   backdrop-filter: blur(12px);
   z-index: 1;
   transition: background 0.15s ease;
 }
 .dv-btn-shimmer:hover .dv-shimmer-content {
-  background: #18181b;
+  background: var(--bg-elevated);
 }
 
 .dv-btn-glass {

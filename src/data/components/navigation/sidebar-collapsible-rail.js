@@ -75,7 +75,7 @@ export const sidebarCollapsibleRail = {
   padding: 16px 12px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-box);
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }

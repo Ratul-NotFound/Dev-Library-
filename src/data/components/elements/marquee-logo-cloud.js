@@ -77,7 +77,7 @@ export const marqueeLogoCloud = {
   font-weight: 500;
   color: var(--text);
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-sm);
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 .dv-tech-pill:hover {

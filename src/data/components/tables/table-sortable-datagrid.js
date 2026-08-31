@@ -128,7 +128,7 @@ export const tableSortableDatagrid = {
 }
 
 .dv-datatable tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-elevated);
 }
 
 .dv-status-badge {

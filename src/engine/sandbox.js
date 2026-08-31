@@ -69,23 +69,29 @@ export function buildSandboxDoc({
       --bg-card: #121215;
       --bg-elevated: #18181b;
       --bg-muted: #27272a;
+      --bg-glass: rgba(18, 18, 21, 0.78);
       --border: rgba(255, 255, 255, 0.08);
       --border-active: #3f3f46;
       --text: #fafafa;
       --text-muted: #a1a1aa;
       --text-dim: #71717a;
+      --shadow-box: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     html.light {
       --bg: #ffffff;
-      --bg-card: #f8f9fa;
-      --bg-elevated: #ffffff;
-      --bg-muted: #f1f3f5;
-      --border: rgba(0, 0, 0, 0.08);
-      --border-active: #a1a1aa;
+      --bg-card: #ffffff;
+      --bg-elevated: #f4f4f5;
+      --bg-muted: #e4e4e7;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      --border: rgba(0, 0, 0, 0.09);
+      --border-active: #d4d4d8;
       --text: #09090b;
       --text-muted: #52525b;
       --text-dim: #a1a1aa;
+      --shadow-box: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     *, *::before, *::after {

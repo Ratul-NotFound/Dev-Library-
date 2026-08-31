@@ -45,12 +45,12 @@ export const navbarFloatingGlass = {
   align-items: center;
   justify-content: space-between;
   padding: 8px 16px;
-  background: rgba(18, 18, 21, 0.75);
+  background: var(--bg-glass);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-box);
 }
 
 .dv-logo {

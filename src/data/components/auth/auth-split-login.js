@@ -60,7 +60,7 @@ export const authSplitLogin = {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 32px 28px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-box);
 }
 
 .dv-auth-header {
