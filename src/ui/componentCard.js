@@ -39,6 +39,8 @@ export class ComponentCardController {
 
     this.element = null;
     this.iframe = null;
+    this.hasLoadedSandbox = false;
+    this.observer = null;
     this.boundResizeHandler = this.handleIframeResize.bind(this);
   }
 
@@ -213,16 +215,50 @@ export class ComponentCardController {
 
     this.element = cardEl;
     this.iframe = cardEl.querySelector(`#iframe-${component.id}`);
+    cardEl._controller = this;
     this.bindEvents();
-    this.updateSandbox();
 
-    window.addEventListener('message', this.boundResizeHandler);
+    // Viewport-Based Lazy Loading via IntersectionObserver
+    if ('IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.loadSandbox();
+          }
+        });
+      }, {
+        rootMargin: '300px 0px 300px 0px',
+        threshold: 0.01
+      });
+      this.observer.observe(cardEl);
+    } else {
+      // Fallback if IntersectionObserver is unavailable
+      this.loadSandbox();
+    }
+
+    window.addEventListener('message', this.boundResizeHandler, { passive: true });
 
     return cardEl;
   }
 
+  loadSandbox() {
+    if (this.hasLoadedSandbox) return;
+    this.hasLoadedSandbox = true;
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+    this.updateSandbox();
+  }
+
   updateSandbox() {
     if (!this.iframe) return;
+    this.hasLoadedSandbox = true;
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+
     const { component, state } = this;
     const vanilla = component.variants?.vanilla || { html: '', css: '', js: '' };
 
@@ -447,7 +483,15 @@ ${vanilla.css}${morphismSnippet}`;
   }
 
   destroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
     window.removeEventListener('message', this.boundResizeHandler);
+    if (this.iframe) {
+      this.iframe.srcdoc = '';
+      this.iframe = null;
+    }
   }
 }
 

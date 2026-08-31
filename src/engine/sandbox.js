@@ -415,23 +415,31 @@ export function buildSandboxDoc({
       window.lucide.createIcons();
     }
 
-    // Dynamic Height Observer Protocol
+    // Dynamic Height Observer Protocol (Throttled & Debounced)
+    let lastReportedHeight = 0;
+    let resizeRafId = null;
+
     function postSize() {
-      const root = document.getElementById('dv-sandbox-root');
-      if (!root) return;
-      const height = Math.max(root.scrollHeight + 50, document.body.scrollHeight + 30);
-      window.parent.postMessage({
-        type: 'DEVVAULT_SANDBOX_RESIZE',
-        height: height
-      }, '*');
+      if (resizeRafId) cancelAnimationFrame(resizeRafId);
+      resizeRafId = requestAnimationFrame(() => {
+        const root = document.getElementById('dv-sandbox-root');
+        if (!root) return;
+        const height = Math.max(root.scrollHeight + 50, document.body.scrollHeight + 30);
+        if (Math.abs(height - lastReportedHeight) >= 2) {
+          lastReportedHeight = height;
+          window.parent.postMessage({
+            type: 'DEVVAULT_SANDBOX_RESIZE',
+            height: height
+          }, '*');
+        }
+      });
     }
 
-    window.addEventListener('load', postSize);
-    window.addEventListener('resize', postSize);
+    window.addEventListener('load', postSize, { passive: true });
+    window.addEventListener('resize', postSize, { passive: true });
     const observer = new ResizeObserver(postSize);
     observer.observe(document.body);
-    setTimeout(postSize, 100);
-    setTimeout(postSize, 300);
+    setTimeout(postSize, 120);
 
     // Isolated Component JS
     try {

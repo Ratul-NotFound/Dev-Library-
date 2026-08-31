@@ -569,6 +569,9 @@ button {
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: border-color var(--transition-smooth);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 380px;
+  contain: layout style paint;
 }
 .component-card:hover {
   border-color: var(--border-active);

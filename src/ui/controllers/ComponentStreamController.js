@@ -107,6 +107,15 @@ export class ComponentStreamController extends BaseController {
   }
 
   renderCards(components) {
+    // Destroy previous card controllers to release memory and detach observers
+    if (this._cardControllers && this._cardControllers.length > 0) {
+      this._cardControllers.forEach(ctrl => {
+        if (ctrl && typeof ctrl.destroy === 'function') {
+          ctrl.destroy();
+        }
+      });
+    }
+    this._cardControllers = [];
     this.container.innerHTML = '';
 
     if (components.length === 0) {
@@ -127,6 +136,9 @@ export class ComponentStreamController extends BaseController {
           this.events.emit('toast:show', 'Snippet deleted from library.');
         }
       });
+      if (card._controller) {
+        this._cardControllers.push(card._controller);
+      }
       this.container.appendChild(card);
     });
   }
@@ -149,6 +161,9 @@ export class ComponentStreamController extends BaseController {
       setTimeout(() => {
         const card = document.getElementById(`card-${comp.id}`);
         if (card) {
+          if (card._controller && typeof card._controller.loadSandbox === 'function') {
+            card._controller.loadSandbox();
+          }
           card.scrollIntoView({ behavior: 'smooth', block: 'center' });
           card.style.borderColor = 'var(--accent-primary)';
           setTimeout(() => { card.style.borderColor = ''; }, 1200);
