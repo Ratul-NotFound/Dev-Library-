@@ -10,6 +10,7 @@ import { renderComponentCard } from './ui/componentCard.js';
 import { initCommandPalette } from './ui/commandPalette.js';
 import { initSnippetModal } from './ui/snippetModal.js';
 import { initBackupModal } from './ui/backupModal.js';
+import { initToolsModal } from './ui/toolsModal.js';
 import { showToast } from './ui/toast.js';
 
 export class AppController {
@@ -25,6 +26,7 @@ export class AppController {
     this.commandPalette = null;
     this.snippetModal = null;
     this.backupModal = null;
+    this.toolsModal = null;
   }
 
   init() {
@@ -51,6 +53,8 @@ export class AppController {
     this.backupModal = initBackupModal({
       onImportCompleted: () => this.render()
     });
+
+    this.toolsModal = initToolsModal();
 
     document.getElementById('empty-add-btn')?.addEventListener('click', () => {
       this.snippetModal.openModal();
@@ -120,6 +124,7 @@ export class AppController {
       onSearchClick: () => this.commandPalette.openPalette(),
       onNewSnippetClick: () => this.snippetModal.openModal(),
       onBackupClick: () => this.backupModal.openModal(),
+      onToolsClick: () => this.toolsModal?.openModal(),
       onThemeToggle: () => this.toggleTheme()
     });
   }

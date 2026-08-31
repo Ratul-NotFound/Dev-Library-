@@ -1,6 +1,6 @@
 /**
  * DevVault Master Component Registry Index
- * Complete All-In-One Developer Pattern & Component Suite (30+ Modular Patterns).
+ * Complete All-In-One Developer Pattern & Component Suite (35+ Modular Patterns).
  */
 
 // Navigation & Menus
@@ -17,13 +17,16 @@ import { pricingMatrixToggle } from './ecommerce/pricing-matrix-toggle.js';
 
 // Tables & Grids
 import { tableSortableDatagrid } from './tables/table-sortable-datagrid.js';
+import { tableFeatureMatrix } from './tables/table-feature-matrix.js';
 
 // Authentication & Forms
 import { authSplitLogin } from './auth/auth-split-login.js';
 import { formInteractiveInputs } from './auth/form-interactive-inputs.js';
+import { wizardMultistepOnboarding } from './auth/wizard-multistep-onboarding.js';
 
-// Modals & Dialogs
+// Modals & Overlays
 import { dialogConfirmDanger } from './modals/dialog-confirm-danger.js';
+import { bannerCookieConsent } from './modals/banner-cookie-consent.js';
 
 // Cards & Content
 import { cardProductQuickview } from './cards/card-product-quickview.js';
@@ -32,6 +35,7 @@ import { cardProductQuickview } from './cards/card-product-quickview.js';
 import { bentoGridFeatures } from './layout/bento-grid-features.js';
 import { statsMetricsGrid } from './layout/stats-metrics-grid.js';
 import { testimonialsMasonryGrid } from './layout/testimonials-masonry-grid.js';
+import { timelineAuditFeed } from './layout/timeline-audit-feed.js';
 
 // Buttons & Elements
 import { buttonsMagneticShimmer } from './elements/buttons-magnetic-shimmer.js';
@@ -45,7 +49,7 @@ import { skeletonShimmerCard } from './feedback/skeleton-shimmer-card.js';
 // Animations & Micro-Effects
 import { effectSpotlightCard } from './animations/effect-spotlight-card.js';
 
-// Visual Morphisms & Design Aesthetics (11 Pro Styles)
+// Visual Morphisms & Design Aesthetics (12 Pro Styles)
 import { styleGlassmorphismCard } from './morphisms/style-glassmorphism-card.js';
 import { styleNeobrutalismCard } from './morphisms/style-neobrutalism-card.js';
 import { styleClaymorphismCard } from './morphisms/style-claymorphism-card.js';
@@ -61,6 +65,8 @@ import { styleBiomorphismFluid } from './morphisms/style-biomorphism-fluid.js';
 
 // Landing & Full Sections
 import { sectionCtaGradient } from './pages/section-cta-gradient.js';
+import { pageError404 } from './pages/page-error-404.js';
+import { sectionContactSplit } from './pages/section-contact-split.js';
 
 // Footers
 import { footerSaasMulticolumn } from './footers/footer-saas-multicolumn.js';
@@ -80,13 +86,16 @@ export const BUILTIN_COMPONENTS = [
 
   // Tables
   tableSortableDatagrid,
+  tableFeatureMatrix,
 
   // Auth & Forms
   authSplitLogin,
   formInteractiveInputs,
+  wizardMultistepOnboarding,
 
-  // Modals
+  // Modals & Overlays
   dialogConfirmDanger,
+  bannerCookieConsent,
 
   // Cards
   cardProductQuickview,
@@ -95,6 +104,7 @@ export const BUILTIN_COMPONENTS = [
   bentoGridFeatures,
   statsMetricsGrid,
   testimonialsMasonryGrid,
+  timelineAuditFeed,
 
   // Buttons & Elements
   buttonsMagneticShimmer,
@@ -124,6 +134,8 @@ export const BUILTIN_COMPONENTS = [
 
   // Pages & Landing
   sectionCtaGradient,
+  pageError404,
+  sectionContactSplit,
 
   // Footers
   footerSaasMulticolumn
